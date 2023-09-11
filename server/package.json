@@ -1,0 +1,11 @@
+{
+  "name": "@next-versus/server",
+  "version": "1.0.0",
+  "description": "Server for next-versus",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yoyanni",
+  "license": "ISC"
+}
