@@ -13,3 +13,9 @@ Created files and imported packages for:
 - a basic db connection
 
 The server is now using Typescript compared to the previous repo which was using vanilla Javascript.
+
+### Setup DB Schema/Model Fighter
+
+- Created the Schema/Model to query the DB
+- Created the FighterType interface
+- Fixed some imports/exports that were still CommonJS instead of ES Modules

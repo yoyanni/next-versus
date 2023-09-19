@@ -7,4 +7,4 @@ function init(DATABASE_URL: string) {
   db.once("open", () => console.log("Connected to MongoDB."));
 }
 
-module.exports = init;
+export default init;
