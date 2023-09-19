@@ -14,10 +14,3 @@ It will:
 - It will have the fighter moves to better understand the fighter you are using.
 - It will also help with more general facts of the game (e.g. What movements are possible and how to action those)
 
-
-## Commit History
-
-### Setup Template and Project
-
-- Remove basic boilerplate details
-- Setup monorepo project layout
