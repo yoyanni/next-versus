@@ -19,3 +19,9 @@ The server is now using Typescript compared to the previous repo which was using
 - Created the Schema/Model to query the DB
 - Created the FighterType interface
 - Fixed some imports/exports that were still CommonJS instead of ES Modules
+
+### Create the basic HTML Structure
+
+- A HTML structure was created
+- Components were constructed to separate section
+- Also .env files were added to .gitignore
