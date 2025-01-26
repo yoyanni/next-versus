@@ -2,10 +2,10 @@
 import mongoose from "mongoose";
 
 // Internal Import
-import FighterType from "./types";
+import { Fighter } from "../types";
 
 // Schema
-const fighterSchema = new mongoose.Schema<FighterType>({
+const fighterSchema = new mongoose.Schema<Fighter>({
   _id: Number,
   weightClass: {
     type: String,
@@ -288,6 +288,6 @@ const fighterSchema = new mongoose.Schema<FighterType>({
 });
 
 // Model
-const Fighter = mongoose.model<FighterType>("Fighter", fighterSchema);
+const Fighter = mongoose.model<Fighter>("Fighter", fighterSchema);
 
 export default Fighter;

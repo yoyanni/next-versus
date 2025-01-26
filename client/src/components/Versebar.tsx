@@ -1,12 +1,13 @@
-import React from "react";
+import standard from "@/standard";
+import { VersebarProps } from "@/types";
 
-const Versebar = () => {
+const Versebar = ({ wc, red, blue }: VersebarProps) => {
   return (
     <section>
-      <div>Bantamweight</div>
+      <div>{standard.weightClasses[wc]}</div>
       <div>
-        <div>Sean O&apos;Malley</div>
-        <div>Aljermain Sterling</div>
+        <div>{red.firstName}</div>
+        <div>{blue.firstName}</div>
       </div>
       <hr />
     </section>
