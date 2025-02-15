@@ -3,7 +3,7 @@ import PerkCard from "./PerkCard";
 import StatCardWrapper from "./StatCardWrapper";
 import Stats from "./Stats";
 
-import type { CardsProps } from "@/types";
+import type { CardsProps } from "@/types/component";
 
 const Cards = ({ red, blue }: CardsProps) => {
   return (

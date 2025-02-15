@@ -1,5 +1,5 @@
 import standard from "@/standard";
-import { VersebarProps } from "@/types";
+import { VersebarProps } from "@/types/component";
 
 const Versebar = ({ wc, red, blue }: VersebarProps) => {
   return (
@@ -9,7 +9,6 @@ const Versebar = ({ wc, red, blue }: VersebarProps) => {
         <div>{red.firstName}</div>
         <div>{blue.firstName}</div>
       </div>
-      <hr />
     </section>
   );
 };

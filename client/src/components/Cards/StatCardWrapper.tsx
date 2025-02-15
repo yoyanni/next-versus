@@ -1,4 +1,4 @@
-import { StatCardWrapperProps } from "@/types";
+import { StatCardWrapperProps } from "@/types/component";
 
 const StatCardWrapper = ({
   title,

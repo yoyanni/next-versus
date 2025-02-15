@@ -1,4 +1,4 @@
-import type { StatsProps } from "@/types";
+import type { StatsProps } from "@/types/component";
 
 const Stats = ({ name, redSkills, blueSkills }: StatsProps) => {
   return (

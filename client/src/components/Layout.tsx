@@ -21,7 +21,6 @@ const Layout = ({ children }: LayoutType) => {
         <span>Flyweight, Bantamweight</span>
         <span>59:59</span>
       </aside>
-      <hr />
       {children}
     </>
   );

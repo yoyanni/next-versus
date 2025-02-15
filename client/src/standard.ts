@@ -1,4 +1,4 @@
-import { Standards } from "./types";
+import { Standards } from "./types/generic";
 
 const standard: Standards = {
   weightClasses: [

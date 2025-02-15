@@ -1,4 +1,4 @@
-import { PerkCardProps } from "@/types";
+import { PerkCardProps } from "@/types/component";
 
 const PerkCard = ({ title, red, blue }: PerkCardProps) => {
   return (
