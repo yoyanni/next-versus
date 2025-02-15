@@ -7,8 +7,8 @@ const StatCardWrapper = ({
   children,
 }: StatCardWrapperProps) => {
   return (
-    <article>
-      <h2>
+    <article className="border">
+      <h2 className="flex justify-evenly py-2">
         <span>{redLevel}</span>
         <span>{title}</span>
         <span>{blueLevel}</span>

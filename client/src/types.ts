@@ -6,12 +6,6 @@ interface StandardStat<T> {
   propName: keyof T;
 }
 
-export type statJSX =
-  | StandardStat<Basic>[]
-  | StandardStat<StandUp>[]
-  | StandardStat<Grappling>[]
-  | StandardStat<Health>[];
-
 export interface Standards {
   weightClasses: string[];
   basic: StandardStat<Basic>[];
@@ -42,4 +36,10 @@ export interface VersebarProps {
   wc: number;
   red: Fighter;
   blue: Fighter;
+}
+
+export interface StatsProps {
+  name: string;
+  redSkills: any;
+  blueSkills: any;
 }

@@ -1,30 +1,26 @@
 import standard from "@/standard";
-import { CardsProps } from "@/types";
 import PerkCard from "./PerkCard";
 import StatCardWrapper from "./StatCardWrapper";
-import { Fragment } from "react";
+import Stats from "./Stats";
+
+import type { CardsProps } from "@/types";
 
 const Cards = ({ red, blue }: CardsProps) => {
   return (
-    <Fragment>
+    <div className="flex flex-col gap-8 mt-8">
       <StatCardWrapper
         title="Fighter Info"
         redLevel={red.basic.level}
         blueLevel={blue.basic.level}
       >
-        {standard.basic.map(({ name, propName }) => {
-          return (
-            <div key={name}>
-              <h3>
-                <span>{name}</span>
-              </h3>
-              <div>
-                <div>{red.basic.skills[propName]}</div>
-                <div>{blue.basic.skills[propName]}</div>
-              </div>
-            </div>
-          );
-        })}
+        {standard.basic.map(({ name, propName }) => (
+          <Stats
+            key={name}
+            name={name}
+            redSkills={red.basic.skills[propName]}
+            blueSkills={blue.basic.skills[propName]}
+          />
+        ))}
       </StatCardWrapper>
       <PerkCard title="Perks" red={red.perks} blue={blue.perks} />
       <StatCardWrapper
@@ -32,60 +28,44 @@ const Cards = ({ red, blue }: CardsProps) => {
         redLevel={red.standUp.level}
         blueLevel={blue.standUp.level}
       >
-        {standard.standUp.map(({ name, propName }) => {
-          return (
-            <div key={name}>
-              <h3>
-                <span>{name}</span>
-              </h3>
-              <div>
-                <div>{red.standUp.skills[propName]}</div>
-                <div>{blue.standUp.skills[propName]}</div>
-              </div>
-            </div>
-          );
-        })}
+        {standard.standUp.map(({ name, propName }) => (
+          <Stats
+            key={name}
+            name={name}
+            redSkills={red.standUp.skills[propName]}
+            blueSkills={blue.standUp.skills[propName]}
+          />
+        ))}
       </StatCardWrapper>
       <StatCardWrapper
         title="Grappling"
         redLevel={red.grappling.level}
         blueLevel={blue.grappling.level}
       >
-        {standard.grappling.map(({ name, propName }) => {
-          return (
-            <div key={name}>
-              <h3>
-                <span>{name}</span>
-              </h3>
-              <div>
-                <div>{red.grappling.skills[propName]}</div>
-                <div>{blue.grappling.skills[propName]}</div>
-              </div>
-            </div>
-          );
-        })}
+        {standard.grappling.map(({ name, propName }) => (
+          <Stats
+            key={name}
+            name={name}
+            redSkills={red.grappling.skills[propName]}
+            blueSkills={blue.grappling.skills[propName]}
+          />
+        ))}
       </StatCardWrapper>
       <StatCardWrapper
         title="Health"
         redLevel={red.health.level}
         blueLevel={blue.health.level}
       >
-        {standard.health.map(({ name, propName }) => {
-          return (
-            <div key={name}>
-              <h3>
-                <span>{name}</span>
-              </h3>
-              <div>
-                <div>{red.health.skills[propName]}</div>
-                <div>{blue.health.skills[propName]}</div>
-              </div>
-            </div>
-          );
-        })}
+        {standard.health.map(({ name, propName }) => (
+          <Stats
+            key={name}
+            name={name}
+            redSkills={red.health.skills[propName]}
+            blueSkills={blue.health.skills[propName]}
+          />
+        ))}
       </StatCardWrapper>
-      <hr />
-    </Fragment>
+    </div>
   );
 };
 
