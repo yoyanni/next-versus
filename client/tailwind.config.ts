@@ -1,20 +1,45 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        // App colors
+        redCorner: "var(--redCorner)",
+        blueCorner: "var(--blueCorner)",
+        standup: "var(--standup)",
+        grappling: "var(--grappling)",
+        health: "var(--health)",
+        // Background colors
+        navBg: "var(--navBg)",
+        navBgElevated: "var(--navBgElevated)",
+        mainBg: "var(--mainBg)",
+        mainBgElevated: "var(--mainBgElevated)",
+        // Dark font colors
+        titleDarkFontColor: "var(--titleDarkFontColor)",
+        primaryDarkFontColor: "var(--primaryDarkFontColor)",
+        secondaryDarkFontColor: "var(--secondaryDarkFontColor)",
+        tertiaryDarkFontColor: "var(--tertiaryDarkFontColor)",
+        borderDarkFontColor: "var(--borderDarkFontColor)",
+        // Light font colors
+        titleLightFontColor: "var(--titleLightFontColor)",
+        primaryLightFontColor: "var(--primaryLightFontColor)",
+        borderLightFontColor: "var(--borderLightFontColor)",
+      },
+      fontSize: {
+        titleFontSize: "var(--titleFontSize)",
+        primaryFontSize: "var(--primaryFontSize)",
+        secondaryFontSize: "var(--secondaryFontSize)",
+        tertiaryFontSize: "var(--tertiaryFontSize)",
+        quaternaryFontSize: "var(--quaternaryFontSize)",
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
