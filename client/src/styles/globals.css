@@ -4,6 +4,7 @@
 
 #__next {
   background: var(--mainBg);
+  font-family: "Kanit", serif;
 }
 
 :root {

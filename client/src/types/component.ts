@@ -6,13 +6,12 @@ export interface CardsProps {
   blue: Fighter;
 }
 
-export interface PerkCardProps {
-  readonly title: "Perks";
+export interface PerksProps {
   red: Perk[];
   blue: Perk[];
 }
 
-export interface StatCardWrapperProps {
+export interface CardWrapperProps {
   title: string;
   redLevel: number;
   blueLevel: number;
@@ -27,6 +26,6 @@ export interface VersebarProps {
 
 export interface StatsProps {
   name: string;
-  redSkills: any;
-  blueSkills: any;
+  redSkills: string | number;
+  blueSkills: string | number;
 }

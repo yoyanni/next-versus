@@ -1,14 +1,14 @@
-import standard from "@/standard";
-import PerkCard from "./PerkCard";
-import StatCardWrapper from "./StatCardWrapper";
 import Stats from "./Stats";
+import Perks from "./Perks";
+import standard from "@/standard";
+import CardWrapper from "./CardWrapper";
 
 import type { CardsProps } from "@/types/component";
 
 const Cards = ({ red, blue }: CardsProps) => {
   return (
     <div className="flex flex-col gap-8 mt-8">
-      <StatCardWrapper
+      <CardWrapper
         title="Fighter Info"
         redLevel={red.basic.level}
         blueLevel={blue.basic.level}
@@ -21,9 +21,15 @@ const Cards = ({ red, blue }: CardsProps) => {
             blueSkills={blue.basic.skills[propName]}
           />
         ))}
-      </StatCardWrapper>
-      <PerkCard title="Perks" red={red.perks} blue={blue.perks} />
-      <StatCardWrapper
+      </CardWrapper>
+      <CardWrapper
+        title="Perks"
+        redLevel={red.standUp.level}
+        blueLevel={blue.standUp.level}
+      >
+        <Perks red={red.perks} blue={blue.perks} />
+      </CardWrapper>
+      <CardWrapper
         title="Stand-Up"
         redLevel={red.standUp.level}
         blueLevel={blue.standUp.level}
@@ -36,8 +42,8 @@ const Cards = ({ red, blue }: CardsProps) => {
             blueSkills={blue.standUp.skills[propName]}
           />
         ))}
-      </StatCardWrapper>
-      <StatCardWrapper
+      </CardWrapper>
+      <CardWrapper
         title="Grappling"
         redLevel={red.grappling.level}
         blueLevel={blue.grappling.level}
@@ -50,8 +56,8 @@ const Cards = ({ red, blue }: CardsProps) => {
             blueSkills={blue.grappling.skills[propName]}
           />
         ))}
-      </StatCardWrapper>
-      <StatCardWrapper
+      </CardWrapper>
+      <CardWrapper
         title="Health"
         redLevel={red.health.level}
         blueLevel={blue.health.level}
@@ -64,7 +70,7 @@ const Cards = ({ red, blue }: CardsProps) => {
             blueSkills={blue.health.skills[propName]}
           />
         ))}
-      </StatCardWrapper>
+      </CardWrapper>
     </div>
   );
 };

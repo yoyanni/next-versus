@@ -38,6 +38,11 @@ const config: Config = {
         tertiaryFontSize: "var(--tertiaryFontSize)",
         quaternaryFontSize: "var(--quaternaryFontSize)",
       },
+      boxShadow: {
+        // <offset-x>, <offset-y>, <blur-radius>, <spread-radius>
+        cardInset:
+          "inset 0px 20px 15px -10px rgba(0,0,0,0.3), inset 0px -20px 15px -10px rgba(0,0,0,0.3)",
+      },
     },
   },
   plugins: [],
