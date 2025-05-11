@@ -22,6 +22,7 @@ export interface VersebarProps {
   wc: number;
   red: Fighter;
   blue: Fighter;
+  changeWeightClass: (id: number) => void;
 }
 
 export interface StatsProps {

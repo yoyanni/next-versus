@@ -11,9 +11,23 @@ const defaultIds = {
   blue: 2,
 };
 
+const defaultFighters: Record<number, { red: number; blue: number }> = {
+  0: { red: 1, blue: 2 },
+  1: { red: 24, blue: 25 },
+  2: { red: 43, blue: 44 },
+  3: { red: 64, blue: 65 },
+  4: { red: 79, blue: 80 },
+  5: { red: 111, blue: 112 },
+  6: { red: 149, blue: 150 },
+  7: { red: 201, blue: 202 },
+  8: { red: 255, blue: 256 },
+  9: { red: 298, blue: 299 },
+  10: { red: 341, blue: 342 },
+};
+
 export default function Home() {
   const [fighters, setFighters] = useState<Fighter[] | null>(null);
-  const [ids, setids] = useState(defaultIds);
+  const [ids, setIds] = useState(defaultIds);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,10 +58,19 @@ export default function Home() {
     return <main>There was an issue trying to fetch those fighters.</main>;
   }
 
+  function changeWeightClass(id: number) {
+    setIds({ wc: id, ...defaultFighters[id] });
+  }
+
   return (
     <main>
       <Cards red={selected.red} blue={selected.blue} />
-      <Versebar wc={selected.wc} red={selected.red} blue={selected.blue} />
+      <Versebar
+        wc={selected.wc}
+        red={selected.red}
+        blue={selected.blue}
+        changeWeightClass={changeWeightClass}
+      />
     </main>
   );
 }
