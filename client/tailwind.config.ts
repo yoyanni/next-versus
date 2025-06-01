@@ -12,6 +12,8 @@ const config: Config = {
         // App colors
         redCorner: "var(--redCorner)",
         blueCorner: "var(--blueCorner)",
+        redCornerDark: "var(--redCornerDark)",
+        blueCornerDark: "var(--blueCornerDark)",
         standup: "var(--standup)",
         grappling: "var(--grappling)",
         health: "var(--health)",
@@ -43,6 +45,10 @@ const config: Config = {
         cardInset:
           "inset 0px 20px 15px -10px rgba(0,0,0,0.3), inset 0px -20px 15px -10px rgba(0,0,0,0.3)",
         weightClass: "0 0 20px 1px rgba(0,0,0,0.5)",
+        verseBarHeader: "0px -10px 30px 20px rgba(0, 0, 0, 0.3)",
+        verseBarFighter:
+          "0 0 20px 1px rgba(0,0,0,0.5), inset 0px -20px 30px -10px rgba(0, 0, 0, 0.3)",
+        verseBarInset: "inset 0px -20px 30px -10px rgba(0, 0, 0, 0.3)",
       },
     },
   },

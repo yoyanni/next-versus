@@ -10,7 +10,9 @@
 :root {
   /* App colors */
   --redCorner: #ff4d4f;
+  --redCornerDark: #e33636;
   --blueCorner: #4096ff;
+  --blueCornerDark: #1f76e0;
   --standup: #ff7a45;
   --grappling: #1677ff;
   --health: #389e0d;

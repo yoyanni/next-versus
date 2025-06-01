@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import type { Fighter } from "../../../types";
 import Cards from "@/components/Cards";
 import Versebar from "@/components/Versebar";
+import standard from "@/standard";
+import { Sides } from "@/types/component";
 
 const defaultIds = {
   wc: 0,
@@ -11,19 +13,19 @@ const defaultIds = {
   blue: 2,
 };
 
-const defaultFighters: Record<number, { red: number; blue: number }> = {
-  0: { red: 1, blue: 2 },
-  1: { red: 24, blue: 25 },
-  2: { red: 43, blue: 44 },
-  3: { red: 64, blue: 65 },
-  4: { red: 79, blue: 80 },
-  5: { red: 111, blue: 112 },
-  6: { red: 149, blue: 150 },
-  7: { red: 201, blue: 202 },
-  8: { red: 255, blue: 256 },
-  9: { red: 298, blue: 299 },
-  10: { red: 341, blue: 342 },
-};
+const defaultFighters: { red: number; blue: number }[] = [
+  { red: 1, blue: 2 },
+  { red: 24, blue: 25 },
+  { red: 43, blue: 44 },
+  { red: 64, blue: 65 },
+  { red: 79, blue: 80 },
+  { red: 111, blue: 112 },
+  { red: 149, blue: 150 },
+  { red: 201, blue: 202 },
+  { red: 255, blue: 256 },
+  { red: 298, blue: 299 },
+  { red: 341, blue: 342 },
+];
 
 export default function Home() {
   const [fighters, setFighters] = useState<Fighter[] | null>(null);
@@ -51,11 +53,20 @@ export default function Home() {
     wc: ids.wc,
     red: fighters.find((f) => f._id === ids.red),
     blue: fighters.find((f) => f._id === ids.blue),
+    wcFighters: fighters.filter(
+      (f) =>
+        f.weightClass === standard.weightClasses[ids.wc] ||
+        f.weightClass === "Generic"
+    ),
   };
 
   // Once fighters has loaded and looked for but for some reason not found
   if (selected.red == undefined || selected.blue == undefined) {
     return <main>There was an issue trying to fetch those fighters.</main>;
+  }
+
+  function changeFighter(id: number, side: Sides) {
+    setIds((prevValue) => ({ ...prevValue, [side]: id }));
   }
 
   function changeWeightClass(id: number) {
@@ -69,6 +80,8 @@ export default function Home() {
         wc={selected.wc}
         red={selected.red}
         blue={selected.blue}
+        wcFighters={selected.wcFighters}
+        changeFighter={changeFighter}
         changeWeightClass={changeWeightClass}
       />
     </main>

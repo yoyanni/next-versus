@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { Fighter, Perk } from "../../../types";
 
+export type Sides = "red" | "blue";
+
 export interface CardsProps {
   red: Fighter;
   blue: Fighter;
@@ -22,6 +24,8 @@ export interface VersebarProps {
   wc: number;
   red: Fighter;
   blue: Fighter;
+  wcFighters: Fighter[];
+  changeFighter: (id: number, side: Sides) => void;
   changeWeightClass: (id: number) => void;
 }
 
