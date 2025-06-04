@@ -5,7 +5,8 @@ import cors from "cors";
 
 // Local Imports
 import Fighter from "./fighter";
-import initMongoose from "./mongoose-config";
+import { connectDB } from "./config/db";
+
 
 // Middleware
 dotenv.config();
@@ -14,11 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-if (process.env.DATABASE_URL) {
-  initMongoose(process.env.DATABASE_URL);
-} else {
-  console.log("No Database url provided.");
-}
+await connectDB();
 
 // Route
 app.get("/api/fighters", async (req: Request, res: Response) => {
