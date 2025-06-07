@@ -2,9 +2,11 @@
   "name": "@next-versus/server",
   "version": "1.0.0",
   "description": "Server for next-versus",
-  "main": "app.ts",
+  "type": "module",
+  "main": "server.ts",
   "scripts": {
-    "dev": "nodemon app.ts"
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx watch src/server.ts"
   },
   "author": "yoyanni",
   "license": "ISC",
@@ -19,6 +21,7 @@
     "@types/express": "^4.17.17",
     "@types/node": "^20.6.0",
     "nodemon": "^3.0.1",
+    "tsx": "^4.19.4",
     "typescript": "^5.2.2"
   }
 }

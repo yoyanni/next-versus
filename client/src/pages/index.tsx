@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Internal Import
-import type { Fighter } from "../../../types";
+import type { Fighter } from "@shared/types";
 import Cards from "@/components/Cards";
 import Versebar from "@/components/Versebar";
 import standard from "@/standard";

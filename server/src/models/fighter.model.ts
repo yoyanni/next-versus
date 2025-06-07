@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 // Internal Import
-import { Fighter } from "../types";
+import { Fighter } from "@shared/types";
 
 // Schema
 const fighterSchema = new mongoose.Schema<Fighter>({
