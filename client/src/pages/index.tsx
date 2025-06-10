@@ -34,7 +34,9 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/fighters");
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_API_URI + "/fighters"
+        );
         if (!response.ok)
           throw new Error("Issue with fetching fighters from backend.");
         const data = await response.json();
@@ -74,7 +76,7 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main className="grow mt-4">
       <Cards red={selected.red} blue={selected.blue} />
       <Versebar
         wc={selected.wc}

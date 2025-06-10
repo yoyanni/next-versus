@@ -7,7 +7,7 @@ import type { CardsProps } from "@/types/component";
 
 const Cards = ({ red, blue }: CardsProps) => {
   return (
-    <div className="flex flex-col gap-8 mt-8 mb-28">
+    <div className="flex flex-col gap-8 mb-28">
       <CardWrapper
         title="Fighter Info"
         redLevel={red.basic.level}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 
 interface LayoutType {
@@ -10,10 +11,12 @@ const Layout = ({ children }: LayoutType) => {
       <header className="flex flex-col bg-navBg">
         <nav className="flex  items-center gap-2 px-4 py-2 text-titleLightFontColor">
           <span className="text-titleLightFontColor text-titleFontSize font-bold">
-            Versus 4
+            <Link href="/">Versus 4</Link>
           </span>
           <ul className="grow flex justify-end gap-2 text-secondaryFontSize">
-            <li>Fighters</li>
+            <li>
+              <Link href="/fighters">Fighters</Link>
+            </li>
             <li>Combos</li>
           </ul>
         </nav>
