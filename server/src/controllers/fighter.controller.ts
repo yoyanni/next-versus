@@ -13,7 +13,7 @@ export const getFighters = async (_req: Request, res: Response) => {
 };
 
 export const getFighterById = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = Number(req.params.id);
 
   // Check for a valid ObjectId
   if (!mongoose.Types.ObjectId.isValid(id)) {

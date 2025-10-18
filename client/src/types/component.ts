@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Fighter, Perk } from "../../../types";
+import { Fighter, Perk } from "../../../shared/types";
 
 export type Sides = "red" | "blue";
 
@@ -33,4 +33,19 @@ export interface StatsProps {
   name: string;
   redSkills: string | number;
   blueSkills: string | number;
+}
+
+export interface AccordionProps {
+  children: ReactNode;
+  title: string;
+  activeAccordion: string | null;
+  handleToggle: () => void;
+  noShadow?: boolean;
+}
+
+export interface ChildAccordionProps {
+  children: ReactNode;
+  title: string;
+  noShadow?: boolean;
+  indentation?: "ps-7" | "ps-10" | "ps-13";
 }

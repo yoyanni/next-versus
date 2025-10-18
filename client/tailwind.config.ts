@@ -43,7 +43,7 @@ const config: Config = {
       boxShadow: {
         // <offset-x>, <offset-y>, <blur-radius>, <spread-radius>
         cardInset:
-          "inset 0px 20px 15px -10px rgba(0,0,0,0.3), inset 0px -20px 15px -10px rgba(0,0,0,0.3)",
+          "inset 0px 10px 25px -10px rgba(0,0,0,0.3), inset 0px -10px 25px -10px rgba(0,0,0,0.3)",
         weightClass: "0 0 20px 1px rgba(0,0,0,0.5)",
         verseBarHeader: "0px -10px 30px 20px rgba(0, 0, 0, 0.3)",
         verseBarFighter:

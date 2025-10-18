@@ -1,4 +1,4 @@
-import { Basic, Grappling, Health, StandUp } from "../../../types";
+import { Basic, Grappling, Health, StandUp } from "../../../shared/types";
 
 interface StandardStat<T> {
   name: string;

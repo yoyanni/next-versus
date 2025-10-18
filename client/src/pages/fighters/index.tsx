@@ -1,3 +1,4 @@
+import Accordion from "@/components/Accordion";
 import standard from "@/standard";
 import { Fighter } from "@shared/types";
 import Link from "next/link";
@@ -5,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Fighters() {
   const [fighters, setFighters] = useState<Fighter[] | null>(null);
-  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   // standard.weightClasses could be enum
   const weightClasses = [...standard.weightClasses, "Generic"];
 
@@ -29,37 +30,34 @@ export default function Fighters() {
   // When fighters still have not loaded
   if (!fighters) return <main>Loading...</main>;
 
-  function handleToggle(index: number) {
-    if (activeAccordion === index) setActiveAccordion(null);
-    else setActiveAccordion(index);
+  function handleToggle(accordion: string) {
+    console.log(accordion);
+
+    if (activeAccordion === accordion) setActiveAccordion(null);
+    else setActiveAccordion(accordion);
   }
 
-  const accordions = weightClasses.map((wc, index) => {
-    const wcFighters = fighters.filter((fighter) => fighter.weightClass === wc);
+  const accordions = weightClasses.map((weightClass) => {
+    const wcFighters = fighters.filter(
+      (fighter) => fighter.weightClass === weightClass
+    );
     return (
-      <div key={wc} className="bg-mainBgElevated text-primaryFontSize">
-        <div
-          className="flex justify-between px-4 py-2 border-b first:border-t"
-          onClick={() => handleToggle(index)}
-        >
-          <span>{wc}</span>
-          <span>{activeAccordion === index ? "-" : "+"}</span>
-        </div>
-        {activeAccordion === index && (
-          <div className="relative">
-            {wcFighters.map((fighter) => (
-              <Link
-                key={fighter._id}
-                href={`/fighters/` + fighter._id}
-                className="block px-6 py-1 border-b"
-              >
-                {fighter.firstName} {fighter.lastName}
-              </Link>
-            ))}
-            <div className="absolute top-0 w-full h-full opacity-50 shadow-cardInset" />
-          </div>
-        )}
-      </div>
+      <Accordion
+        key={weightClass}
+        title={weightClass}
+        activeAccordion={activeAccordion}
+        handleToggle={() => handleToggle(weightClass.toLowerCase())}
+      >
+        {wcFighters.map((fighter) => (
+          <Link
+            key={fighter._id}
+            href={`/fighters/` + fighter._id}
+            className="block px-6 py-1 odd:bg-mainBgElevated"
+          >
+            {fighter.firstName} {fighter.lastName}
+          </Link>
+        ))}
+      </Accordion>
     );
   });
 
@@ -69,8 +67,8 @@ export default function Fighters() {
         <h1 className="text-primaryFontSize font-bold">All Fighters</h1>
         <p>
           Here, you will find all the fighters per weightclass. You can then
-          click the fighter to view their stats but also all their moves and
-          their levels.
+          click the fighter to view their stats but also all their moves and the
+          levels.
         </p>
       </div>
       <div className="mt-4">{accordions}</div>
