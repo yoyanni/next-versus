@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // Internal Import
-import type { Fighter } from "@shared/types";
 import Cards from "@/components/Cards";
 import Versebar from "@/components/Versebar";
 import standard from "@/standard";
 import { Sides } from "@/types/component";
+import { useFighters } from "@/hooks/useFighters";
 
 const defaultIds = {
   wc: 0,
@@ -28,28 +28,12 @@ const defaultFighters: { red: number; blue: number }[] = [
 ];
 
 export default function Home() {
-  const [fighters, setFighters] = useState<Fighter[] | null>(null);
+  const { data: fighters, isLoading } = useFighters();
   const [ids, setIds] = useState(defaultIds);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          process.env.NEXT_PUBLIC_API_URI + "/fighters"
-        );
-        if (!response.ok)
-          throw new Error("Issue with fetching fighters from backend.");
-        const data = await response.json();
-        setFighters(data);
-      } catch (err: any) {
-        console.error(err.message);
-      }
-    };
-    fetchData();
-  }, []);
-
   // When fighters still has not loaded
-  if (!fighters) return <main>Loading...</main>;
+  if (isLoading) return <main>Loading...</main>;
+  if (!fighters) return <main>No fighters were available...</main>;
 
   const selected = {
     wc: ids.wc,

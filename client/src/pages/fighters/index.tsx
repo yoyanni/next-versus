@@ -1,31 +1,16 @@
-import Accordion from "@/components/Accordion";
-import standard from "@/standard";
-import { Fighter } from "@shared/types";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+
+// Internal Import
+import standard from "@/standard";
+import Accordion from "@/components/Accordion";
+import { useFighters } from "@/hooks/useFighters";
 
 export default function Fighters() {
-  const [fighters, setFighters] = useState<Fighter[] | null>(null);
+  const { data: fighters } = useFighters();
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   // standard.weightClasses could be enum
   const weightClasses = [...standard.weightClasses, "Generic"];
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          process.env.NEXT_PUBLIC_API_URI + "/fighters"
-        );
-        if (!response.ok)
-          throw new Error("Issue with fetching fighters from backend.");
-        const data = await response.json();
-        setFighters(data);
-      } catch (err: any) {
-        console.error(err.message);
-      }
-    };
-    fetchData();
-  }, []);
 
   // When fighters still have not loaded
   if (!fighters) return <main>Loading...</main>;

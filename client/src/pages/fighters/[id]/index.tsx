@@ -1,10 +1,9 @@
 import Accordion from "@/components/Accordion";
 import ChildAccordion from "@/components/ChildAccordion";
+import { useFighter } from "@/hooks/useFighter";
 import standard from "@/standard";
-import { Fighter } from "@shared/types";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 const statGroups: {
   title: string;
@@ -47,28 +46,11 @@ const groundGroups: {
 ];
 
 export default function Fighters() {
-  const [fighter, setFighter] = useState<Fighter | null>(null);
+  const router = useRouter();
+  const { data: fighter } = useFighter(router.query.id);
   const [activeAccordion, setActiveAccordion] = useState<
     "moves" | "stats" | null
   >(null);
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          process.env.NEXT_PUBLIC_API_URI + "/fighters/" + router.query.id
-        );
-        if (!response.ok)
-          throw new Error("Issue with fetching fighter from backend.");
-        const data = await response.json();
-        setFighter(data);
-      } catch (err: any) {
-        console.error(err.message);
-      }
-    };
-    if (router.query.id) fetchData();
-  }, [router.query.id]);
 
   // When fighters still have not loaded
   if (!fighter) return <main>Loading...</main>;
