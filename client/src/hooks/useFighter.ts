@@ -5,6 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 export const useFighter = (id: string | string[] | undefined) =>
   useQuery({
     queryKey: ["fighter", id],
-    queryFn: () => apiClient.get<Fighter>(`/fighter/${id}`),
+    queryFn: () => apiClient.get<Fighter>(`/fighters/${id}`),
     enabled: !!id,
   });
