@@ -2,10 +2,15 @@
 import mongoose from "mongoose";
 
 // Internal Import
-import { Fighter } from "@shared/types";
+import { Fighter as IFighter } from "@shared/types";
 
-// Schema
-const fighterSchema = new mongoose.Schema<Fighter>({
+/**
+ * Fighter Schema
+ * --------------
+ * Custom id implementation is needed for default selections in the FE,
+ * a Counter schema could be implemented, though, default selection could also be refactored somehow
+ */
+const fighterSchema = new mongoose.Schema<IFighter>({
   _id: Number,
   weightClass: {
     type: String,
@@ -288,6 +293,6 @@ const fighterSchema = new mongoose.Schema<Fighter>({
 });
 
 // Model
-const Fighter = mongoose.model<Fighter>("Fighter", fighterSchema);
+const Fighter = mongoose.model<IFighter>("Fighter", fighterSchema);
 
 export default Fighter;

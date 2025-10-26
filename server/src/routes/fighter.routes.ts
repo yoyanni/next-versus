@@ -1,7 +1,14 @@
 import { Router } from "express";
-import { getFighters, getFighterById } from "../controllers/fighter.controller";
+import {
+  getFighters,
+  getFighterById,
+  createFighter,
+} from "../controllers/fighter.controller";
 
 const fighterRouter = Router();
+
+// Create
+fighterRouter.post("/fighters", createFighter);
 
 // Read
 fighterRouter.get("/fighters", getFighters);

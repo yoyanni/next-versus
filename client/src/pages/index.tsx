@@ -48,7 +48,7 @@ export default function Home() {
 
   // Once fighters has loaded and looked for but for some reason not found
   if (selected.red == undefined || selected.blue == undefined) {
-    return <main>There was an issue trying to fetch those fighters.</main>;
+    return <main>There was an issue selecting fighters.</main>;
   }
 
   function changeFighter(id: number, side: Sides) {
