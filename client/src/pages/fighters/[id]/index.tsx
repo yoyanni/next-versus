@@ -1,56 +1,17 @@
 import Accordion from "@/components/Accordion";
 import ChildAccordion from "@/components/ChildAccordion";
+import MoveAccordion from "@/components/MoveAccordion";
 import { useFighter } from "@/hooks/useFighter";
 import standard from "@/standard";
+import { ActiveAccordion } from "@/types/component";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
-const statGroups: {
-  title: string;
-  key: "standUp" | "grappling" | "health";
-}[] = [
-  { title: "Stand Up", key: "standUp" },
-  { title: "Grappling", key: "grappling" },
-  { title: "Health", key: "health" },
-];
-
-const moveGroups: {
-  title: string;
-  key:
-    | "punches"
-    | "kicks"
-    | "clinch"
-    | "takedowns"
-    | "ground"
-    | "submissions"
-    | "combos";
-}[] = [
-  { title: "Punches", key: "punches" },
-  { title: "Kicks", key: "kicks" },
-  { title: "Clinch", key: "clinch" },
-  { title: "Takedowns", key: "takedowns" },
-  { title: "Ground", key: "ground" },
-  { title: "Submissions", key: "submissions" },
-  { title: "Combos", key: "combos" },
-];
-
-const groundGroups: {
-  title: string;
-  key: "getups" | "transitions" | "reversals" | "sweeps" | "strikes";
-}[] = [
-  { title: "Getups", key: "getups" },
-  { title: "Transitions", key: "transitions" },
-  { title: "Reversals", key: "reversals" },
-  { title: "Sweeps", key: "sweeps" },
-  { title: "Strikes", key: "strikes" },
-];
 
 export default function Fighters() {
   const router = useRouter();
   const { data: fighter } = useFighter(router.query.id);
-  const [activeAccordion, setActiveAccordion] = useState<
-    "moves" | "stats" | null
-  >(null);
+  const [activeAccordion, setActiveAccordion] =
+    useState<ActiveAccordion | null>(null);
 
   // When fighters still have not loaded
   if (!fighter) return <main>Loading...</main>;
@@ -97,7 +58,7 @@ export default function Fighters() {
         activeAccordion={activeAccordion}
         handleToggle={() => handleToggle("stats")}
       >
-        {statGroups.map((statGroup) => (
+        {standard.statKeys.map((statGroup) => (
           <ChildAccordion key={statGroup.key} title={statGroup.title}>
             {Object.entries(fighter[statGroup.key].skills).map(
               ([skill, level]) => {
@@ -119,58 +80,11 @@ export default function Fighters() {
           </ChildAccordion>
         ))}
       </Accordion>
-      <Accordion
-        noShadow
-        title="Moves"
-        activeAccordion={activeAccordion}
+      <MoveAccordion
+        moves={fighter.moves}
+        isActive={activeAccordion}
         handleToggle={() => handleToggle("moves")}
-      >
-        {moveGroups.map((moveGroup) => {
-          let movesJSX;
-          if (moveGroup.key === "ground") {
-            movesJSX = (
-              <ChildAccordion noShadow title="Ground">
-                {groundGroups.map((groundGroup) => (
-                  <ChildAccordion
-                    key={groundGroup.key}
-                    title={groundGroup.title}
-                    indentation="ps-10"
-                  >
-                    {fighter.moves.ground[groundGroup.key].map((move) => {
-                      return (
-                        <div
-                          key={move.name}
-                          className="flex justify-between ps-8 pe-4 odd:bg-mainBgElevated border-b"
-                        >
-                          <span>{move.name}</span>
-                          <span>{move.level}</span>
-                        </div>
-                      );
-                    })}
-                  </ChildAccordion>
-                ))}
-              </ChildAccordion>
-            );
-          } else {
-            movesJSX = (
-              <ChildAccordion key={moveGroup.key} title={moveGroup.title}>
-                {fighter.moves[moveGroup.key].map((move) => {
-                  return (
-                    <div
-                      key={move.name}
-                      className="flex justify-between ps-8 pe-4 odd:bg-mainBgElevated border-b"
-                    >
-                      <span>{move.name}</span>
-                      <span>{move.level}</span>
-                    </div>
-                  );
-                })}
-              </ChildAccordion>
-            );
-          }
-          return movesJSX;
-        })}
-      </Accordion>
+      />
     </main>
   );
 }

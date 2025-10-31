@@ -6,6 +6,22 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "bg-[#4096ff]",
+    "bg-[#5f8de6]",
+    "bg-[#7e84cc]",
+    "bg-[#9d7bb3]",
+    "bg-[#bc7299]",
+    "bg-[#db697f]",
+    "bg-[#ff4d4f]",
+    "border-[#4096ff]",
+    "border-[#5f8de6]",
+    "border-[#7e84cc]",
+    "border-[#9d7bb3]",
+    "border-[#bc7299]",
+    "border-[#db697f]",
+    "border-[#ff4d4f]",
+  ],
   theme: {
     extend: {
       colors: {

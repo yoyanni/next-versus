@@ -34,6 +34,7 @@ export interface StatsProps {
   redSkills: string | number;
   blueSkills: string | number;
 }
+export type ActiveAccordion = "moves" | "stats";
 
 export interface AccordionProps {
   children: ReactNode;

@@ -16,8 +16,6 @@ export default function Fighters() {
   if (!fighters) return <main>Loading...</main>;
 
   function handleToggle(accordion: string) {
-    console.log(accordion);
-
     if (activeAccordion === accordion) setActiveAccordion(null);
     else setActiveAccordion(accordion);
   }
@@ -57,6 +55,12 @@ export default function Fighters() {
         </p>
       </div>
       <div className="mt-4">{accordions}</div>
+      <Link
+        href="/fighters/new"
+        className="justify-self-center block px-2 py-1 mt-4 border bg-white rounded-md"
+      >
+        Create a new Fighter
+      </Link>
     </main>
   );
 }
