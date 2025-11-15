@@ -1,21 +1,19 @@
+import FormStepRender from "@/components/FormStepRender";
 import MoveAccordion from "@/components/MoveAccordion";
 import standard from "@/standard";
-import { Fighter } from "@shared/types";
-import React, { Fragment, useState } from "react";
+import { Fighter, Move } from "@shared/types";
+import React, { useRef, useState } from "react";
+import {
+  FieldPath,
+  FieldValues,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 
-interface Input {
-  type: "text" | "number";
-  id: string;
+interface FieldBase<T> {
+  id: T;
   label: string;
-}
-interface SelectInput extends Omit<Input, "type"> {
-  type: "select";
-  options?: string[];
-  groups?: OptionGroups[];
-}
-interface MultiSelectInput extends Omit<Input, "type"> {
-  type: "multi-select";
-  groups: OptionGroups[];
+  // validation
 }
 
 interface OptionGroups {
@@ -23,174 +21,221 @@ interface OptionGroups {
   options: any[];
 }
 
-interface FormItem {
-  title: string;
-  inputs: (Input | SelectInput | MultiSelectInput)[];
+interface Field<T> extends FieldBase<T> {
+  type: "text" | "number";
 }
 
-// TODO: Options need to be refactored
-const form: FormItem[] = [
-  {
-    title: "General Info",
-    inputs: [
-      { type: "text", id: "firstName", label: "First name" },
-      { type: "text", id: "lastName", label: "Last name" },
-      { type: "text", id: "nickName", label: "Nickname" },
-      {
-        type: "select",
-        id: "weightClass",
-        label: "Weightclass",
-        options: [...standard.weightClasses, "Generic"],
-      },
-      {
-        type: "select",
-        id: "rank",
-        label: "Rank",
-        options: [...standard.ranks],
-      },
-    ],
-  },
-  {
-    title: "Basic Info",
-    inputs: [
-      { type: "number", id: "reach", label: "Reach" },
-      {
-        type: "select",
-        id: "martialArts",
-        label: "Martial Arts",
-        options: [...standard.martialArts],
-      },
-      {
-        type: "select",
-        id: "stance",
-        label: "Stance",
-        options: [...standard.stances],
-      },
-      {
-        type: "select",
-        id: "level",
-        label: "Level",
-        options: [...standard.levels],
-      },
-    ],
-  },
-  {
-    title: "Perks",
-    inputs: [
-      {
-        type: "multi-select",
-        id: "perks",
-        label: "Perks",
-        groups: [
-          {
-            name: "Stand-Up",
-            options: standard.perks.filter((p) => p.type === "Stand-Up"),
-          },
-          {
-            name: "Grappling",
-            options: standard.perks.filter((p) => p.type === "Grappling"),
-          },
-          {
-            name: "Health & Stamina",
-            options: standard.perks.filter(
-              (p) => p.type === "Health & Stamina"
-            ),
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Stand-Up",
-    inputs: standard.standUp.map((item) => ({
-      type: "number",
-      id: item.propName,
-      label: item.name,
-    })),
-  },
-  {
-    title: "Grappling",
-    inputs: standard.grappling.map((item) => ({
-      type: "number",
-      id: item.propName,
-      label: item.name,
-    })),
-  },
-  {
-    title: "Health",
-    inputs: standard.health.map((item) => ({
-      type: "number",
-      id: item.propName,
-      label: item.name,
-    })),
-  },
-  {
-    title: "Moves",
-    inputs: [
-      {
-        type: "select", // probs needs refactoring
-        id: "move",
-        label: "Move",
-        groups: [
-          {
-            name: "Punches",
-            options: [...standard.moves.punches],
-          },
-          {
-            name: "Kicks",
-            options: [...standard.moves.kicks],
-          },
-          {
-            name: "Clinch",
-            options: [...standard.moves.clinch],
-          },
-          {
-            name: "Takedowns",
-            options: [...standard.moves.takedowns],
-          },
-          ...standard.groundKeys.map((ground) => ({
-            name: "Ground - " + ground.title,
-            options:
-              ground.key === "strikes"
-                ? [...standard.moves.ground.strikes]
-                : [...standard.moves.ground.groundMovements],
-          })),
-          {
-            name: "Submission",
-            options: [...standard.moves.submissions],
-          },
-          {
-            name: "Combos",
-            options: [...standard.moves.combos],
-          },
-        ],
-      },
-      {
-        type: "select",
-        id: "level",
-        label: "Level",
-        options: [...standard.moveLevels],
-      },
-    ],
-  },
-];
+interface SelectField<T> extends FieldBase<T> {
+  type: "select";
+  options?: string[];
+  groups?: OptionGroups[];
+}
+
+interface MultiSelectField<T> extends FieldBase<T> {
+  type: "multi-select";
+  groups: OptionGroups[];
+}
+
+type FormItem<T> = Field<T> | SelectField<T> | MultiSelectField<T>;
+
+export interface WizardStep<T extends FieldValues> {
+  title: string;
+  inputs: FormItem<FieldPath<T>>[];
+}
+
+const step1: WizardStep<FighterForm["generalInfo"]> = {
+  title: "General Info",
+  inputs: [
+    { type: "text", id: "firstName", label: "First name" },
+    { type: "text", id: "lastName", label: "Last name" },
+    { type: "text", id: "nickname", label: "Nickname" },
+    {
+      type: "select",
+      id: "weightClass",
+      label: "Weightclass",
+      options: [...standard.weightClasses, "Generic"],
+    },
+    {
+      type: "select",
+      id: "rank",
+      label: "Rank",
+      options: [...standard.ranks],
+    },
+  ],
+};
+
+const step2: WizardStep<FighterForm["basicInfo"]> = {
+  title: "Basic Info",
+  inputs: [
+    { type: "number", id: "skills.reach", label: "Reach" },
+    {
+      type: "select",
+      id: "skills.martialArt",
+      label: "Martial Arts",
+      options: [...standard.martialArts],
+    },
+    {
+      type: "select",
+      id: "skills.stance",
+      label: "Stance",
+      options: [...standard.stances],
+    },
+    {
+      type: "select",
+      id: "level",
+      label: "Level",
+      options: [...standard.levels],
+    },
+  ],
+};
+
+const step3: WizardStep<Pick<FighterForm, "perks">> = {
+  title: "Perks",
+  inputs: [
+    {
+      type: "multi-select",
+      id: "perks",
+      label: "Perks",
+      groups: [
+        {
+          name: "Stand-Up",
+          options: standard.perks.filter((p) => p.type === "Stand-Up"),
+        },
+        {
+          name: "Grappling",
+          options: standard.perks.filter((p) => p.type === "Grappling"),
+        },
+        {
+          name: "Health & Stamina",
+          options: standard.perks.filter((p) => p.type === "Health & Stamina"),
+        },
+      ],
+    },
+  ],
+};
+
+const step4: WizardStep<FighterForm["standUp"]> = {
+  title: "Stand-Up",
+  inputs: standard.standUp.map((item) => ({
+    type: "number",
+    id: `skills.${item.propName}`,
+    label: item.name,
+  })),
+};
+
+const step5: WizardStep<FighterForm["grappling"]> = {
+  title: "Grappling",
+  inputs: standard.grappling.map((item) => ({
+    type: "number",
+    id: `skills.${item.propName}`,
+    label: item.name,
+  })),
+};
+
+const step6: WizardStep<FighterForm["health"]> = {
+  title: "Health",
+  inputs: standard.health.map((item) => ({
+    type: "number",
+    id: `skills.${item.propName}`,
+    label: item.name,
+  })),
+};
+
+// const step7: WizardStep<Pick<Fighter, "moves"> & { level: number }> = {
+const step7: WizardStep<FighterForm["move"]> = {
+  title: "Moves",
+  inputs: [
+    {
+      type: "select", // probs needs refactoring
+      id: "name",
+      label: "Move",
+      groups: [
+        {
+          name: "Punches",
+          options: [...standard.moves.punches],
+        },
+        {
+          name: "Kicks",
+          options: [...standard.moves.kicks],
+        },
+        {
+          name: "Clinch",
+          options: [...standard.moves.clinch],
+        },
+        {
+          name: "Takedowns",
+          options: [...standard.moves.takedowns],
+        },
+        ...standard.groundKeys.map((ground) => ({
+          name: "Ground - " + ground.title,
+          options:
+            ground.key === "strikes"
+              ? [...standard.moves.ground.strikes]
+              : [...standard.moves.ground.groundMovements],
+        })),
+        {
+          name: "Submission",
+          options: [...standard.moves.submissions],
+        },
+        {
+          name: "Combos",
+          options: [...standard.moves.combos],
+        },
+      ],
+    },
+    {
+      type: "select",
+      id: "level",
+      label: "Level",
+      options: [...standard.moveLevels],
+    },
+  ],
+};
+
+const wizardSteps = [step1, step2, step3, step4, step5, step6, step7] as const;
 
 const initialState = {
   generalInfo: {},
   basicInfo: {},
-  perks: [] as any[],
+  perks: [],
   standUp: {},
   grappling: {},
   health: {},
   moves: { ground: {} },
 };
 
+export interface FighterForm {
+  generalInfo: {
+    weightClass: Fighter["weightClass"];
+    rank: Fighter["rank"];
+    firstName: Fighter["firstName"];
+    nickname: Fighter["nickname"];
+    lastName: Fighter["lastName"];
+  };
+  basicInfo: Fighter["basic"];
+  perks: string[];
+  standUp: Fighter["standUp"];
+  grappling: Fighter["grappling"];
+  health: Fighter["health"];
+  move: Move;
+  moves: Fighter["moves"];
+}
+
 const NewFighter = () => {
   const [step, setStep] = useState(0);
   const [activeAccordion, setActiveAccordion] = useState<"moves" | null>(null);
-  const [formData, setFormData] = useState(initialState);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FighterForm>({ defaultValues: initialState });
+  const watchMoves = watch("moves");
+  const watchPerks = watch("perks");
+
   const isFirstStep = step === 0;
-  const isLastStep = step === form.length - 1;
+  const isLastStep = step === wizardSteps.length - 1;
 
   const colors = [
     "#4096ff",
@@ -203,22 +248,10 @@ const NewFighter = () => {
   ];
   const bgColors = colors.map((color) => `bg-[${color}]`);
   const borderColors = colors.map((color) => `border-[${color}]`);
-  // const perkColor = (perkIndex: number) => {
-  //   const perkType = formData.perks[perkIndex]?.type;
-  //   if (perkType === "Stand-Up") return " bg-standup";
-  //   if (perkType === "Grappling") return " bg-grappling";
-  //   if (perkType === "Health & Stamina") return " bg-health";
-  //   return "";
-  // };
 
-  // const handleChange = (e) => {
-  //   const selectedPerk = standard.perks.find(
-  //     (perk) => perk.name === e.target.value
-  //   );
-  //   console.log(e);
-  //   if (!selectedPerk) return;
-  //   setFormData({ ...formData, perks: [...formData.perks, selectedPerk] });
-  // };
+  const onSubmit: SubmitHandler<FighterForm> = (data) => {
+    console.log("Form submitted:", data);
+  };
 
   function handleToggle(accordion: "moves") {
     if (activeAccordion === accordion) setActiveAccordion(null);
@@ -238,16 +271,20 @@ const NewFighter = () => {
             >
               {isFirstStep ? "Cancel" : "Back"}
             </button>
-            <h2>{form[step].title}</h2>
+            <h2>{wizardSteps[step].title}</h2>
             <button
               className="block px-2 py-1 border bg-white rounded-md"
-              onClick={() => setStep((prev) => prev + 1)}
+              onClick={() =>
+                isLastStep
+                  ? formRef.current?.requestSubmit()
+                  : setStep((prev) => prev + 1)
+              }
             >
               {isLastStep ? "Submit" : "Forth"}
             </button>
           </div>
           <div className="flex gap-x-0.5 mt-1 rounded-full overflow-clip">
-            {form.map((item, index) => (
+            {wizardSteps.map((item, index) => (
               <div
                 key={item.title}
                 className={`grow h-1.5${
@@ -260,79 +297,76 @@ const NewFighter = () => {
           </div>
         </div>
         {/* Form inputs */}
-        <section className="flex flex-col gap-y-1">
-          {form[step].inputs.map((formItem) =>
-            formItem.type === "multi-select" ? (
-              <Fragment key={formItem.id}>
-                <select
-                  multiple
-                  id={formItem.id}
-                  name={formItem.label}
-                  size={10}
-                  // onChange={handleChange}
-                >
-                  {formItem.groups.map((group) => (
-                    <optgroup key={group.name} label={group.name}>
-                      {group.options.map((option) => (
-                        <option key={option.name} value={option.name}>
-                          {option.name}
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
-                <div className="flex justify-center gap-x-1">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      // className={`h-1.5 w-5 rounded-full${perkColor(i)}`}
-                      className={`h-1.5 w-5 rounded-full border`}
-                    />
-                  ))}
-                </div>
-              </Fragment>
-            ) : (
-              <Fragment key={formItem.id}>
-                <div className="flex justify-between">
-                  <label htmlFor={formItem.id}>{formItem.label}:</label>
-                  {formItem.type === "select" ? (
-                    <select id={formItem.id} name={formItem.label}>
-                      {formItem.groups
-                        ? formItem.groups.map((group) => (
-                            <optgroup key={group.name} label={group.name}>
-                              {group.options.map((option) => (
-                                <option key={option} value={option}>
-                                  {option}
-                                </option>
-                              ))}
-                            </optgroup>
-                          ))
-                        : formItem.options?.map((option) => (
-                            <option key={option} value={option}>
-                              {option}
-                            </option>
-                          ))}
-                    </select>
-                  ) : (
-                    <input
-                      id={formItem.id}
-                      min="0"
-                      onChange={(e) => console.log(e)}
-                      type={formItem.type}
-                      placeholder={formItem.label}
-                      className="ps-1"
-                    />
-                  )}
-                </div>
-              </Fragment>
-            )
-          )}
-        </section>
+        <form
+          ref={formRef}
+          className="flex flex-col gap-y-1"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          {wizardSteps.map((wizardStep, i) => {
+            if (step === 0 && step === i)
+              return (
+                <FormStepRender
+                  key={wizardStep.title}
+                  step={wizardSteps[step]}
+                  register={register}
+                />
+              );
+            else if (step === 1 && step === i)
+              return (
+                <FormStepRender
+                  key={wizardStep.title}
+                  step={wizardSteps[step]}
+                  register={register}
+                />
+              );
+            else if (step === 2 && step === i)
+              return (
+                <FormStepRender
+                  key={wizardStep.title}
+                  step={wizardSteps[step]}
+                  register={register}
+                  perks={watchPerks}
+                />
+              );
+            else if (step === 3 && step === i)
+              return (
+                <FormStepRender
+                  key={wizardStep.title}
+                  step={wizardSteps[step]}
+                  register={register}
+                />
+              );
+            else if (step === 4 && step === i)
+              return (
+                <FormStepRender
+                  key={wizardStep.title}
+                  step={wizardSteps[step]}
+                  register={register}
+                />
+              );
+            else if (step === 5 && step === i)
+              return (
+                <FormStepRender
+                  key={wizardStep.title}
+                  step={wizardSteps[step]}
+                  register={register}
+                />
+              );
+            else if (step === 6 && step === i)
+              return (
+                <FormStepRender
+                  key={wizardStep.title}
+                  step={wizardSteps[step]}
+                  register={register}
+                />
+              );
+          })}
+        </form>
       </div>
-      {step === form.length - 1 && (
+      {step === wizardSteps.length - 1 && (
         <div className="border mx-4 rounded-lg overflow-hidden">
           <MoveAccordion
-            moves={formData.moves as Fighter["moves"]}
+            moves={watchMoves}
             isActive={activeAccordion}
             handleToggle={() => handleToggle("moves")}
           />

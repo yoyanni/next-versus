@@ -48,7 +48,7 @@ export type Health = {
   recovery: number;
 };
 
-type Move = {
+export type Move = {
   name: string;
   level: number;
 };

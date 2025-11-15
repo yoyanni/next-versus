@@ -27,7 +27,7 @@ const MoveAccordion = ({
         let movesJSX;
         if (moveGroup.key === "ground") {
           movesJSX = (
-            <ChildAccordion noShadow title="Ground">
+            <ChildAccordion key={moveGroup.key} noShadow title="Ground">
               {standard.groundKeys.map((groundGroup) => (
                 <ChildAccordion
                   key={groundGroup.key}
