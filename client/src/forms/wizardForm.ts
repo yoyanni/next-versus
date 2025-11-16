@@ -2,46 +2,46 @@ import standard from "@/standard";
 import { FighterForm } from "@/types/component";
 import { WizardStep } from "@/types/form";
 
-const step1: WizardStep<FighterForm["generalInfo"]> = {
+const step1: WizardStep<Pick<FighterForm,"generalInfo">> = {
   title: "General Info",
   inputs: [
-    { type: "text", id: "firstName", label: "First name" },
-    { type: "text", id: "lastName", label: "Last name" },
-    { type: "text", id: "nickname", label: "Nickname" },
+    { type: "text", id: "generalInfo.firstName", label: "First name" },
+    { type: "text", id: "generalInfo.lastName", label: "Last name" },
+    { type: "text", id: "generalInfo.nickname", label: "Nickname" },
     {
       type: "select",
-      id: "weightClass",
+      id: "generalInfo.weightClass",
       label: "Weightclass",
       options: [...standard.weightClasses, "Generic"],
     },
     {
       type: "select",
-      id: "rank",
+      id: "generalInfo.rank",
       label: "Rank",
       options: [...standard.ranks],
     },
   ],
 };
 
-const step2: WizardStep<FighterForm["basicInfo"]> = {
+const step2: WizardStep<Pick<FighterForm, "basicInfo">> = {
   title: "Basic Info",
   inputs: [
-    { type: "number", id: "skills.reach", label: "Reach" },
+    { type: "number", id: "basicInfo.skills.reach", label: "Reach" },
     {
       type: "select",
-      id: "skills.martialArt",
+      id: "basicInfo.skills.martialArt",
       label: "Martial Arts",
       options: [...standard.martialArts],
     },
     {
       type: "select",
-      id: "skills.stance",
+      id: "basicInfo.skills.stance",
       label: "Stance",
       options: [...standard.stances],
     },
     {
       type: "select",
-      id: "level",
+      id: "basicInfo.level",
       label: "Level",
       options: [...standard.levels],
     },
@@ -73,39 +73,39 @@ const step3: WizardStep<Pick<FighterForm, "perks">> = {
   ],
 };
 
-const step4: WizardStep<FighterForm["standUp"]> = {
+const step4: WizardStep<Pick<FighterForm, "standUp">> = {
   title: "Stand-Up",
   inputs: standard.standUp.map((item) => ({
     type: "number",
-    id: `skills.${item.propName}`,
+    id: `standUp.skills.${item.propName}`,
     label: item.name,
   })),
-}; 
+};
 
-const step5: WizardStep<FighterForm["grappling"]> = {
+const step5: WizardStep<Pick<FighterForm, "grappling">> = {
   title: "Grappling",
   inputs: standard.grappling.map((item) => ({
     type: "number",
-    id: `skills.${item.propName}`,
+    id: `grappling.skills.${item.propName}`,
     label: item.name,
   })),
 };
 
-const step6: WizardStep<FighterForm["health"]> = {
+const step6: WizardStep<Pick<FighterForm, "health">> = {
   title: "Health",
   inputs: standard.health.map((item) => ({
     type: "number",
-    id: `skills.${item.propName}`,
+    id: `health.skills.${item.propName}`,
     label: item.name,
   })),
 };
 
-const step7: WizardStep<FighterForm["move"]> = {
+const step7: WizardStep<Pick<FighterForm, "move">> = {
   title: "Moves",
   inputs: [
     {
       type: "select", // probs needs refactoring
-      id: "name",
+      id: "move.name",
       label: "Move",
       groups: [
         {
@@ -143,11 +143,19 @@ const step7: WizardStep<FighterForm["move"]> = {
     },
     {
       type: "select",
-      id: "level",
+      id: "move.level",
       label: "Level",
       options: [...standard.moveLevels],
     },
   ],
 };
 
-export const wizardSteps = [step1, step2, step3, step4, step5, step6, step7] as const;
+export const wizardSteps = [
+  step1,
+  step2,
+  step3,
+  step4,
+  step5,
+  step6,
+  step7,
+] as const;
