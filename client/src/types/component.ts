@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Fighter, Perk } from "../../../shared/types";
+import { Fighter, Move, Perk } from "../../../shared/types";
 
 export type Sides = "red" | "blue";
 
@@ -49,4 +49,21 @@ export interface ChildAccordionProps {
   title: string;
   noShadow?: boolean;
   indentation?: "ps-7" | "ps-10" | "ps-13";
+}
+
+export interface FighterForm {
+  generalInfo: {
+    weightClass: Fighter["weightClass"];
+    rank: Fighter["rank"];
+    firstName: Fighter["firstName"];
+    nickname: Fighter["nickname"];
+    lastName: Fighter["lastName"];
+  };
+  basicInfo: Fighter["basic"];
+  perks: string[];
+  standUp: Fighter["standUp"];
+  grappling: Fighter["grappling"];
+  health: Fighter["health"];
+  move: Move;
+  moves: Fighter["moves"];
 }

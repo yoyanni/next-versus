@@ -1,5 +1,6 @@
-import { FighterForm, WizardStep } from "@/pages/fighters/new";
 import standard from "@/standard";
+import { FighterForm } from "@/types/component";
+import { WizardStep } from "@/types/form";
 import { Fragment } from "react";
 import { UseFormRegister, FieldPath, FieldValues } from "react-hook-form";
 
