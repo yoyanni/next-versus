@@ -2,7 +2,7 @@ import standard from "@/standard";
 import { FighterForm } from "@/types/component";
 import { WizardStep } from "@/types/form";
 
-const step1: WizardStep<Pick<FighterForm,"generalInfo">> = {
+const step1: WizardStep<Pick<FighterForm, "generalInfo">> = {
   title: "General Info",
   inputs: [
     { type: "text", id: "generalInfo.firstName", label: "First name" },
@@ -75,69 +75,123 @@ const step3: WizardStep<Pick<FighterForm, "perks">> = {
 
 const step4: WizardStep<Pick<FighterForm, "standUp">> = {
   title: "Stand-Up",
-  inputs: standard.standUp.map((item) => ({
-    type: "number",
-    id: `standUp.skills.${item.propName}`,
-    label: item.name,
-  })),
+  inputs: [
+    {
+      type: "number",
+      id: `standUp.level`,
+      label: "Level",
+    },
+    ...standard.standUp.map(
+      (item) =>
+        ({
+          type: "number",
+          id: `standUp.skills.${item.propName}`,
+          label: item.name,
+        } as const)
+    ),
+  ],
 };
 
 const step5: WizardStep<Pick<FighterForm, "grappling">> = {
   title: "Grappling",
-  inputs: standard.grappling.map((item) => ({
-    type: "number",
-    id: `grappling.skills.${item.propName}`,
-    label: item.name,
-  })),
+  inputs: [
+    {
+      type: "number",
+      id: `grappling.level`,
+      label: "Level",
+    },
+    ...standard.grappling.map(
+      (item) =>
+        ({
+          type: "number",
+          id: `grappling.skills.${item.propName}`,
+          label: item.name,
+        } as const)
+    ),
+  ],
 };
 
 const step6: WizardStep<Pick<FighterForm, "health">> = {
   title: "Health",
-  inputs: standard.health.map((item) => ({
-    type: "number",
-    id: `health.skills.${item.propName}`,
-    label: item.name,
-  })),
+  inputs: [
+    {
+      type: "number",
+      id: `health.level`,
+      label: "Level",
+    },
+    ...standard.health.map(
+      (item) =>
+        ({
+          type: "number",
+          id: `health.skills.${item.propName}`,
+          label: item.name,
+        } as const)
+    ),
+  ],
 };
 
 const step7: WizardStep<Pick<FighterForm, "move">> = {
   title: "Moves",
   inputs: [
     {
-      type: "select", // probs needs refactoring
+      type: "select",
       id: "move.name",
       label: "Move",
       groups: [
         {
           name: "Punches",
-          options: [...standard.moves.punches],
+          options: standard.moves.punches.map((punch) => ({
+            value: "punches:" + punch,
+            option: punch,
+          })),
         },
         {
           name: "Kicks",
-          options: [...standard.moves.kicks],
+          options: standard.moves.kicks.map((kick) => ({
+            value: "kicks:" + kick,
+            option: kick,
+          })),
         },
         {
           name: "Clinch",
-          options: [...standard.moves.clinch],
+          options: standard.moves.clinch.map((clinch) => ({
+            value: "clinch:" + clinch,
+            option: clinch,
+          })),
         },
         {
           name: "Takedowns",
-          options: [...standard.moves.takedowns],
+          options: standard.moves.takedowns.map((takedown) => ({
+            value: "takedowns:" + takedown,
+            option: takedown,
+          })),
         },
         ...standard.groundKeys.map((ground) => ({
           name: "Ground - " + ground.title,
           options:
             ground.key === "strikes"
-              ? [...standard.moves.ground.strikes]
-              : [...standard.moves.ground.groundMovements],
+              ? standard.moves.ground.strikes.map((strike) => ({
+                  value: "ground.strikes:" + strike,
+                  option: strike,
+                }))
+              : standard.moves.ground.groundMovements.map((movement) => ({
+                  value: `ground.${ground.key}:` + movement,
+                  option: movement,
+                })),
         })),
         {
           name: "Submission",
-          options: [...standard.moves.submissions],
+          options: standard.moves.submissions.map((submission) => ({
+            value: "submissions:" + submission,
+            option: submission,
+          })),
         },
         {
           name: "Combos",
-          options: [...standard.moves.combos],
+          options: standard.moves.combos.map((combo) => ({
+            value: "combos:" + combo,
+            option: combo,
+          })),
         },
       ],
     },

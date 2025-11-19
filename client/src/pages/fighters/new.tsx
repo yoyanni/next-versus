@@ -3,16 +3,66 @@ import MoveAccordion from "@/components/MoveAccordion";
 import { wizardSteps } from "@/forms/wizardForm";
 import { FighterForm } from "@/types/component";
 import { useRef, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { FieldPath, SubmitHandler, useForm } from "react-hook-form";
 
-const initialState = {
-  generalInfo: {},
-  basicInfo: {},
+const initialState: FighterForm = {
+  generalInfo: {
+    weightClass: "",
+    rank: "",
+    firstName: "",
+    nickname: "",
+    lastName: "",
+  },
+  basicInfo: { level: 0, skills: { martialArt: "", stance: "", reach: 0 } },
   perks: [],
-  standUp: {},
-  grappling: {},
-  health: {},
-  moves: { ground: {} },
+  standUp: {
+    level: 0,
+    skills: {
+      punchSpeed: 0,
+      punchPower: 0,
+      accuracy: 0,
+      blocking: 0,
+      headMovement: 0,
+      footwork: 0,
+      switchStance: 0,
+      takedownDefence: 0,
+      kickPower: 0,
+      kickSpeed: 0,
+    },
+  },
+  grappling: {
+    level: 0,
+    skills: {
+      takedowns: 0,
+      topControl: 0,
+      bottomControl: 0,
+      submissions: 0,
+      submissionDefence: 0,
+      groundStriking: 0,
+      clinchStriking: 0,
+      clinchControl: 0,
+    },
+  },
+  health: {
+    level: 0,
+    skills: { cardio: 0, chin: 0, body: 0, legs: 0, recovery: 0 },
+  },
+  move: { name: "punches:Jab", level: 3 },
+  moves: {
+    punches: [],
+    kicks: [],
+    clinch: [],
+    takedowns: [],
+    ground: {
+      getups: [],
+      transitions: [],
+      reversals: [],
+      sweeps: [],
+      strikes: [],
+    },
+    submissions: [],
+    combos: [],
+  },
 };
 
 const NewFighter = () => {
@@ -23,8 +73,11 @@ const NewFighter = () => {
     register,
     watch,
     handleSubmit,
+    setValue,
+    getValues,
     formState: { errors },
   } = useForm<FighterForm>({ defaultValues: initialState });
+  const move = watch("move");
   const watchMoves = watch("moves");
   const watchPerks = watch("perks");
 
@@ -51,6 +104,24 @@ const NewFighter = () => {
     if (activeAccordion === accordion) setActiveAccordion(null);
     else setActiveAccordion(accordion);
   }
+
+  const handleMoveAddition = () => {
+    const [path, moveName] = move.name.split(":");
+    const fieldPath = ("moves." + path) as FieldPath<
+      Pick<FighterForm, "moves">
+    >;
+
+    const newMove = {
+      name: moveName,
+      level: move.level,
+    };
+
+    const currentMoves = getValues(fieldPath);
+
+    if (Array.isArray(currentMoves)) {
+      setValue(fieldPath, [...currentMoves, newMove]);
+    }
+  };
 
   return (
     <main className="grow flex flex-col gap-y-4 mt-4">
@@ -157,14 +228,23 @@ const NewFighter = () => {
           })}
         </form>
       </div>
+
       {step === wizardSteps.length - 1 && (
-        <div className="border mx-4 rounded-lg overflow-hidden">
-          <MoveAccordion
-            moves={watchMoves}
-            isActive={activeAccordion}
-            handleToggle={() => handleToggle("moves")}
-          />
-        </div>
+        <>
+          <button
+            onClick={handleMoveAddition}
+            className="self-end mr-4 px-2 py-1 border bg-white rounded-md"
+          >
+            Add move
+          </button>
+          <div className="border mx-4 rounded-lg overflow-hidden">
+            <MoveAccordion
+              moves={watchMoves}
+              isActive={activeAccordion}
+              handleToggle={() => handleToggle("moves")}
+            />
+          </div>
+        </>
       )}
     </main>
   );

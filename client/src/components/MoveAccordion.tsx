@@ -34,7 +34,7 @@ const MoveAccordion = ({
                   title={groundGroup.title}
                   indentation="ps-10"
                 >
-                  {moves.ground[groundGroup.key]?.map((move) => {
+                  {moves?.ground[groundGroup.key]?.map((move) => {
                     return (
                       <div
                         key={move.name}
@@ -52,7 +52,7 @@ const MoveAccordion = ({
         } else {
           movesJSX = (
             <ChildAccordion key={moveGroup.key} title={moveGroup.title}>
-              {moves[moveGroup.key]?.map((move) => {
+              {moves?.[moveGroup.key]?.map((move) => {
                 return (
                   <div
                     key={move.name}

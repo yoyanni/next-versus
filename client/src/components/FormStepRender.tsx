@@ -52,13 +52,13 @@ function FormStepRender<T extends object>({
         <div className="flex justify-between">
           <label htmlFor={fieldPath}>{input.label}:</label>
           {input.type === "select" ? (
-            <select {...register(fieldPath)} id={fieldPath} name={input.label}>
+            <select {...register(fieldPath)} id={fieldPath}>
               {input.groups
                 ? input.groups.map((group) => (
                     <optgroup key={group.name} label={group.name}>
                       {group.options.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
+                        <option key={option.option} value={option.value}>
+                          {option.option}
                         </option>
                       ))}
                     </optgroup>

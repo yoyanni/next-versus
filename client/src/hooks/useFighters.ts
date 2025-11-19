@@ -6,4 +6,5 @@ export const useFighters = () =>
   useQuery({
     queryKey: ["fighters"],
     queryFn: () => apiClient.get<Fighter[]>("/fighters"),
+    staleTime: 1000 * 60 * 5,
   });
