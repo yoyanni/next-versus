@@ -26,6 +26,12 @@ const step1: WizardStep<Pick<FighterForm, "generalInfo">> = {
 const step2: WizardStep<Pick<FighterForm, "basicInfo">> = {
   title: "Basic Info",
   inputs: [
+    {
+      type: "select",
+      id: "basicInfo.level",
+      label: "Level",
+      options: [...standard.levels],
+    },
     { type: "number", id: "basicInfo.skills.reach", label: "Reach" },
     {
       type: "select",
@@ -38,12 +44,6 @@ const step2: WizardStep<Pick<FighterForm, "basicInfo">> = {
       id: "basicInfo.skills.stance",
       label: "Stance",
       options: [...standard.stances],
-    },
-    {
-      type: "select",
-      id: "basicInfo.level",
-      label: "Level",
-      options: [...standard.levels],
     },
   ],
 };

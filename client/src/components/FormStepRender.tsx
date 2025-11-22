@@ -15,12 +15,12 @@ function FormStepRender<T extends object>({
   register,
   perks,
 }: FormStepRenderProps<T>) {
-  const perkColor = (perkName: string) => {
+  const perkColor = (perkName: string | undefined) => {
     const perk = standard.perks.find((p) => p.name === perkName);
     if (perk?.type === "Stand-Up") return " bg-standup";
     else if (perk?.type === "Grappling") return " bg-grappling";
     else if (perk?.type === "Health & Stamina") return " bg-health";
-    return "";
+    return "border";
   };
 
   return step.inputs.map((input) => {
@@ -39,10 +39,10 @@ function FormStepRender<T extends object>({
           ))}
         </select>
         <div className="flex justify-center gap-x-1">
-          {perks?.map((perk) => (
+          {[0, 1, 2, 3, 4].map((i) => (
             <div
-              key={perk}
-              className={`h-1.5 w-5 rounded-full border${perkColor(perk)}`}
+              key={i}
+              className={`h-1.5 w-5 rounded-full ${perkColor(perks?.[i])}`}
             />
           ))}
         </div>
@@ -53,6 +53,15 @@ function FormStepRender<T extends object>({
           <label htmlFor={fieldPath}>{input.label}:</label>
           {input.type === "select" ? (
             <select {...register(fieldPath)} id={fieldPath}>
+              <option
+                value={
+                  fieldPath === "basicInfo.level" || fieldPath === "move.level"
+                    ? 0
+                    : ""
+                }
+              >
+                -- Select a {input.label} --
+              </option>
               {input.groups
                 ? input.groups.map((group) => (
                     <optgroup key={group.name} label={group.name}>
@@ -74,7 +83,6 @@ function FormStepRender<T extends object>({
               {...register(fieldPath)}
               id={fieldPath}
               min="0"
-              onChange={(e) => console.log(e)}
               type={input.type}
               placeholder={input.label}
               className="ps-1"
