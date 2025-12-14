@@ -58,15 +58,21 @@ const step3: WizardStep<Pick<FighterForm, "perks">> = {
       groups: [
         {
           name: "Stand-Up",
-          options: standard.perks.filter((p) => p.type === "Stand-Up"),
+          options: standard.perks
+            .filter((p) => p.type === "Stand-Up")
+            .map((p) => p.name),
         },
         {
           name: "Grappling",
-          options: standard.perks.filter((p) => p.type === "Grappling"),
+          options: standard.perks
+            .filter((p) => p.type === "Grappling")
+            .map((p) => p.name),
         },
         {
           name: "Health & Stamina",
-          options: standard.perks.filter((p) => p.type === "Health & Stamina"),
+          options: standard.perks
+            .filter((p) => p.type === "Health & Stamina")
+            .map((p) => p.name),
         },
       ],
     },
@@ -77,16 +83,18 @@ const step4: WizardStep<Pick<FighterForm, "standUp">> = {
   title: "Stand-Up",
   inputs: [
     {
-      type: "number",
+      type: "select",
       id: `standUp.level`,
       label: "Level",
+      options: [...standard.stats],
     },
     ...standard.standUp.map(
       (item) =>
         ({
-          type: "number",
+          type: "select",
           id: `standUp.skills.${item.propName}`,
           label: item.name,
+          options: [...standard.stats],
         } as const)
     ),
   ],
@@ -96,16 +104,18 @@ const step5: WizardStep<Pick<FighterForm, "grappling">> = {
   title: "Grappling",
   inputs: [
     {
-      type: "number",
+      type: "select",
       id: `grappling.level`,
       label: "Level",
+      options: [...standard.stats],
     },
     ...standard.grappling.map(
       (item) =>
         ({
-          type: "number",
+          type: "select",
           id: `grappling.skills.${item.propName}`,
           label: item.name,
+          options: [...standard.stats],
         } as const)
     ),
   ],
@@ -115,16 +125,18 @@ const step6: WizardStep<Pick<FighterForm, "health">> = {
   title: "Health",
   inputs: [
     {
-      type: "number",
+      type: "select",
       id: `health.level`,
       label: "Level",
+      options: [...standard.stats],
     },
     ...standard.health.map(
       (item) =>
         ({
-          type: "number",
+          type: "select",
           id: `health.skills.${item.propName}`,
           label: item.name,
+          options: [...standard.stats],
         } as const)
     ),
   ],

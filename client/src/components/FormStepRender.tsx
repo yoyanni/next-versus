@@ -25,14 +25,18 @@ function FormStepRender<T extends object>({
 
   return step.inputs.map((input) => {
     const fieldPath = input.id as FieldPath<FighterForm>;
+    const isStat =
+      input.id.includes("standUp") ||
+      input.id.includes("grappling") ||
+      input.id.includes("health");
     return input.type === "multi-select" ? (
       <Fragment key={fieldPath}>
         <select {...register(fieldPath)} multiple size={10}>
           {input.groups.map((group) => (
             <optgroup key={group.name} label={group.name}>
               {group.options.map((option) => (
-                <option key={option.name} value={option.name}>
-                  {option.name}
+                <option key={option} value={option}>
+                  {option}
                 </option>
               ))}
             </optgroup>
@@ -55,21 +59,26 @@ function FormStepRender<T extends object>({
             <select {...register(fieldPath)} id={fieldPath}>
               <option
                 value={
-                  fieldPath === "basicInfo.level" || fieldPath === "move.level"
+                  fieldPath === "basicInfo.level" || fieldPath === "move.level" || isStat
                     ? 0
                     : ""
                 }
               >
-                -- Select a {input.label} --
+                -- Select a {isStat ? "Level" : input.label} --
               </option>
               {input.groups
                 ? input.groups.map((group) => (
                     <optgroup key={group.name} label={group.name}>
-                      {group.options.map((option) => (
-                        <option key={option.option} value={option.value}>
-                          {option.option}
-                        </option>
-                      ))}
+                      {group.options.map((option) => {
+                        if (typeof option === "string") {
+                          return <option key={option} value={option} />;
+                        }
+                        return (
+                          <option key={option.option} value={option.value}>
+                            {option.option}
+                          </option>
+                        );
+                      })}
                     </optgroup>
                   ))
                 : input.options?.map((option) => (

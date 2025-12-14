@@ -6,9 +6,17 @@ interface FieldBase<T> {
   // validation
 }
 
+interface MoveOptionGroups {
+  name: string;
+  options: {
+    value: string;
+    option: string;
+  }[];
+}
+
 interface OptionGroups {
   name: string;
-  options: any[];
+  options: readonly string[];
 }
 
 interface Field<T> extends FieldBase<T> {
@@ -17,8 +25,8 @@ interface Field<T> extends FieldBase<T> {
 
 interface SelectField<T> extends FieldBase<T> {
   type: "select";
-  options?: string[];
-  groups?: OptionGroups[];
+  options?: readonly string[];
+  groups?: OptionGroups[] | MoveOptionGroups[];
 }
 
 interface MultiSelectField<T> extends FieldBase<T> {
