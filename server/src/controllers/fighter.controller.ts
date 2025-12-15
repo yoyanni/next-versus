@@ -50,7 +50,8 @@ export const createFighter = async (req: Request, res: Response) => {
     req.body._id = ++lastId.id;
     const newFighter = new Fighter(req.body);
     await newFighter.save();
-    res.status(201).json(newFighter);
+    
+    res.status(201).json(newFighter._id);
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: "Failed to create fighter." });

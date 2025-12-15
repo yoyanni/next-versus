@@ -1,7 +1,12 @@
 import FormStepRender from "@/components/FormStepRender";
 import MoveAccordion from "@/components/MoveAccordion";
 import { wizardSteps } from "@/forms/wizardForm";
+import { apiClient } from "@/service/apiClient";
+import standard from "@/standard";
 import { FighterForm } from "@/types/component";
+import { Fighter } from "@shared/types";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { FieldPath, SubmitHandler, useForm } from "react-hook-form";
 
@@ -68,6 +73,8 @@ const initialState: FighterForm = {
 const NewFighter = () => {
   const [step, setStep] = useState(0);
   const [activeAccordion, setActiveAccordion] = useState<"moves" | null>(null);
+  const router = useRouter();
+  const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
   const {
     register,
@@ -96,8 +103,27 @@ const NewFighter = () => {
   const bgColors = colors.map((color) => `bg-[${color}]`);
   const borderColors = colors.map((color) => `border-[${color}]`);
 
-  const onSubmit: SubmitHandler<FighterForm> = (data) => {
-    console.log("Form submitted:", data);
+  const onSubmit: SubmitHandler<FighterForm> = async (data) => {
+    const { move, generalInfo, basicInfo, perks, ...fighter } = data;
+    const newPerks = standard.perks.filter((perk) => perks.includes(perk.name));
+    const newFighter: Omit<Fighter, "_id"> = {
+      ...generalInfo,
+      perks: newPerks,
+      basic: basicInfo,
+      ...fighter,
+    };
+    try {
+      // useMutation could be used here
+      const fighterId = await apiClient.post<Fighter["_id"]>(
+        "/fighters",
+        newFighter
+      );
+      queryClient.invalidateQueries({ queryKey: ["fighters"] });
+      router.push(`/fighters/${fighterId}`);
+    } catch (error) {
+      // Toast could be used here
+      console.error("Error creating fighter:", error);
+    }
   };
 
   function handleToggle(accordion: "moves") {
