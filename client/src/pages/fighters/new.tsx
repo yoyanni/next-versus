@@ -158,7 +158,9 @@ const NewFighter = () => {
           <div className="flex justify-between items-center">
             <button
               className="block px-2 py-1 border bg-white rounded-md"
-              onClick={() => setStep((prev) => prev - 1)}
+              onClick={() =>
+                isFirstStep ? router.back() : setStep((prev) => prev - 1)
+              }
             >
               {isFirstStep ? "Cancel" : "Back"}
             </button>
