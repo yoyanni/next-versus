@@ -1,5 +1,6 @@
 import Accordion from "@/components/Accordion";
 import ChildAccordion from "@/components/ChildAccordion";
+import LinkButton from "@/components/LinkButton";
 import MoveAccordion from "@/components/MoveAccordion";
 import { useFighter } from "@/hooks/useFighter";
 import standard from "@/standard";
@@ -85,6 +86,7 @@ export default function Fighters() {
         isActive={activeAccordion}
         handleToggle={() => handleToggle("moves")}
       />
+      <LinkButton href={`/fighters/${fighter._id}/edit`} title="Edit Fighter" />
     </main>
   );
 }

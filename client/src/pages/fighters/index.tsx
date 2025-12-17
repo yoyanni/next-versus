@@ -5,6 +5,7 @@ import { useState } from "react";
 import standard from "@/standard";
 import Accordion from "@/components/Accordion";
 import { useFighters } from "@/hooks/useFighters";
+import LinkButton from "@/components/LinkButton";
 
 export default function Fighters() {
   const { data: fighters } = useFighters();
@@ -55,12 +56,7 @@ export default function Fighters() {
         </p>
       </div>
       <div className="mt-4">{accordions}</div>
-      <Link
-        href="/fighters/new"
-        className="justify-self-center block px-2 py-1 mt-4 border bg-white rounded-md"
-      >
-        Create a new Fighter
-      </Link>
+      <LinkButton href="/fighters/new" title="Add New Fighter" />
     </main>
   );
 }
