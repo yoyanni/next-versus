@@ -7,4 +7,5 @@ export const useFighter = (id: string | string[] | undefined) =>
     queryKey: ["fighter", id],
     queryFn: () => apiClient.get<Fighter>(`/fighters/${id}`),
     enabled: !!id,
+    staleTime: 1000 * 60 * 5,
   });
