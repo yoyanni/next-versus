@@ -8,7 +8,7 @@ import { ActiveAccordion } from "@/types/component";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function Fighters() {
+export default function Fighter() {
   const router = useRouter();
   const { data: fighter } = useFighter(router.query.id);
   const [activeAccordion, setActiveAccordion] =
