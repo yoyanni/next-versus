@@ -68,10 +68,24 @@ export const editFighter = async (req: Request, res: Response) => {
     if (!updatedFighter) {
       return res.status(404).json({ message: "Fighter not found" });
     }
-    
+
     res.status(200).json(updatedFighter._id);
   } catch (error) {
     console.error("Error updating fighter:", error);
     res.status(400).json({ message: "Failed to update fighter." });
+  }
+};
+
+export const deleteFighter = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  try {
+    const deletedFighter = await Fighter.findByIdAndDelete(id);
+    if (!deletedFighter) {
+      return res.status(404).json({ message: "Fighter not found" });
+    }
+    res.status(200).send({ message: "Fighter deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting fighter:", error);
+    res.status(500).json({ message: "Failed to delete fighter." });
   }
 };
