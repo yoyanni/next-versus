@@ -65,18 +65,22 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
           `/fighters/${fighter._id}`,
           newFighter
         );
-        queryClient.invalidateQueries({ queryKey: ["fighter", fighterId.toString()] });
+        queryClient.invalidateQueries({
+          queryKey: ["fighter", fighterId.toString()],
+        });
       } else {
         fighterId = await apiClient.post<Fighter["_id"]>(
           "/fighters",
           newFighter
         );
       }
-        queryClient.invalidateQueries({ queryKey: ["fighters"] });
+      queryClient.invalidateQueries({ queryKey: ["fighters"] });
       router.push(`/fighters/${fighterId}`);
     } catch (error) {
       // Toast could be used here
-      console.error("Error creating fighter:", error);
+      if (fighter) {
+        console.error("Error updating fighter:", error);
+      } else console.error("Error creating fighter:", error);
     }
   };
 

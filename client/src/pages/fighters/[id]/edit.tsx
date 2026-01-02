@@ -1,4 +1,4 @@
-import WizardForm from "@/components/wizardForm";
+import WizardForm from "@/components/WizardForm";
 import { useFighter } from "@/hooks/useFighter";
 import { useRouter } from "next/router";
 
