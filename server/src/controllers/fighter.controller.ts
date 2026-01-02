@@ -44,16 +44,34 @@ export const getFighterById = async (req: Request, res: Response) => {
 export const createFighter = async (req: Request, res: Response) => {
   try {
     const lastId = await Fighter.findOne({}, "id").sort({ _id: -1 });
-    
+
     if (!lastId) throw new Error("Issue with locating the latest id.");
-    
+
     req.body._id = ++lastId.id;
     const newFighter = new Fighter(req.body);
     await newFighter.save();
-    
+
     res.status(201).json(newFighter._id);
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: "Failed to create fighter." });
+  }
+};
+
+export const editFighter = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  try {
+    const updatedFighter = await Fighter.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+
+    if (!updatedFighter) {
+      return res.status(404).json({ message: "Fighter not found" });
+    }
+    
+    res.status(200).json(updatedFighter._id);
+  } catch (error) {
+    console.error("Error updating fighter:", error);
+    res.status(400).json({ message: "Failed to update fighter." });
   }
 };

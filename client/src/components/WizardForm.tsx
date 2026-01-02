@@ -49,21 +49,30 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
   const borderColors = colors.map((color) => `border-[${color}]`);
 
   const onSubmit: SubmitHandler<FighterForm> = async (data) => {
-    const { move, generalInfo, basicInfo, perks, ...fighter } = data;
+    const { move, generalInfo, basicInfo, perks, ...fighterForm } = data;
     const newPerks = standard.perks.filter((perk) => perks.includes(perk.name));
     const newFighter: Omit<Fighter, "_id"> = {
       ...generalInfo,
       perks: newPerks,
       basic: basicInfo,
-      ...fighter,
+      ...fighterForm,
     };
     try {
       // useMutation could be used here
-      const fighterId = await apiClient.post<Fighter["_id"]>(
-        "/fighters",
-        newFighter
-      );
-      queryClient.invalidateQueries({ queryKey: ["fighters"] });
+      let fighterId;
+      if (fighter) {
+        fighterId = await apiClient.put<Fighter["_id"]>(
+          `/fighters/${fighter._id}`,
+          newFighter
+        );
+        queryClient.invalidateQueries({ queryKey: ["fighter", fighterId.toString()] });
+      } else {
+        fighterId = await apiClient.post<Fighter["_id"]>(
+          "/fighters",
+          newFighter
+        );
+      }
+        queryClient.invalidateQueries({ queryKey: ["fighters"] });
       router.push(`/fighters/${fighterId}`);
     } catch (error) {
       // Toast could be used here
