@@ -1,18 +1,36 @@
 import Accordion from "@/components/Accordion";
+import Button from "@/components/Button";
 import ChildAccordion from "@/components/ChildAccordion";
+import ConfirmDialog from "@/components/ConfirmDialog";
 import LinkButton from "@/components/LinkButton";
 import MoveAccordion from "@/components/MoveAccordion";
 import { useFighter } from "@/hooks/useFighter";
+import { apiClient } from "@/service/apiClient";
 import standard from "@/standard";
 import { ActiveAccordion } from "@/types/component";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Fighter() {
   const router = useRouter();
   const { data: fighter } = useFighter(router.query.id);
+  const queryClient = useQueryClient();
   const [activeAccordion, setActiveAccordion] =
     useState<ActiveAccordion | null>(null);
+  const [open, setOpen] = useState(false);
+
+  async function handleDelete() {
+    try {
+      await apiClient.delete(`/fighters/${fighter?._id}`);
+      queryClient.invalidateQueries({ queryKey: ["fighters"] });
+      router.push("/fighters");
+    } catch (error) {
+      console.error("Failed to delete fighter:", error);
+    } finally {
+      setOpen(false);
+    }
+  }
 
   // When fighters still have not loaded
   if (!fighter) return <main>Loading...</main>;
@@ -86,7 +104,20 @@ export default function Fighter() {
         isActive={activeAccordion}
         handleToggle={() => handleToggle("moves")}
       />
-      <LinkButton href={`/fighters/${fighter._id}/edit`} title="Edit Fighter" />
+      <div className="flex justify-center gap-4 mt-4">
+        <LinkButton
+          href={`/fighters/${fighter._id}/edit`}
+          title="Edit Fighter"
+        />
+        <Button title="Delete Fighter" onClick={() => setOpen(true)} />
+      </div>
+      <ConfirmDialog
+        open={open}
+        title="Delete Fighter"
+        message="Are you sure you want to delete this fighter?"
+        onCancel={() => setOpen(false)}
+        onConfirm={handleDelete}
+      />
     </main>
   );
 }

@@ -56,7 +56,11 @@ export default function Fighters() {
         </p>
       </div>
       <div className="mt-4">{accordions}</div>
-      <LinkButton href="/fighters/new" title="Add New Fighter" />
+      <LinkButton
+        href="/fighters/new"
+        title="Add New Fighter"
+        className="mt-4"
+      />
     </main>
   );
 }
