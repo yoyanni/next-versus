@@ -7,6 +7,7 @@ import { env } from "./env";
 const RETRY_DELAY = 3000; // 3 seconds
 
 let isInitialConnection = true;
+let shuttingDown = false;
 
 export const connectDB = async () => {
   try {
@@ -26,11 +27,28 @@ mongoose.connection.on("error", (err) => {
 
 mongoose.connection.on("disconnected", () => {
   console.warn("⚠️ MongoDB disconnected");
-  setTimeout(() => connectDB(), RETRY_DELAY);
+  // Don't reconnect when the disconnect is our own shutdown
+  if (!shuttingDown) setTimeout(() => connectDB(), RETRY_DELAY);
 });
 
-process.on("SIGINT", async () => {
-  await mongoose.connection.close();
-  console.log("📴 MongoDB disconnected on app termination");
+/**
+ * Graceful shutdown
+ * -----------------
+ * SIGINT is Ctrl+C locally, SIGTERM is what `docker stop` / `docker compose up -d` send.
+ * Without a SIGTERM handler Docker waits 10s and then SIGKILLs the container.
+ */
+const shutdown = async (signal: NodeJS.Signals) => {
+  if (shuttingDown) return;
+  shuttingDown = true;
+
+  try {
+    await mongoose.connection.close();
+    console.log(`📴 MongoDB disconnected on ${signal}`);
+  } catch (err) {
+    console.error("❌ Error closing MongoDB connection:", err);
+  }
   process.exit(0);
-});
+};
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
