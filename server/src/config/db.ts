@@ -31,6 +31,12 @@ mongoose.connection.on("disconnected", () => {
   if (!shuttingDown) setTimeout(() => connectDB(), RETRY_DELAY);
 });
 
+// Close without triggering the reconnect in the "disconnected" listener
+export const disconnectDB = async () => {
+  shuttingDown = true;
+  await mongoose.connection.close();
+};
+
 /**
  * Graceful shutdown
  * -----------------
@@ -39,10 +45,9 @@ mongoose.connection.on("disconnected", () => {
  */
 const shutdown = async (signal: NodeJS.Signals) => {
   if (shuttingDown) return;
-  shuttingDown = true;
 
   try {
-    await mongoose.connection.close();
+    await disconnectDB();
     console.log(`📴 MongoDB disconnected on ${signal}`);
   } catch (err) {
     console.error("❌ Error closing MongoDB connection:", err);

@@ -6,7 +6,8 @@
   "main": "server.ts",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "start": "tsx watch src/server.ts"
+    "start": "tsx watch src/server.ts",
+    "seed": "tsx src/scripts/seed.ts"
   },
   "author": "yoyanni",
   "license": "ISC",
