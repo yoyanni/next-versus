@@ -1,13 +1,12 @@
 // Local Imports
+import { env } from "./config/env";
 import app from "./app";
 import { connectDB } from "./config/db";
 
-const PORT = process.env.PORT || 5000;
-
 try {
   await connectDB();
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}...`);
+  app.listen(env.PORT, () => {
+    console.log(`Server running on port ${env.PORT}...`);
   });
 } catch (err) {
   console.error("❌ Failed to start server:", err);

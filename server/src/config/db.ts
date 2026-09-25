@@ -1,13 +1,16 @@
+// External Imports
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1/localDB";
+// Local Imports
+import { env } from "./env";
+
 const RETRY_DELAY = 3000; // 3 seconds
 
 let isInitialConnection = true;
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect(MONGO_URI);
+    await mongoose.connect(env.MONGODB_URI);
     console.log("✅ MongoDB connected");
     isInitialConnection = false;
   } catch (err) {
