@@ -15,6 +15,10 @@ import { Fighter as IFighter } from "@shared/types";
  */
 const SEED_FILE = new URL("../seed/fighters.json", import.meta.url);
 
+// Insert in small batches: one insertMany of all 390 builds every Mongoose document at once
+// and peaked at ~184 MiB in the 256 MiB container
+const BATCH_SIZE = 50;
+
 /**
  * Seeds the fighters collection.
  * By default it only runs when the collection is empty (fresh VPS / fresh local DB).
@@ -26,7 +30,9 @@ export const seedFighters = async ({ reset = false } = {}) => {
   const fighters: IFighter[] = JSON.parse(await readFile(SEED_FILE, "utf-8"));
 
   if (reset) await Fighter.deleteMany({});
-  await Fighter.insertMany(fighters);
+  for (let i = 0; i < fighters.length; i += BATCH_SIZE) {
+    await Fighter.insertMany(fighters.slice(i, i + BATCH_SIZE));
+  }
 
   console.log(`🌱 Seeded ${fighters.length} fighters`);
 };
