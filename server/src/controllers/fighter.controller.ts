@@ -7,7 +7,9 @@ import Fighter from "../models/fighter.model";
 
 export const getFighters = async (_req: Request, res: Response) => {
   try {
-    const fighters = await Fighter.find();
+    // lean(): plain objects instead of full Mongoose documents. This returns every fighter
+    // (~2.4 MB), so skipping document hydration matters under the 192 MB heap limit.
+    const fighters = await Fighter.find().lean();
     res.status(200).json(fighters);
   } catch (err) {
     console.error("Error retrieving fighters:", err);
@@ -43,11 +45,9 @@ export const getFighterById = async (req: Request, res: Response) => {
  */
 export const createFighter = async (req: Request, res: Response) => {
   try {
-    const lastId = await Fighter.findOne({}, "id").sort({ _id: -1 });
-
-    if (!lastId) throw new Error("Issue with locating the latest id.");
-
-    req.body._id = ++lastId.id;
+    // Numeric ids: next id is the highest existing one + 1 (starts at 1 on an empty DB)
+    const last = await Fighter.findOne({}, "_id").sort({ _id: -1 }).lean();
+    req.body._id = (last?._id ?? 0) + 1;
     const newFighter = new Fighter(req.body);
     await newFighter.save();
 
