@@ -89,6 +89,7 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
     else setActiveAccordion(accordion);
   }
 
+  // Move select values are "<path>:<name>" (e.g. "ground.sweeps:BJJ"); path picks the moves.* array
   const handleMoveAddition = () => {
     const [path, moveName] = move.name.split(":");
     const fieldPath = ("moves." + path) as FieldPath<
