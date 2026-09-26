@@ -1,0 +1,17 @@
+# Only the server, shared types and workspace manifests belong in the image
+**/node_modules
+**/.env
+**/.env.*
+**/*.tsbuildinfo
+.git
+.github
+.vscode
+server/dist
+
+# The client deploys to Vercel; only its manifest is needed for the workspace lockfile
+client
+!client/package.json
+
+Dockerfile
+.dockerignore
+*.md
