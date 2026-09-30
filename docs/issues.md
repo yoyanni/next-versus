@@ -205,13 +205,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Problem:** After startup, a failed reconnect is only logged in `connectDB`'s `catch`, which doesn't schedule another attempt itself. Whether retries continue depends on Mongoose emitting `disconnected` again after a failed connect, which hasn't been checked. The `error` listener also calls `mongoose.disconnect()` on any runtime error, even though the driver reconnects on its own.
 - **Fix:** Test by stopping MongoDB while the server is running. If retries stop, schedule the next attempt in the `catch`. Consider relying on the driver's own reconnection instead.
 
-### O4. The heap limit isn't set in this repo
-
-- **Severity:** Low
-- **Where:** [Dockerfile:33](../Dockerfile#L33)
-- **Problem:** The docs say the container runs with `--max-old-space-size=192`, but the Dockerfile's `CMD` doesn't pass it and nothing else in the repo sets it. It must come from the Compose file or the workflow, which live outside this repo.
-- **Fix:** Confirm where it's set, and say so in [deployment.md](deployment.md). Alternatively, set `ENV NODE_OPTIONS=--max-old-space-size=192` in the Dockerfile.
-
 ## Tooling and code quality
 
 ### T1. No tests

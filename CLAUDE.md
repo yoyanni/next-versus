@@ -43,7 +43,7 @@ There is no test framework or test suite.
 - **Client writes** call `apiClient` directly, then invalidate `["fighters"]` and `["fighter", id]` by hand.
 - **Wizard move values** are `"<path>:<name>"` strings that `handleMoveAddition` splits.
 - **Tailwind:** class names built at runtime must be added to `safelist` in `client/tailwind.config.ts`.
-- **CI:** `.github/workflows/deploy.yml` is managed separately. Don't add CI files unless asked.
+- **CI:** `.github/workflows/deploy.yml` builds the API image and deploys it (see `docs/deployment.md`). If the image starts needing a new file, add it to the workflow's `paths` filter. Don't add other CI files unless asked.
 
 ## Production constraints (shared 2 GB VPS)
 

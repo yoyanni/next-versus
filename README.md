@@ -45,13 +45,7 @@ You need Node 22 and a MongoDB instance. See [Getting started](docs/getting-star
 
 ## Documentation
 
-- [Getting started](docs/getting-started.md)
-- [Architecture](docs/architecture.md)
-- [API reference](docs/api.md)
-- [Configuration](docs/configuration.md)
-- [Data and seeding](docs/data-and-seeding.md)
-- [Deployment](docs/deployment.md)
-- [Decision records](docs/decisions/)
+Start at the [docs index](docs/README.md).
 
 ## Background
 
