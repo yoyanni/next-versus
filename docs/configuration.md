@@ -9,7 +9,7 @@
 | Variable | Required | Default | Notes |
 | --- | --- | --- | --- |
 | `MONGODB_URI` | Yes | none | The server exits at startup if it's missing, or if the first connection fails. |
-| `PORT` | No | `5000` | Production sets `3000`. |
+| `PORT` | No | `5000` | Production sets `3000`, which the Compose health check and the Caddyfile also hardcode (see [Deployment](deployment.md)). |
 | `CORS_ORIGIN` | In production | none | The only origin allowed. If it's unset in dev, any origin is allowed. |
 | `NODE_ENV` | No | none | `production` makes `CORS_ORIGIN` required. The Docker image sets it. |
 
