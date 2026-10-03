@@ -2,7 +2,7 @@
 
 ```mermaid
 flowchart LR
-  G[push to main] --> GA[GitHub Actions] --> I[ghcr.io versus-api image] --> VPS[VPS: docker compose pull + up]
+  G[push to main] --> GA[GitHub Actions] --> I[ghcr.io versus-api image] --> VPS[VPS: docker compose pull + up --wait] --> H{healthy within 90 s?}
   G --> VC[Vercel builds client]
 ```
 
@@ -16,13 +16,31 @@ Vercel builds `client/` on push. Set `NEXT_PUBLIC_API_URI=https://versus-api.<do
   - The **build stage** runs `npm ci` for the server workspace, then bundles `server/src` to `server/dist/server.js` with esbuild.
   - The **runtime stage** (`node:22-alpine`, `NODE_ENV=production`) installs production dependencies only, copies `server/dist` and `server/seed`, runs as `node`, and starts with `node server/dist/server.js`.
   - `.dockerignore` leaves out `node_modules`, every `.env`, and all of `client/` except its `package.json`, which the workspace lockfile needs.
-- **CI/CD:** [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) builds the image, pushes it to GHCR as `versus-api:latest` and `versus-api:<commit sha>`, then SSHes into the VPS as `deploy` and runs `docker compose pull versus-api && docker compose up -d versus-api && docker image prune -f` in `~/app`. The Compose file lives on the VPS, not in this repo.
-  - `docker image prune -f` removes dangling images, which stops old `:latest` layers from piling up on the VPS disk after each deploy. It runs only if the restart succeeded, and it applies to the whole Docker host, so it also clears other projects' dangling images on the shared VPS. Tagged and in-use images are kept.
+- **CI/CD:** [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) builds the image, pushes it to GHCR as `versus-api:latest` and `versus-api:<commit sha>`, then SSHes into the VPS as `deploy` and runs `docker compose pull versus-api && docker compose up -d --wait --wait-timeout 90 versus-api && docker image prune -f` in `~/app`. The Compose file lives on the VPS, not in this repo.
+  - `--wait` makes `docker compose up` block until `versus-api` (and the `mongo` service it depends on) reports `healthy`, using the Compose `healthcheck` described below. If the container doesn't become healthy within 90 s, or exits, the command fails and so does the job. A red deploy run therefore means the new container is unhealthy, not just that the restart was issued. Compose has already replaced the old container by then, so a failed deploy leaves the broken one running (see the rollback note below).
+  - `docker image prune -f` removes dangling images, which stops old `:latest` layers from piling up on the VPS disk after each deploy. It runs only if the new container became healthy, and it applies to the whole Docker host, so it also clears other projects' dangling images on the shared VPS. Tagged and in-use images are kept.
   - It runs on push to `main` only when a file that goes into the image changes (`server/`, `shared/`, the root manifests and lockfile, `client/package.json`, `Dockerfile`, `.dockerignore`, or the workflow itself). Client-only and docs-only pushes don't redeploy the API. Run it by hand from the Actions tab (`workflow_dispatch`) to force a redeploy.
   - Repository secrets: `DEPLOY_HOST` (the VPS hostname or IP) and `DEPLOY_SSH_KEY` (a private ed25519 key whose public key is in the `deploy` user's `authorized_keys`). GHCR login uses the built-in `GITHUB_TOKEN`.
-  - To roll back, point the Compose service at an older `versus-api:<sha>` tag and run `docker compose up -d versus-api` on the VPS. Compose pulls that tag from GHCR, because the prune step has already removed the old image from the VPS.
+  - To roll back, point the Compose service at an older `versus-api:<sha>` tag and run `docker compose up -d --wait versus-api` on the VPS. Compose pulls that tag from GHCR, because the prune step has already removed the old image from the VPS.
 - **Compose on the VPS** (`~/app`, not in this repo):
   - The `versus-api` service runs `ghcr.io/<owner>/versus-api:latest`, and takes its restart policy, networks and memory limit from a shared `x-api` template.
+  - It has a `healthcheck`, which the deploy's `--wait` depends on, so don't remove it:
+
+    ```yaml
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 20s
+      start_interval: 2s
+    ```
+
+    - It uses BusyBox `wget` because the `node:22-alpine` runtime image has no `curl`. The port is hardcoded, so if `PORT` changes, change the URL too.
+    - For the first 20 s it probes every 2 s, and the container turns `healthy` on the first success, so a normal deploy finishes in a few seconds. Failed probes in that window don't count. After it, Docker probes every 15 s and marks the container `unhealthy` after 3 failures in a row. `start_interval` needs Docker Engine 25 or later.
+    - A container that starts but never answers turns `unhealthy` after about 65 s (20 s plus 3 × 15 s), so the deploy fails with `unhealthy` inside its 90 s `--wait-timeout`. The interval is 15 s rather than 30 s for this reason: with 30 s it would take about 110 s, and the deploy would report a bare timeout instead. Keep `start_period + retries × interval` under 90 s, with some margin, if you change any of them. A container that exits also fails the deploy: straight away if Compose sees it stopped, or at the timeout if the restart policy keeps restarting it.
+    - Outside Swarm, Docker doesn't restart a container for being `unhealthy`. If the API goes unhealthy after a deploy, the status only shows in `docker ps`; the restart policy acts only if the process exits.
+    - `/health` doesn't touch the database, so the check only shows that the process is up and serving HTTP, not that MongoDB is reachable (see [O1](issues.md#o1-the-health-check-cant-see-a-lost-database-connection)).
   - Its `environment` sets `NODE_ENV=production`, `PORT=3000`, `NODE_OPTIONS=--max-old-space-size=192` and `MONGODB_URI`. `CORS_ORIGIN` comes from `env_file: ./env/versus.env`.
   - MongoDB 7 runs as a `mongo` service in the same file, on an internal `db` network, with a 512 MB limit and a 0.25 GB WiredTiger cache. The API has `depends_on: mongo: condition: service_healthy`, because the app exits if its first connection fails.
   - The app connects as a `versus` user with `authSource=versus`, which an init script in `./initdb/mongo` creates the first time the database starts empty.
@@ -52,6 +70,7 @@ The VPS is a shared machine with 2 GB of RAM.
 | --- | --- |
 | The container exits right away with `MONGODB_URI is not set` or `CORS_ORIGIN must be set in production` | A variable is missing from the Compose environment |
 | The container exits with `MongoDB initial connection error` | The database is unreachable at startup |
+| The deploy job fails at "Deploy over SSH" with a container `unhealthy` or a wait timeout | The new container crashed or stopped answering `/health` (see the health check timing above). Run `docker compose logs versus-api` and `docker inspect --format '{{json .State.Health}}' <container>` on the VPS, then fix forward or roll back |
 | The browser shows CORS errors | `CORS_ORIGIN` doesn't exactly match the Vercel origin (scheme and host, no trailing slash) |
 | Every client call fails with a 404 or a JSON parse error | `NEXT_PUBLIC_API_URI` is missing its `/api` suffix |
 | The home page says "There was an issue selecting fighters." | A default fighter ID is missing from the database (see [Data and seeding](data-and-seeding.md)) |

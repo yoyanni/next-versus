@@ -188,8 +188,8 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 - **Severity:** Medium
 - **Where:** [app.ts:13-15](../server/src/app.ts#L13-L15), [Dockerfile](../Dockerfile)
-- **Problem:** `/health` always returns `ok`, even when MongoDB is disconnected and every API call fails. The Dockerfile has no `HEALTHCHECK`, and it isn't clear whether the Compose file defines one.
-- **Fix:** Keep `/health` as it is, but report `mongoose.connection.readyState` (an in-memory value, not a database call) in the response or in a separate `/ready` route. Point the container health check at it.
+- **Problem:** `/health` always returns `ok`, even when MongoDB is disconnected and every API call fails. The Compose `healthcheck` on the VPS calls `/health`, so it (and the deploy's `docker compose up --wait`) passes as long as the process answers HTTP, even with no database. The Dockerfile has no `HEALTHCHECK` of its own.
+- **Fix:** Keep `/health` as it is, but report `mongoose.connection.readyState` (an in-memory value, not a database call) in the response or in a separate `/ready` route. Point the Compose health check at it.
 
 ### O2. Shutdown doesn't close the HTTP server
 
