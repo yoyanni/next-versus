@@ -1,6 +1,6 @@
 const standard = {
   weightClasses: [
-    "Strawweight (W)",
+    "Strawweight",
     "Flyweight (W)",
     "Bantamweight (W)",
     "Flyweight",

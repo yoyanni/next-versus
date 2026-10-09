@@ -86,7 +86,7 @@ const step4: WizardStep<Pick<FighterForm, "standUp">> = {
       type: "select",
       id: `standUp.level`,
       label: "Level",
-      options: [...standard.stats],
+      options: [...standard.levels],
     },
     ...standard.standUp.map(
       (item) =>
@@ -107,7 +107,7 @@ const step5: WizardStep<Pick<FighterForm, "grappling">> = {
       type: "select",
       id: `grappling.level`,
       label: "Level",
-      options: [...standard.stats],
+      options: [...standard.levels],
     },
     ...standard.grappling.map(
       (item) =>
@@ -128,7 +128,7 @@ const step6: WizardStep<Pick<FighterForm, "health">> = {
       type: "select",
       id: `health.level`,
       label: "Level",
-      options: [...standard.stats],
+      options: [...standard.levels],
     },
     ...standard.health.map(
       (item) =>

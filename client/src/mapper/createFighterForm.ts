@@ -62,7 +62,7 @@ export const createFighterForm = (fighter?: Fighter): FighterForm => {
         },
       },
       health: {
-        level: 0,
+        level: health.level,
         skills: {
           cardio: health.skills.cardio,
           chin: health.skills.chin,

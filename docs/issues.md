@@ -7,17 +7,9 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 ## Fix first
 
 
-1. [B2](#b2-editing-a-fighter-resets-its-health-level-to-0): editing a fighter silently sets its health level to 0.
-2. [B5](#b5-the-home-page-breaks-if-any-default-fighter-is-missing): a missing default fighter breaks the home page for everyone.
+1. [B5](#b5-the-home-page-breaks-if-any-default-fighter-is-missing): a missing default fighter breaks the home page for everyone.
 
 ## Bugs
-
-### B2. Editing a fighter resets its health level to 0
-
-- **Severity:** High
-- **Where:** [createFighterForm.ts:65](../client/src/mapper/createFighterForm.ts#L65)
-- **Problem:** In edit mode, `health.level` is hardcoded to `0` instead of `health.level`. The Health step's level select then shows "-- Select a Level --" (value `0`). Unless the user picks a level again, the fighter is saved with health level 0.
-- **Fix:** Use `level: health.level`.
 
 ### B3. Unselected stats are saved as 0
 
@@ -196,7 +188,7 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 - **Severity:** Medium
 - **Problem:** There's no test framework. The riskiest logic (ID generation, seeding, the form mapper, `handleMoveAddition`, the controllers' error paths) is untested.
-- **Fix:** Add Vitest, with Supertest and `mongodb-memory-server` for the API. Start with the controllers and `createFighterForm`, which would have caught [B2](#b2-editing-a-fighter-resets-its-health-level-to-0).
+- **Fix:** Add Vitest, with Supertest and `mongodb-memory-server` for the API. Start with the controllers and `createFighterForm`, which would have caught the health level being reset on edit.
 
 ### T2. The server has no linter
 
