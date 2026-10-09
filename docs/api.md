@@ -30,5 +30,5 @@ The write routes are public, but only for **sandbox fighters**. See [ADR 0003](d
 - **`GET /api/fighters`** returns every fighter (about 2.4 MB) with `.lean()`, which skips building Mongoose documents to keep memory down. There's no pagination.
 - **Create and edit return only the `_id`**, not the document. The client then goes to `/fighters/:id`, which fetches the fighter.
 - **New IDs** are the highest existing `_id` + 1, and never below `SANDBOX_ID_START`, so the first created fighter is `100000`. Two creates at the same moment could get the same ID.
-- **Validation** relies only on the Mongoose schema. There's no request validation layer yet.
+- **Validation** relies only on the Mongoose schema, and only on create: a body missing any field except `nickname` returns `400 {"message": "Failed to create fighter."}`, without naming the field. Edits aren't validated, and nothing checks value ranges. There's no request validation layer yet.
 - **A non-numeric `:id`** (for example `/api/fighters/abc`) returns `500` from GET and DELETE and `400` from PUT. The `400 Invalid ID format` check in `getFighterById` uses `ObjectId.isValid`, which accepts any number, `NaN` included, so it never fires.

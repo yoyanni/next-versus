@@ -14,41 +14,42 @@ const fighterSchema = new mongoose.Schema<IFighter>({
   _id: Number,
   weightClass: {
     type: String,
-    require: true,
+    required: true,
   },
   rank: {
     type: String,
-    require: true,
+    required: true,
   },
   firstName: {
     type: String,
-    require: true,
+    required: true,
   },
   nickname: {
     type: String,
-    require: true,
+    // Some seed fighters have no nickname, and `required` rejects empty strings
+    default: "",
   },
   lastName: {
     type: String,
-    require: true,
+    required: true,
   },
   basic: {
     level: {
       type: Number,
-      require: true,
+      required: true,
     },
     skills: {
       martialArt: {
         type: String,
-        require: true,
+        required: true,
       },
       stance: {
         type: String,
-        require: true,
+        required: true,
       },
       reach: {
         type: Number,
-        require: true,
+        required: true,
       },
     },
   },
@@ -56,131 +57,131 @@ const fighterSchema = new mongoose.Schema<IFighter>({
     {
       name: {
         type: String,
-        require: true,
+        required: true,
       },
       description: {
         type: String,
-        require: true,
+        required: true,
       },
       type: {
         type: String,
-        require: true,
+        required: true,
       },
     },
   ],
   standUp: {
     level: {
       type: Number,
-      require: true,
+      required: true,
     },
     skills: {
       punchSpeed: {
         type: Number,
-        require: true,
+        required: true,
       },
       punchPower: {
         type: Number,
-        require: true,
+        required: true,
       },
       accuracy: {
         type: Number,
-        require: true,
+        required: true,
       },
       blocking: {
         type: Number,
-        require: true,
+        required: true,
       },
       headMovement: {
         type: Number,
-        require: true,
+        required: true,
       },
       footwork: {
         type: Number,
-        require: true,
+        required: true,
       },
       switchStance: {
         type: Number,
-        require: true,
+        required: true,
       },
       takedownDefence: {
         type: Number,
-        require: true,
+        required: true,
       },
       kickPower: {
         type: Number,
-        require: true,
+        required: true,
       },
       kickSpeed: {
         type: Number,
-        require: true,
+        required: true,
       },
     },
   },
   grappling: {
     level: {
       type: Number,
-      require: true,
+      required: true,
     },
     skills: {
       takedowns: {
         type: Number,
-        require: true,
+        required: true,
       },
       topControl: {
         type: Number,
-        require: true,
+        required: true,
       },
       bottomControl: {
         type: Number,
-        require: true,
+        required: true,
       },
       submissions: {
         type: Number,
-        require: true,
+        required: true,
       },
       submissionDefence: {
         type: Number,
-        require: true,
+        required: true,
       },
       groundStriking: {
         type: Number,
-        require: true,
+        required: true,
       },
       clinchStriking: {
         type: Number,
-        require: true,
+        required: true,
       },
       clinchControl: {
         type: Number,
-        require: true,
+        required: true,
       },
     },
   },
   health: {
     level: {
       type: Number,
-      require: true,
+      required: true,
     },
     skills: {
       cardio: {
         type: Number,
-        require: true,
+        required: true,
       },
       chin: {
         type: Number,
-        require: true,
+        required: true,
       },
       body: {
         type: Number,
-        require: true,
+        required: true,
       },
       legs: {
         type: Number,
-        require: true,
+        required: true,
       },
       recovery: {
         type: Number,
-        require: true,
+        required: true,
       },
     },
   },
@@ -189,11 +190,11 @@ const fighterSchema = new mongoose.Schema<IFighter>({
       {
         name: {
           type: String,
-          require: true,
+          required: true,
         },
         level: {
           type: Number,
-          require: true,
+          required: true,
         },
       },
     ],
@@ -201,11 +202,11 @@ const fighterSchema = new mongoose.Schema<IFighter>({
       {
         name: {
           type: String,
-          require: true,
+          required: true,
         },
         level: {
           type: Number,
-          require: true,
+          required: true,
         },
       },
     ],
@@ -213,11 +214,11 @@ const fighterSchema = new mongoose.Schema<IFighter>({
       {
         name: {
           type: String,
-          require: true,
+          required: true,
         },
         level: {
           type: Number,
-          require: true,
+          required: true,
         },
       },
     ],
@@ -225,11 +226,11 @@ const fighterSchema = new mongoose.Schema<IFighter>({
       {
         name: {
           type: String,
-          require: true,
+          required: true,
         },
         level: {
           type: Number,
-          require: true,
+          required: true,
         },
       },
     ],
@@ -269,11 +270,11 @@ const fighterSchema = new mongoose.Schema<IFighter>({
       {
         name: {
           type: String,
-          require: true,
+          required: true,
         },
         level: {
           type: Number,
-          require: true,
+          required: true,
         },
       },
     ],
@@ -281,11 +282,11 @@ const fighterSchema = new mongoose.Schema<IFighter>({
       {
         name: {
           type: String,
-          require: true,
+          required: true,
         },
         level: {
           type: Number,
-          require: true,
+          required: true,
         },
       },
     ],

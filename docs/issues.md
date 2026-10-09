@@ -7,18 +7,10 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 ## Fix first
 
 
-1. [B1](#b1-schema-validation-never-runs-require-instead-of-required): the schema's `require: true` typo turns off all required-field validation.
-2. [B2](#b2-editing-a-fighter-resets-its-health-level-to-0): editing a fighter silently sets its health level to 0.
-3. [B5](#b5-the-home-page-breaks-if-any-default-fighter-is-missing): a missing default fighter breaks the home page for everyone.
+1. [B2](#b2-editing-a-fighter-resets-its-health-level-to-0): editing a fighter silently sets its health level to 0.
+2. [B5](#b5-the-home-page-breaks-if-any-default-fighter-is-missing): a missing default fighter breaks the home page for everyone.
 
 ## Bugs
-
-### B1. Schema validation never runs (`require` instead of `required`)
-
-- **Severity:** High
-- **Where:** [fighter.model.ts](../server/src/models/fighter.model.ts), every field
-- **Problem:** Mongoose's option is `required`. It silently ignores `require: true`, so no field is required. A `POST /api/fighters` with `{}` saves an empty fighter, which then crashes the pages that read `fighter.basic.skills` and similar.
-- **Fix:** Rename every `require` to `required`. The request validation in [S2](#s2-no-request-validation-and-edit-skips-schema-validators) would also catch this.
 
 ### B2. Editing a fighter resets its health level to 0
 
@@ -68,7 +60,7 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 - **Severity:** Medium
 - **Where:** [fighter.controller.ts:46-77](../server/src/controllers/fighter.controller.ts#L46-L77)
-- **Problem:** `req.body` goes straight into `new Fighter(...)` and `findByIdAndUpdate(...)`. `findByIdAndUpdate` doesn't run schema validators unless it's given `runValidators: true`, so edits bypass even the validation that would exist once [B1](#b1-schema-validation-never-runs-require-instead-of-required) is fixed. Nothing checks value ranges, such as stats between 79 and 100 or at most 5 perks.
+- **Problem:** `req.body` goes straight into `new Fighter(...)` and `findByIdAndUpdate(...)`. `findByIdAndUpdate` doesn't run schema validators unless it's given `runValidators: true`, so edits bypass the schema's required-field checks that creates and seeding get. Nothing checks value ranges, such as stats between 79 and 100 or at most 5 perks.
 - **Fix:** Validate the body with zod (already suggested in a comment in the controller), derived from or checked against `shared/types.ts`. Pass `runValidators: true` on update.
 
 ### S3. Errors outside the controllers return HTML, not JSON

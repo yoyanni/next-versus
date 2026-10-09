@@ -10,6 +10,8 @@
 - **`perks`:** `{ name, description, type }[]`
 - **`moves`:** arrays of `{ name, level }` for punches, kicks, clinch, takedowns, submissions and combos, plus a nested `ground` object (getups, transitions, reversals, sweeps, strikes)
 
+Every field is required by the Mongoose schema except `nickname`, which may be empty and defaults to `""` (117 seed fighters have none), and the `name` and `level` of `moves.ground.*` entries. The schema checks this when a fighter is created and when the seed is inserted, not on edit.
+
 ### Changing the shape
 
 When you change the shape, update all four of these together:
@@ -30,6 +32,7 @@ Then update `client/src/config/formConfig.ts` if the new field needs a form inpu
 - The seed data is [`server/seed/fighters.json`](../server/seed/fighters.json): 390 fighters with `_id` 1 to 390.
 - **Automatic:** at startup, `seedFighters()` (`server/src/seed.ts`) seeds the collection if it's empty. That's how a freshly recreated VPS gets its data.
 - **Manual reset:** `npm run seed --workspace=server` wipes the collection and reseeds it. Your own edits are lost.
+- Each seed fighter is validated against the schema as it's inserted. An entry with a missing field makes seeding fail, and at startup that stops the server.
 - The file is read at runtime and inserted in batches of 50. See [ADR 0002](decisions/0002-seed-at-runtime-in-batches.md) for why.
 
 ## Seed and sandbox fighters
