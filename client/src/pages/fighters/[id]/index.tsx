@@ -7,6 +7,7 @@ import MoveAccordion from "@/components/MoveAccordion";
 import { useFighter } from "@/hooks/useFighter";
 import { apiClient } from "@/service/apiClient";
 import standard from "@/standard";
+import { SANDBOX_ID_START } from "@shared/limits";
 import { ActiveAccordion } from "@/types/component";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
@@ -104,13 +105,19 @@ export default function Fighter() {
         isActive={activeAccordion}
         handleToggle={() => handleToggle("moves")}
       />
-      <div className="flex justify-center gap-4 mt-4">
-        <LinkButton
-          href={`/fighters/${fighter._id}/edit`}
-          title="Edit Fighter"
-        />
-        <Button title="Delete Fighter" onClick={() => setOpen(true)} />
-      </div>
+      {fighter._id >= SANDBOX_ID_START ? (
+        <div className="flex justify-center gap-4 mt-4">
+          <LinkButton
+            href={`/fighters/${fighter._id}/edit`}
+            title="Edit Fighter"
+          />
+          <Button title="Delete Fighter" onClick={() => setOpen(true)} />
+        </div>
+      ) : (
+        <p className="text-center mt-4">
+          Seed fighters are read-only. Create your own to try editing.
+        </p>
+      )}
       <ConfirmDialog
         open={open}
         title="Delete Fighter"

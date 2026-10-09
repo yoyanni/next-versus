@@ -39,6 +39,8 @@ There is no test framework or test suite.
 - **Env:** server code reads `env` from `server/src/config/env.ts`, never `process.env`. `NEXT_PUBLIC_API_URI` must include the `/api` suffix. Never hardcode connection strings, secrets or CORS origins, and never give them defaults.
 - **Fighter shape:** when you change it, update `shared/types.ts`, `server/src/models/fighter.model.ts`, `FighterForm` in `client/src/types/component.ts`, and `client/src/mapper/createFighterForm.ts` together.
 - **IDs are numbers, not ObjectIds.** Controllers convert `req.params.id` with `Number(...)`. `defaultFighters` in `client/src/pages/index.tsx` hardcodes IDs, and those IDs must exist in `server/seed/fighters.json`.
+- **Seed and sandbox fighters:** IDs below `SANDBOX_ID_START` (`shared/limits.ts`) are seed fighters, read-only without `ADMIN_TOKEN`. Created fighters get IDs from that value up, and only the newest 3 are kept. Every write route must keep `writeLimiter`, and every route that changes an existing fighter must keep `protectSeed`. The client never sends the token.
+- **Shared values:** `shared/` can export runtime values only because of `experimental.externalDir` in `client/next.config.js` and `"type": "module"` in `shared/package.json`. Keep both.
 - **API:** create and edit return only the `_id`. `GET /api/fighters` returns every fighter, so keep `.lean()`. `/health` must not touch the database.
 - **Client writes** call `apiClient` directly, then invalidate `["fighters"]` and `["fighter", id]` by hand.
 - **Wizard move values** are `"<path>:<name>"` strings that `handleMoveAddition` splits.

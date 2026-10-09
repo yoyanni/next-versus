@@ -28,5 +28,6 @@
     "titleBar.inactiveForeground": "#15202b99",
     "statusBar.inactiveBackground": "#ff4d4f80"
   },
-  "peacock.remoteColor": "#ff4d4f80"
+  "peacock.remoteColor": "#ff4d4f80",
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }

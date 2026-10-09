@@ -32,6 +32,15 @@ Then update `client/src/config/formConfig.ts` if the new field needs a form inpu
 - **Manual reset:** `npm run seed --workspace=server` wipes the collection and reseeds it. Your own edits are lost.
 - The file is read at runtime and inserted in batches of 50. See [ADR 0002](decisions/0002-seed-at-runtime-in-batches.md) for why.
 
+## Seed and sandbox fighters
+
+- A fighter with `_id` below `SANDBOX_ID_START` (100 000, in [`shared/limits.ts`](../shared/limits.ts)) is a **seed fighter**. It's read-only through the API without the admin token, and the client hides its Edit and Delete buttons.
+- A fighter created through the API is a **sandbox fighter**, with an ID from 100 000 up. Anyone can edit or delete it.
+- Only the newest 3 sandbox fighters are kept (`SANDBOX_MAX_FIGHTERS` in `fighter.controller.ts`).
+- Seed IDs must stay below 100 000.
+- Automatic seeding ignores sandbox fighters and doesn't remove them, because it only runs on an empty collection. The manual reset removes them with everything else.
+- To change a seed fighter for good, edit `server/seed/fighters.json`. A change made with the admin token is lost when the VPS is rebuilt.
+
 ### Default fighters on the home page
 
 `defaultFighters` in `client/src/pages/index.tsx` hardcodes a red and a blue fighter ID for each weight class. **Those IDs must exist**, or the home page shows an error. If you regenerate the seed file or delete one of those fighters, update the list.

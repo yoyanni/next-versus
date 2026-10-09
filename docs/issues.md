@@ -6,10 +6,10 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 ## Fix first
 
-1. [S1](#s1-the-write-api-has-no-authentication): anyone can create, edit or delete fighters in production.
-2. [B1](#b1-schema-validation-never-runs-require-instead-of-required): the schema's `require: true` typo turns off all required-field validation.
-3. [B2](#b2-editing-a-fighter-resets-its-health-level-to-0): editing a fighter silently sets its health level to 0.
-4. [B5](#b5-the-home-page-breaks-if-any-default-fighter-is-missing): deleting fighter 1 or 2 breaks the home page for everyone.
+
+1. [B1](#b1-schema-validation-never-runs-require-instead-of-required): the schema's `require: true` typo turns off all required-field validation.
+2. [B2](#b2-editing-a-fighter-resets-its-health-level-to-0): editing a fighter silently sets its health level to 0.
+3. [B5](#b5-the-home-page-breaks-if-any-default-fighter-is-missing): a missing default fighter breaks the home page for everyone.
 
 ## Bugs
 
@@ -43,9 +43,9 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 ### B5. The home page breaks if any default fighter is missing
 
-- **Severity:** High (because of [S1](#s1-the-write-api-has-no-authentication))
+- **Severity:** Medium
 - **Where:** [pages/index.tsx:50-52](../client/src/pages/index.tsx#L50-L52)
-- **Problem:** The page starts on fighters 1 and 2. If either is missing, it renders only "There was an issue selecting fighters." with no way to recover, because the weight-class picker isn't rendered either. Anyone can delete fighter 1 through the public API.
+- **Problem:** The page starts on fighters 1 and 2. If either is missing, it renders only "There was an issue selecting fighters." with no way to recover, because the weight-class picker isn't rendered either. Seed fighters can only be deleted with the admin token, so this needs an admin delete or a seed file that no longer has those IDs.
 - **Fix:** Fall back to the first two fighters in the weight class when a default ID isn't found, and keep rendering `Versebar`.
 
 ### B6. Two creates at the same moment can get the same ID
@@ -63,13 +63,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Fix:** Show the perk count, or no number at all.
 
 ## Security
-
-### S1. The write API has no authentication
-
-- **Severity:** High
-- **Where:** [fighter.routes.ts](../server/src/routes/fighter.routes.ts)
-- **Problem:** `POST`, `PUT` and `DELETE /api/fighters` are open to anyone who can reach the API. CORS only limits browsers on other origins, not `curl`. Anyone can delete every fighter, and nothing restores them until the collection is empty and the container restarts. The docs don't say that the write API is public.
-- **Fix:** Decide who is allowed to write. The simplest option is an admin token checked by middleware on the write routes, read from `env` (never with a default). If editing should stay public, add rate limiting and back up the data instead.
 
 ### S2. No request validation, and edit skips schema validators
 
@@ -235,5 +228,5 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 ### X1. Docs that don't match the code
 
 - **Severity:** Low
-- **Problem:** [architecture.md](architecture.md) says a dropped connection is "retried every 3 s", which is unverified (see [O3](#o3-the-reconnect-logic-needs-checking)). No doc says that the write API is public ([S1](#s1-the-write-api-has-no-authentication)). The README still has TODOs for a live demo link and a screenshot.
+- **Problem:** [architecture.md](architecture.md) says a dropped connection is "retried every 3 s", which is unverified (see [O3](#o3-the-reconnect-logic-needs-checking)). The README still has TODOs for a live demo link and a screenshot.
 - **Fix:** Update these as the related items are fixed.

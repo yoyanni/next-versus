@@ -6,6 +6,7 @@ These are short notes on choices that aren't obvious from the code. Each one rec
 | --- | --- | --- |
 | [0001](0001-numeric-fighter-ids.md) | Numeric fighter IDs instead of ObjectIds | Accepted |
 | [0002](0002-seed-at-runtime-in-batches.md) | Seed at startup, from a file read at runtime, in batches | Accepted |
+| [0003](0003-public-sandbox-with-protected-seed.md) | Public writes limited to a sandbox, with read-only seed fighters | Accepted |
 
 ## Template
 

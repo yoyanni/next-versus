@@ -6,20 +6,22 @@ import {
   editFighter,
   deleteFighter,
 } from "../controllers/fighter.controller";
+import { protectSeed } from "../middleware/protectSeed";
+import { writeLimiter } from "../middleware/writeLimiter";
 
 const fighterRouter = Router();
 
 // Create
-fighterRouter.post("/fighters", createFighter);
+fighterRouter.post("/fighters", writeLimiter, createFighter);
 
 // Read
 fighterRouter.get("/fighters", getFighters);
 fighterRouter.get("/fighters/:id", getFighterById);
 
 // Update
-fighterRouter.put("/fighters/:id", editFighter);
+fighterRouter.put("/fighters/:id", writeLimiter, protectSeed, editFighter);
 
 // Delete
-fighterRouter.delete("/fighters/:id", deleteFighter);
+fighterRouter.delete("/fighters/:id", writeLimiter, protectSeed, deleteFighter);
 
 export default fighterRouter;

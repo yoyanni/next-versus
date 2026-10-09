@@ -3,7 +3,10 @@ import mongoose from "mongoose";
 import { Request, Response } from "express";
 
 // Internal imports
+import { SANDBOX_ID_START } from "@shared/limits";
 import Fighter from "../models/fighter.model";
+
+const SANDBOX_MAX_FIGHTERS = 3;
 
 export const getFighters = async (_req: Request, res: Response) => {
   try {
@@ -45,9 +48,21 @@ export const getFighterById = async (req: Request, res: Response) => {
  */
 export const createFighter = async (req: Request, res: Response) => {
   try {
-    // Numeric ids: next id is the highest existing one + 1 (starts at 1 on an empty DB)
+    // The sandbox holds SANDBOX_MAX_FIGHTERS; the oldest ones make room for a new one
+    const sandbox = { _id: { $gte: SANDBOX_ID_START } };
+    const excess =
+      (await Fighter.countDocuments(sandbox)) - SANDBOX_MAX_FIGHTERS + 1;
+    if (excess > 0) {
+      const oldest = await Fighter.find(sandbox, "_id")
+        .sort({ _id: 1 })
+        .limit(excess)
+        .lean();
+      await Fighter.deleteMany({ _id: { $in: oldest.map((f) => f._id) } });
+    }
+
+    // Created fighters get sandbox ids: the highest existing one + 1, never below the boundary
     const last = await Fighter.findOne({}, "_id").sort({ _id: -1 }).lean();
-    req.body._id = (last?._id ?? 0) + 1;
+    req.body._id = Math.max(last?._id ?? 0, SANDBOX_ID_START - 1) + 1;
     const newFighter = new Fighter(req.body);
     await newFighter.save();
 

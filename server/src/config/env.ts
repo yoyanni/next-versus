@@ -7,7 +7,8 @@ import "dotenv/config";
  * Loads `.env` (local dev only; in production Docker Compose injects the vars)
  * and validates everything the server needs before any other module reads it.
  */
-const { PORT = "5000", MONGODB_URI, CORS_ORIGIN, NODE_ENV } = process.env;
+const { PORT = "5000", MONGODB_URI, CORS_ORIGIN, NODE_ENV, ADMIN_TOKEN } =
+  process.env;
 
 const isProd = NODE_ENV === "production";
 
@@ -23,5 +24,7 @@ export const env = {
   PORT: Number(PORT),
   MONGODB_URI,
   CORS_ORIGIN,
+  // Optional. When unset, nobody can change seed fighters through the API.
+  ADMIN_TOKEN: ADMIN_TOKEN || undefined,
   isProd,
 };

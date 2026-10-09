@@ -47,7 +47,7 @@ Vercel builds `client/` on push. Set `NEXT_PUBLIC_API_URI=https://versus-api.<do
   - The `db` network is `internal: true`, so Mongo has no route in or out of the host, and Caddy, which is only on `web`, can't reach it. `versus-api` is on both networks. Other projects' services share these networks, so Mongo is kept apart from them only by its credentials.
   - Compose fills `${…}` values (`DOMAIN`, `ACME_EMAIL`, `MONGO_ROOT_PASSWORD`, `VERSUS_DB_PASSWORD`) from the environment or a `.env` file next to the Compose file.
 - **The `versus-api` service:**
-  - Its `environment` sets `NODE_ENV=production`, `PORT=3000`, `NODE_OPTIONS=--max-old-space-size=192` and `MONGODB_URI=mongodb://versus:${VERSUS_DB_PASSWORD}@mongo:27017/versus?authSource=versus`. `CORS_ORIGIN` comes from `env_file: ./env/versus.env`.
+  - Its `environment` sets `NODE_ENV=production`, `PORT=3000`, `NODE_OPTIONS=--max-old-space-size=192` and `MONGODB_URI=mongodb://versus:${VERSUS_DB_PASSWORD}@mongo:27017/versus?authSource=versus`. `CORS_ORIGIN` comes from `env_file: ./env/versus.env`. `ADMIN_TOKEN` is optional and goes in the same file; without it, seed fighters can't be changed through the API (see [Configuration](configuration.md)).
   - Port 3000 is hardcoded in three places: `PORT`, the health check URL and the Caddyfile's `reverse_proxy`. Change all three together. The container publishes no ports; only Caddy reaches it.
   - It has `depends_on: mongo: condition: service_healthy`, because the app exits if its first connection fails.
   - It has a `healthcheck`, which the deploy's `--wait` depends on, so don't remove it:
@@ -77,6 +77,7 @@ Vercel builds `client/` on push. Set `NEXT_PUBLIC_API_URI=https://versus-api.<do
   - Caddy gets and renews the certificates itself from Let's Encrypt, using `ACME_EMAIL` as the account email. Certificates are kept in the `caddy_data` volume. Port 443/UDP is published for HTTP/3.
   - A shared `(common)` snippet, imported by every site, compresses responses (zstd or gzip), sets `Strict-Transport-Security: max-age=31536000` and `X-Content-Type-Options: nosniff`, and removes the `Server` header. The app doesn't need its own compression or these headers.
   - Caddy doesn't handle CORS; the app does, using `CORS_ORIGIN`.
+  - The app's write rate limit counts by client IP, which it reads from Caddy's `X-Forwarded-For` header (`trust proxy` is set to `1`, for one proxy). If another proxy or a CDN is put in front of Caddy, raise that number in `server/src/app.ts`, or every visitor shares one limit.
   - When the container is down or restarting, Caddy returns a `502` with an empty body.
 
 ### Build and run the image locally
