@@ -1,6 +1,6 @@
 const standard = {
   weightClasses: [
-    "Strawweight",
+    "Strawweight (W)",
     "Flyweight (W)",
     "Bantamweight (W)",
     "Flyweight",
@@ -11,6 +11,14 @@ const standard = {
     "Middleweight",
     "Light Heavyweight",
     "Heavyweight",
+  ],
+  // One group per hour. The index is the epoch hour modulo the length, so the order is tied to the clock.
+  weightClassRotation: [
+    ["Strawweight (W)", "Flyweight (W)", "Bantamweight (W)"],
+    ["Flyweight", "Bantamweight"],
+    ["Welterweight", "Middleweight"],
+    ["Light Heavyweight", "Heavyweight"],
+    ["Featherweight", "Lightweight"],
   ],
   basic: [
     { name: "Martial Art", propName: "martialArt" },

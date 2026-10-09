@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { useRotation } from "@/hooks/useRotation";
 
 interface LayoutType {
   children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutType) => {
+  const rotation = useRotation();
+
   return (
     <>
       <header className="flex flex-col bg-navBg">
@@ -21,8 +24,8 @@ const Layout = ({ children }: LayoutType) => {
           </ul>
         </nav>
         <aside className="grow flex justify-between px-4 py-1 text-end bg-navBgElevated text-titleLightFontColor text-quaternaryFontSize font-semibold">
-          <span>Flyweight, Bantamweight</span>
-          <span>59:59</span>
+          <span>{rotation ? rotation.group.join(", ") : " "}</span>
+          <span className="tabular-nums">{rotation?.remaining}</span>
         </aside>
       </header>
       {children}

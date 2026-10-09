@@ -159,9 +159,9 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 ### C6. Placeholder UI in the layout
 
 - **Severity:** Low
-- **Where:** [Layout.tsx:20-25](../client/src/components/Layout.tsx#L20-L25)
-- **Problem:** "Combos" in the nav isn't a link and has no page. The bar under the nav always shows "Flyweight, Bantamweight" and "59:59".
-- **Fix:** Build the combos page or remove the item, and remove or wire up the hardcoded bar.
+- **Where:** [Layout.tsx:23](../client/src/components/Layout.tsx#L23)
+- **Problem:** "Combos" in the nav isn't a link and has no page.
+- **Fix:** Build the combos page or remove the item.
 
 ### C7. Accessibility
 

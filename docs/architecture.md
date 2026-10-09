@@ -44,6 +44,8 @@ flowchart LR
 
 `pages/api/hello.ts` is leftover Next.js boilerplate. The real API is the Express server.
 
+Every page is wrapped in `components/Layout.tsx`. The bar under its nav shows the weight-class group that is live this hour and a countdown to the next one. `hooks/useRotation.ts` derives both from the clock: the group is `standard.weightClassRotation[epochHour % 5]`, and it changes at the top of each hour. Nothing is stored, so the order of that array is what fixes which group is live. The hook returns `null` until the component mounts, to keep the server render and the first client render the same.
+
 ## Client data flow
 
 - **`service/apiClient.ts`** is a thin `fetch` wrapper (`get`, `post`, `put`, `delete`). On a non-2xx response it throws an error carrying the server's `message`.
