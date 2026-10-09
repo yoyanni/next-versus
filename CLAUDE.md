@@ -10,7 +10,7 @@ The full documentation is in `docs/`. Read the relevant doc before changing that
 - `docs/architecture.md`: layout, client data flow, wizard form, styling
 - `docs/api.md`: endpoints and their quirks
 - `docs/configuration.md`: every environment variable
-- `docs/data-and-seeding.md`: the fighter shape, seeding, default fighter IDs
+- `docs/data-and-seeding.md`: the fighter shape, seeding, home page default fighters
 - `docs/deployment.md`: Docker, CI/CD, VPS constraints
 - `docs/issues.md`: known bugs and gaps (remove an item in the change that fixes it)
 - `docs/decisions/`: records of why things are the way they are (add a new one for a significant decision)
@@ -38,7 +38,7 @@ There is no test framework or test suite.
 
 - **Env:** server code reads `env` from `server/src/config/env.ts`, never `process.env`. `NEXT_PUBLIC_API_URI` must include the `/api` suffix. Never hardcode connection strings, secrets or CORS origins, and never give them defaults.
 - **Fighter shape:** when you change it, update `shared/types.ts`, `server/src/models/fighter.model.ts`, `FighterForm` in `client/src/types/component.ts`, and `client/src/mapper/createFighterForm.ts` together.
-- **IDs are numbers, not ObjectIds.** Controllers convert `req.params.id` with `Number(...)`. `defaultFighters` in `client/src/pages/index.tsx` hardcodes IDs, and those IDs must exist in `server/seed/fighters.json`.
+- **IDs are numbers, not ObjectIds.** Controllers convert `req.params.id` with `Number(...)`. The home page hardcodes no fighter IDs; `client/src/utils/pickCorners.ts` picks each weight class's starting fighters by `rank`.
 - **Seed and sandbox fighters:** IDs below `SANDBOX_ID_START` (`shared/limits.ts`) are seed fighters, read-only without `ADMIN_TOKEN`. Created fighters get IDs from that value up, and only the newest 3 are kept. Every write route must keep `writeLimiter`, and every route that changes an existing fighter must keep `protectSeed`. The client never sends the token.
 - **Shared values:** `shared/` can export runtime values only because of `experimental.externalDir` in `client/next.config.js` and `"type": "module"` in `shared/package.json`. Keep both.
 - **API:** create and edit return only the `_id`. `GET /api/fighters` returns every fighter, so keep `.lean()`. `/health` must not touch the database.

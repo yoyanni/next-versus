@@ -62,9 +62,9 @@ const Versebar = ({
           }`}
           onClick={() => toggleFighterList("red")}
         >
-          <div>{red.firstName}</div>
+          <div>{red?.firstName}</div>
           <div className="text-primaryFontSize font-semibold tracking-wider">
-            {red.lastName}
+            {red?.lastName ?? "No fighter"}
           </div>
         </div>
         <div
@@ -75,9 +75,9 @@ const Versebar = ({
           }`}
           onClick={() => toggleFighterList("blue")}
         >
-          <div className="text-end">{blue.firstName}</div>
+          <div className="text-end">{blue?.firstName}</div>
           <div className="text-primaryFontSize font-black tracking-wider text-end">
-            {blue.lastName}
+            {blue?.lastName ?? "No fighter"}
           </div>
         </div>
       </div>

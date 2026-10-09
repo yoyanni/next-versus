@@ -108,4 +108,3 @@ The VPS is a shared machine with 2 GB of RAM.
 | Requests to `versus-api.<domain>` get a `502` | The container is down, restarting or still starting. Check `docker compose ps` |
 | The browser shows CORS errors | `CORS_ORIGIN` doesn't exactly match the Vercel origin (scheme and host, no trailing slash) |
 | Every client call fails with a 404 or a JSON parse error | `NEXT_PUBLIC_API_URI` is missing its `/api` suffix |
-| The home page says "There was an issue selecting fighters." | A default fighter ID is missing from the database (see [Data and seeding](data-and-seeding.md)) |

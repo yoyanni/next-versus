@@ -13,7 +13,7 @@ The home page needs a default red and blue fighter for each weight class. Object
 
 ## Consequences
 
-- `defaultFighters` in `client/src/pages/index.tsx` can hardcode IDs, but those IDs must exist in `server/seed/fighters.json`.
+- `defaultFighters` in `client/src/pages/index.tsx` can hardcode IDs, but those IDs must exist in `server/seed/fighters.json`. (Removed on 2026-10-09; the home page now picks by rank.)
 - Two creates at the same moment could get the same ID. Mongo's unique `_id` index rejects the second one, which then fails with `400`. That's acceptable at this app's traffic.
 - IDs are enumerable and predictable, which is fine because the data isn't sensitive.
 - Alternatives for later: a counter collection that assigns IDs atomically, or picking defaults by a field such as rank instead of by ID.

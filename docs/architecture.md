@@ -51,6 +51,7 @@ Every page is wrapped in `components/Layout.tsx`. The bar under its nav shows th
 - **`service/apiClient.ts`** is a thin `fetch` wrapper (`get`, `post`, `put`, `delete`). On a non-2xx response it throws an error carrying the server's `message`.
 - **Reads** go through TanStack Query hooks: `useFighters()` uses the key `["fighters"]` and `useFighter(id)` uses `["fighter", id]`. Both have a 5-minute `staleTime`.
 - **Writes** call `apiClient` directly (there's no `useMutation`), then invalidate those query keys by hand.
+- **The home page stores only IDs**: the weight class and a fighter ID per corner, or `null` for a corner nobody has picked. `utils/pickCorners.ts` resolves them on every render. A `null` corner, or one whose fighter is no longer in the list, gets the highest-ranked fighter in the weight class that the other corner isn't showing, seed fighters first (see [Data and seeding](data-and-seeding.md#default-fighters-on-the-home-page)). `Versebar` is always rendered, with or without two fighters.
 - **Seed fighters are read-only.** The pages compare `fighter._id` with `SANDBOX_ID_START` to decide whether to show the edit and delete controls. The client never sends the admin token.
 
 ## Server write flow

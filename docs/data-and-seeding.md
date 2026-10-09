@@ -46,4 +46,9 @@ Then update `client/src/config/formConfig.ts` if the new field needs a form inpu
 
 ### Default fighters on the home page
 
-`defaultFighters` in `client/src/pages/index.tsx` hardcodes a red and a blue fighter ID for each weight class. **Those IDs must exist**, or the home page shows an error. If you regenerate the seed file or delete one of those fighters, update the list.
+The home page hardcodes no fighter IDs. [`client/src/utils/pickCorners.ts`](../client/src/utils/pickCorners.ts) opens each weight class on its two highest-ranked fighters, the champion in the red corner and the number 1 in the blue.
+
+- `rank` is a string. `"Champ"` and `"0"` both mean champion (the seed file uses `"Champ"` for Strawweight and `"0"` for the other ten classes). `"1"` to `"15"` are ranks, and anything else, such as `"null"`, is unranked and sorts last.
+- Seed fighters sort ahead of sandbox fighters whatever their rank, so a visitor can't claim a corner by ranking a fighter Champ.
+- **Each weight class needs a champion and a number 1 in the seed file** to open on them. If one is missing, the class opens on its next ranked fighters, with no error.
+- The same rule fills a corner whose selected fighter has been deleted. If a class has fewer than two fighters, the page shows a message in place of the cards and keeps the picker.

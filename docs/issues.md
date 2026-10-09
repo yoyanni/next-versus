@@ -4,11 +4,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 **Severity:** **High** means data loss, a security hole, or a broken page in production. **Medium** means wrong behaviour that users can hit. **Low** means cleanup, polish, or a latent risk.
 
-## Fix first
-
-
-1. [B5](#b5-the-home-page-breaks-if-any-default-fighter-is-missing): a missing default fighter breaks the home page for everyone.
-
 ## Bugs
 
 ### B3. Unselected stats are saved as 0
@@ -24,13 +19,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Where:** [fighter.controller.ts:24](../server/src/controllers/fighter.controller.ts#L24), plus `editFighter` and `deleteFighter`
 - **Problem:** `getFighterById` checks the numeric ID with `mongoose.Types.ObjectId.isValid`, which returns `true` for any number, `NaN` included. `/api/fighters/abc` reaches Mongo and fails with a `CastError`. GET and DELETE return `500`, and PUT returns `400`. Edit and delete don't check the ID at all.
 - **Fix:** A shared check for all three: `if (!Number.isInteger(id) || id < 1) return res.status(400)…`. Update [api.md](api.md), which documents the current behaviour.
-
-### B5. The home page breaks if any default fighter is missing
-
-- **Severity:** Medium
-- **Where:** [pages/index.tsx:50-52](../client/src/pages/index.tsx#L50-L52)
-- **Problem:** The page starts on fighters 1 and 2. If either is missing, it renders only "There was an issue selecting fighters." with no way to recover, because the weight-class picker isn't rendered either. Seed fighters can only be deleted with the admin token, so this needs an admin delete or a seed file that no longer has those IDs.
-- **Fix:** Fall back to the first two fighters in the weight class when a default ID isn't found, and keep rendering `Versebar`.
 
 ### B6. Two creates at the same moment can get the same ID
 

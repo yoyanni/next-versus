@@ -6,26 +6,14 @@ import Versebar from "@/components/Versebar";
 import standard from "@/standard";
 import { Sides } from "@/types/component";
 import { useFighters } from "@/hooks/useFighters";
+import { pickCorners } from "@/utils/pickCorners";
 
-const defaultIds = {
+// A null corner means "not chosen yet": pickCorners fills it by rank.
+const defaultIds: { wc: number; red: number | null; blue: number | null } = {
   wc: 0,
-  red: 1,
-  blue: 2,
+  red: null,
+  blue: null,
 };
-
-const defaultFighters: { red: number; blue: number }[] = [
-  { red: 1, blue: 2 },
-  { red: 24, blue: 25 },
-  { red: 43, blue: 44 },
-  { red: 64, blue: 65 },
-  { red: 79, blue: 80 },
-  { red: 111, blue: 112 },
-  { red: 149, blue: 150 },
-  { red: 201, blue: 202 },
-  { red: 255, blue: 256 },
-  { red: 298, blue: 299 },
-  { red: 341, blue: 342 },
-];
 
 export default function Home() {
   const { data: fighters, isLoading } = useFighters();
@@ -35,38 +23,41 @@ export default function Home() {
   if (isLoading) return <main>Loading...</main>;
   if (!fighters) return <main>No fighters were available...</main>;
 
-  const selected = {
-    wc: ids.wc,
-    red: fighters.find((f) => f._id === ids.red),
-    blue: fighters.find((f) => f._id === ids.blue),
-    wcFighters: fighters.filter(
-      (f) =>
-        f.weightClass === standard.weightClasses[ids.wc] ||
-        f.weightClass === "Generic"
-    ),
-  };
-
-  // Once fighters has loaded and looked for but for some reason not found
-  if (selected.red == undefined || selected.blue == undefined) {
-    return <main>There was an issue selecting fighters.</main>;
-  }
+  const wcFighters = fighters.filter(
+    (f) =>
+      f.weightClass === standard.weightClasses[ids.wc] ||
+      f.weightClass === "Generic"
+  );
+  const { red, blue } = pickCorners(fighters, wcFighters, ids);
 
   function changeFighter(id: number, side: Sides) {
-    setIds((prevValue) => ({ ...prevValue, [side]: id }));
+    // Pin the corner that wasn't clicked, so it doesn't move when the other one changes.
+    setIds({
+      wc: ids.wc,
+      red: red?._id ?? null,
+      blue: blue?._id ?? null,
+      [side]: id,
+    });
   }
 
   function changeWeightClass(id: number) {
-    setIds({ wc: id, ...defaultFighters[id] });
+    setIds({ wc: id, red: null, blue: null });
   }
 
   return (
     <main className="grow mt-4">
-      <Cards red={selected.red} blue={selected.blue} />
+      {red && blue ? (
+        <Cards red={red} blue={blue} />
+      ) : (
+        <p className="text-center">
+          There aren&apos;t enough fighters in this weight class to compare.
+        </p>
+      )}
       <Versebar
-        wc={selected.wc}
-        red={selected.red}
-        blue={selected.blue}
-        wcFighters={selected.wcFighters}
+        wc={ids.wc}
+        red={red}
+        blue={blue}
+        wcFighters={wcFighters}
         changeFighter={changeFighter}
         changeWeightClass={changeWeightClass}
       />

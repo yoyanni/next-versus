@@ -22,8 +22,8 @@ export interface CardWrapperProps {
 
 export interface VersebarProps {
   wc: number;
-  red: Fighter;
-  blue: Fighter;
+  red: Fighter | undefined;
+  blue: Fighter | undefined;
   wcFighters: Fighter[];
   changeFighter: (id: number, side: Sides) => void;
   changeWeightClass: (id: number) => void;
