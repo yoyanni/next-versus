@@ -1,5 +1,6 @@
 import { FighterForm } from "@/types/component";
 import { Fighter } from "@shared/types";
+import { RANK_UNRANKED } from "@shared/limits";
 
 export const createFighterForm = (fighter?: Fighter): FighterForm => {
   if (fighter) {
@@ -92,7 +93,7 @@ export const createFighterForm = (fighter?: Fighter): FighterForm => {
     return {
       generalInfo: {
         weightClass: "",
-        rank: "",
+        rank: RANK_UNRANKED,
         firstName: "",
         nickname: "",
         lastName: "",

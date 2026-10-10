@@ -9,6 +9,7 @@ import { apiClient } from "@/service/apiClient";
 import standard from "@/standard";
 import { SANDBOX_ID_START } from "@shared/limits";
 import { ActiveAccordion } from "@/types/component";
+import { formatRank } from "@/utils/formatRank";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -49,7 +50,7 @@ export default function Fighter() {
         </h1>
         <div>
           <span className="font-semibold">Rank:</span>{" "}
-          <span>#{fighter.rank}</span>
+          <span>{formatRank(fighter.rank)}</span>
         </div>
         <div>
           <span className="font-bold">Weight Class: </span>

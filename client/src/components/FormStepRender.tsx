@@ -81,11 +81,20 @@ function FormStepRender<T extends object>({
                       })}
                     </optgroup>
                   ))
-                : input.options?.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
+                : input.options?.map((option) => {
+                    if (typeof option === "string") {
+                      return (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      );
+                    }
+                    return (
+                      <option key={option.value} value={option.value}>
+                        {option.option}
+                      </option>
+                    );
+                  })}
             </select>
           ) : (
             <input

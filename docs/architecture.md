@@ -73,6 +73,7 @@ Every page is wrapped in `components/Layout.tsx`. The bar under its nav shows th
   - `basic` becomes `basicInfo`
   - `perks` holds only perk names, and the full perk objects are rebuilt from `standard.perks` on submit
   - a temporary `move` field holds the move being added
+- **A select option can have a label that differs from its value.** Plain `options` are strings, or `{ value, option }` objects where `option` is the label. The rank select uses the second form: its values are `"0"` to `"15"` and its labels come from `utils/formatRank.ts`. A new fighter starts on "Unranked".
 - **Move values are encoded** as `"<path>:<name>"`, for example `"ground.sweeps:BJJ"`. `handleMoveAddition` splits on `:` to find which `moves.*` array to append to.
 - **Levels and stats use different lists.** The four level selects (Basic Info, Stand-Up, Grappling, Health) offer `standard.levels` (1.5 to 5). The skill selects under them offer `standard.stats` (79 to 100).
 - `mapper/createFighterForm.ts` builds the form's default values, from a fighter in edit mode or empty in create mode.

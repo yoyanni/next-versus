@@ -1,5 +1,6 @@
 import standard from "@/standard";
 import { Sides, VersebarProps } from "@/types/component";
+import { formatRank } from "@/utils/formatRank";
 import { useState } from "react";
 
 const Versebar = ({
@@ -110,7 +111,7 @@ const Versebar = ({
                       : "active:bg-blueCornerDark"
                   }`}
                 >
-                  <td className="w-[35%] py-2">{f.rank}</td>
+                  <td className="w-[35%] py-2">{formatRank(f.rank)}</td>
                   <td className="py-2 ">
                     <div className="text-start leading-4">
                       <div>{f.firstName}</div>

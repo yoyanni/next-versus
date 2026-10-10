@@ -4,7 +4,7 @@
 
 [`shared/types.ts`](../shared/types.ts) is the source of truth. Roughly:
 
-- **Identity:** `_id` (a number), `firstName`, `nickname`, `lastName`, `weightClass`, `rank`
+- **Identity:** `_id` (a number), `firstName`, `nickname`, `lastName`, `weightClass`, `rank` (a number: `0` is the champion, `1` to `14` are the ranked contenders, `15` is unranked)
 - **`basic`:** `level` plus `martialArt`, `stance`, `reach`
 - **`standUp`, `grappling`, `health`:** each is `{ level, skills: { … } }`
 - **`perks`:** `{ name, description, type }[]`
@@ -25,7 +25,7 @@ Then update `client/src/config/formConfig.ts` if the new field needs a form inpu
 
 ## Static game data
 
-[`client/src/standard.ts`](../client/src/standard.ts) holds the game's constants: weight classes, perks with their descriptions, stat and move names, and level and rank options. It also maps display names to property names (`{ name: "Punch Speed", propName: "punchSpeed" }`). The UI and the form options are built from it.
+[`client/src/standard.ts`](../client/src/standard.ts) holds the game's constants: weight classes, perks with their descriptions, stat and move names, and level options. The rank values are `RANK_CHAMP` and `RANK_UNRANKED` in [`shared/limits.ts`](../shared/limits.ts), and `client/src/utils/formatRank.ts` turns a rank into its label ("Champ", "#3", "Unranked"). It also maps display names to property names (`{ name: "Punch Speed", propName: "punchSpeed" }`). The UI and the form options are built from it.
 
 ## Seeding
 
@@ -48,7 +48,7 @@ Then update `client/src/config/formConfig.ts` if the new field needs a form inpu
 
 The home page hardcodes no fighter IDs. [`client/src/utils/pickCorners.ts`](../client/src/utils/pickCorners.ts) opens each weight class on its two highest-ranked fighters, the champion in the red corner and the number 1 in the blue.
 
-- `rank` is a string. `"Champ"` and `"0"` both mean champion (the seed file uses `"Champ"` for Strawweight and `"0"` for the other ten classes). `"1"` to `"15"` are ranks, and anything else, such as `"null"`, is unranked and sorts last.
+- The pick sorts by `rank`, lowest first, so unranked fighters (`15`) come last. The 14 Generic fighters are unranked.
 - Seed fighters sort ahead of sandbox fighters whatever their rank, so a visitor can't claim a corner by ranking a fighter Champ.
 - **Each weight class needs a champion and a number 1 in the seed file** to open on them. If one is missing, the class opens on its next ranked fighters, with no error.
 - The same rule fills a corner whose selected fighter has been deleted. If a class has fewer than two fighters, the page shows a message in place of the cards and keeps the picker.

@@ -17,7 +17,7 @@ const fighterSchema = new mongoose.Schema<IFighter>({
     required: true,
   },
   rank: {
-    type: String,
+    type: Number,
     required: true,
   },
   firstName: {

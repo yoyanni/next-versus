@@ -57,7 +57,7 @@ export type Move = {
 export type Fighter = {
   _id: number;
   weightClass: string;
-  rank: string;
+  rank: number;
   firstName: string;
   nickname: string;
   lastName: string;

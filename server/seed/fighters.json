@@ -2,7 +2,7 @@
   {
     "_id": 1,
     "weightClass": "Strawweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Jéssica",
     "nickname": "Bate Estaca",
     "lastName": "Andrade",
@@ -348,7 +348,7 @@
   {
     "_id": 2,
     "weightClass": "Strawweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Joanne",
     "nickname": "JoJo",
     "lastName": "Calderwood",
@@ -742,7 +742,7 @@
   {
     "_id": 3,
     "weightClass": "Strawweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Cynthia",
     "nickname": "",
     "lastName": "Calvillo",
@@ -1099,7 +1099,7 @@
   {
     "_id": 4,
     "weightClass": "Strawweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Mackenzie",
     "nickname": "",
     "lastName": "Dern",
@@ -1449,7 +1449,7 @@
   {
     "_id": 5,
     "weightClass": "Strawweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Carla",
     "nickname": "Cookie Monster",
     "lastName": "Esparza",
@@ -1795,7 +1795,7 @@
   {
     "_id": 6,
     "weightClass": "Strawweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Cláudia",
     "nickname": "Claudinha",
     "lastName": "Gadelha",
@@ -2177,7 +2177,7 @@
   {
     "_id": 7,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alexa",
     "nickname": "",
     "lastName": "Grasso",
@@ -2568,7 +2568,7 @@
   {
     "_id": 8,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Felice",
     "nickname": "Lil Bulldog",
     "lastName": "Herrig",
@@ -2958,7 +2958,7 @@
   {
     "_id": 9,
     "weightClass": "Strawweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Angela",
     "nickname": "Overkill",
     "lastName": "Hill",
@@ -3352,7 +3352,7 @@
   {
     "_id": 10,
     "weightClass": "Strawweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Joanna",
     "nickname": "",
     "lastName": "Jedrzejczyk",
@@ -3723,7 +3723,7 @@
   {
     "_id": 11,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Karolina",
     "nickname": "",
     "lastName": "Kowalkiewicz",
@@ -4092,7 +4092,7 @@
   {
     "_id": 12,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Randa",
     "nickname": "Quiet Storm",
     "lastName": "Markos",
@@ -4445,7 +4445,7 @@
   {
     "_id": 13,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Maryna",
     "nickname": "Iron Lady",
     "lastName": "Moroz",
@@ -4798,7 +4798,7 @@
   {
     "_id": 14,
     "weightClass": "Strawweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Rose",
     "nickname": "Thug",
     "lastName": "Namajunas",
@@ -5181,7 +5181,7 @@
   {
     "_id": 15,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jessica",
     "nickname": "",
     "lastName": "Penne",
@@ -5530,7 +5530,7 @@
   {
     "_id": 16,
     "weightClass": "Strawweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Tatiana",
     "nickname": "",
     "lastName": "Suarez",
@@ -5881,7 +5881,7 @@
   {
     "_id": 17,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tecia",
     "nickname": "Tiny Tornado",
     "lastName": "Torres",
@@ -6242,7 +6242,7 @@
   {
     "_id": 18,
     "weightClass": "Strawweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Paige",
     "nickname": "12 Gauge",
     "lastName": "Vanzant",
@@ -6619,7 +6619,7 @@
   {
     "_id": 19,
     "weightClass": "Strawweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Michelle",
     "nickname": "The Karate Hottie",
     "lastName": "Waterson",
@@ -6985,7 +6985,7 @@
   {
     "_id": 20,
     "weightClass": "Strawweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Joanna",
     "nickname": "",
     "lastName": "Jedrzejczyk (Legend)",
@@ -7356,7 +7356,7 @@
   {
     "_id": 21,
     "weightClass": "Strawweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Amanda",
     "nickname": "Amandinha",
     "lastName": "Lemos",
@@ -7746,7 +7746,7 @@
   {
     "_id": 22,
     "weightClass": "Strawweight",
-    "rank": "Champ",
+    "rank": 0,
     "firstName": "Weili",
     "nickname": "Magnum",
     "lastName": "Zhang",
@@ -8137,7 +8137,7 @@
   {
     "_id": 23,
     "weightClass": "Strawweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Amanda",
     "nickname": "",
     "lastName": "Ribas",
@@ -8547,7 +8547,7 @@
   {
     "_id": 24,
     "weightClass": "Flyweight (W)",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Jéssica",
     "nickname": "Bate Estaca",
     "lastName": "Andrade",
@@ -8893,7 +8893,7 @@
   {
     "_id": 25,
     "weightClass": "Flyweight (W)",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Viviane",
     "nickname": "Vivi",
     "lastName": "Araujo",
@@ -9283,7 +9283,7 @@
   {
     "_id": 26,
     "weightClass": "Flyweight (W)",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Joanne",
     "nickname": "JoJo",
     "lastName": "Calderwood",
@@ -9677,7 +9677,7 @@
   {
     "_id": 27,
     "weightClass": "Flyweight (W)",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Cynthia",
     "nickname": "",
     "lastName": "Calvillo",
@@ -10034,7 +10034,7 @@
   {
     "_id": 28,
     "weightClass": "Flyweight (W)",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Katlyn",
     "nickname": "Blonde Fighter",
     "lastName": "Chookagian",
@@ -10428,7 +10428,7 @@
   {
     "_id": 29,
     "weightClass": "Flyweight (W)",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Alexis",
     "nickname": "",
     "lastName": "Davis",
@@ -10781,7 +10781,7 @@
   {
     "_id": 30,
     "weightClass": "Flyweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ashlee",
     "nickname": "Rebel Girl",
     "lastName": "Evans-Smith",
@@ -11122,7 +11122,7 @@
   {
     "_id": 31,
     "weightClass": "Flyweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jessica",
     "nickname": "Evil",
     "lastName": "Eye",
@@ -11463,7 +11463,7 @@
   {
     "_id": 32,
     "weightClass": "Flyweight (W)",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Alexa",
     "nickname": "",
     "lastName": "Grasso",
@@ -11854,7 +11854,7 @@
   {
     "_id": 33,
     "weightClass": "Flyweight (W)",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Joanna",
     "nickname": "",
     "lastName": "Jedrzejczyk",
@@ -12229,7 +12229,7 @@
   {
     "_id": 34,
     "weightClass": "Flyweight (W)",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Jennifer",
     "nickname": "",
     "lastName": "Maia",
@@ -12587,7 +12587,7 @@
   {
     "_id": 35,
     "weightClass": "Flyweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Maryna",
     "nickname": "Iron Lady",
     "lastName": "Moroz",
@@ -12940,7 +12940,7 @@
   {
     "_id": 36,
     "weightClass": "Flyweight (W)",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Lauren",
     "nickname": "Lucky",
     "lastName": "Murphy",
@@ -13281,7 +13281,7 @@
   {
     "_id": 37,
     "weightClass": "Flyweight (W)",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Valentina",
     "nickname": "Bullet",
     "lastName": "Shevchenko",
@@ -13716,7 +13716,7 @@
   {
     "_id": 38,
     "weightClass": "Flyweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Paige",
     "nickname": "12 Gauge",
     "lastName": "Vanzant",
@@ -14093,7 +14093,7 @@
   {
     "_id": 39,
     "weightClass": "Flyweight (W)",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Molly",
     "nickname": "Meatball",
     "lastName": "McCann",
@@ -14422,7 +14422,7 @@
   {
     "_id": 40,
     "weightClass": "Flyweight (W)",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Taila",
     "nickname": "",
     "lastName": "Santos",
@@ -14805,7 +14805,7 @@
   {
     "_id": 41,
     "weightClass": "Flyweight (W)",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Manon",
     "nickname": "The Beast",
     "lastName": "Fiorot",
@@ -15208,7 +15208,7 @@
   {
     "_id": 42,
     "weightClass": "Flyweight (W)",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Amanda",
     "nickname": "",
     "lastName": "Ribas",
@@ -15618,7 +15618,7 @@
   {
     "_id": 43,
     "weightClass": "Bantamweight (W)",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Megan",
     "nickname": "",
     "lastName": "Anderson",
@@ -15988,7 +15988,7 @@
   {
     "_id": 44,
     "weightClass": "Bantamweight (W)",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Jéssica",
     "nickname": "",
     "lastName": "Andrade",
@@ -16334,7 +16334,7 @@
   {
     "_id": 45,
     "weightClass": "Bantamweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bethe",
     "nickname": "",
     "lastName": "Correia",
@@ -16683,7 +16683,7 @@
   {
     "_id": 46,
     "weightClass": "Bantamweight (W)",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Cris",
     "nickname": "",
     "lastName": "Cyborg",
@@ -17054,7 +17054,7 @@
   {
     "_id": 47,
     "weightClass": "Bantamweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alexis",
     "nickname": "",
     "lastName": "Davis",
@@ -17407,7 +17407,7 @@
   {
     "_id": 48,
     "weightClass": "Bantamweight (W)",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Germaine",
     "nickname": "",
     "lastName": "De Randamie",
@@ -17777,7 +17777,7 @@
   {
     "_id": 49,
     "weightClass": "Bantamweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ashlee",
     "nickname": "",
     "lastName": "Evans-Smith",
@@ -18118,7 +18118,7 @@
   {
     "_id": 50,
     "weightClass": "Bantamweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jessica",
     "nickname": "",
     "lastName": "Eye",
@@ -18459,7 +18459,7 @@
   {
     "_id": 51,
     "weightClass": "Bantamweight (W)",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Holly",
     "nickname": "",
     "lastName": "Holm",
@@ -18850,7 +18850,7 @@
   {
     "_id": 52,
     "weightClass": "Bantamweight (W)",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Aspen",
     "nickname": "",
     "lastName": "Ladd",
@@ -19191,7 +19191,7 @@
   {
     "_id": 53,
     "weightClass": "Bantamweight (W)",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Sara",
     "nickname": "",
     "lastName": "McMann",
@@ -19540,7 +19540,7 @@
   {
     "_id": 54,
     "weightClass": "Bantamweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Lauren",
     "nickname": "Lucky",
     "lastName": "Murphy",
@@ -19881,7 +19881,7 @@
   {
     "_id": 55,
     "weightClass": "Bantamweight (W)",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Amanda",
     "nickname": "The Lioness",
     "lastName": "Nunes",
@@ -20260,7 +20260,7 @@
   {
     "_id": 56,
     "weightClass": "Bantamweight (W)",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Raquel",
     "nickname": "Rocky",
     "lastName": "Pennington",
@@ -20614,7 +20614,7 @@
   {
     "_id": 57,
     "weightClass": "Bantamweight (W)",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Julianna",
     "nickname": "The Venezuelan Vixen",
     "lastName": "Peña",
@@ -20948,7 +20948,7 @@
   {
     "_id": 58,
     "weightClass": "Bantamweight (W)",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Marion",
     "nickname": "The Belizean Bruiser",
     "lastName": "Reneau",
@@ -21313,7 +21313,7 @@
   {
     "_id": 59,
     "weightClass": "Bantamweight (W)",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Ronda",
     "nickname": "Rowdy",
     "lastName": "Rousey",
@@ -21668,7 +21668,7 @@
   {
     "_id": 60,
     "weightClass": "Bantamweight (W)",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Valentina",
     "nickname": "Bullet",
     "lastName": "Shevchenko",
@@ -22095,7 +22095,7 @@
   {
     "_id": 61,
     "weightClass": "Bantamweight (W)",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Miesha",
     "nickname": "Cupcake",
     "lastName": "Tate",
@@ -22457,7 +22457,7 @@
   {
     "_id": 62,
     "weightClass": "Bantamweight (W)",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Ketlen",
     "nickname": "Fenomeno",
     "lastName": "Vieira",
@@ -22818,7 +22818,7 @@
   {
     "_id": 63,
     "weightClass": "Bantamweight (W)",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Irene",
     "nickname": "",
     "lastName": "Aldana",
@@ -23216,7 +23216,7 @@
   {
     "_id": 64,
     "weightClass": "Flyweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Askar",
     "nickname": "Bullet",
     "lastName": "Askarov",
@@ -23607,7 +23607,7 @@
   {
     "_id": 65,
     "weightClass": "Flyweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Joseph",
     "nickname": "",
     "lastName": "Benavidez",
@@ -24014,7 +24014,7 @@
   {
     "_id": 66,
     "weightClass": "Flyweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Ray",
     "nickname": "The Tazmexican Devil",
     "lastName": "Borg",
@@ -24388,7 +24388,7 @@
   {
     "_id": 67,
     "weightClass": "Flyweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Henry",
     "nickname": "The Messenger",
     "lastName": "Cejudo",
@@ -24759,7 +24759,7 @@
   {
     "_id": 68,
     "weightClass": "Flyweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "TJ",
     "nickname": "",
     "lastName": "Dillashaw",
@@ -25150,7 +25150,7 @@
   {
     "_id": 69,
     "weightClass": "Flyweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "John",
     "nickname": "The Magician",
     "lastName": "Dodson",
@@ -25537,7 +25537,7 @@
   {
     "_id": 70,
     "weightClass": "Flyweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Tim",
     "nickname": "",
     "lastName": "Elliot",
@@ -25963,7 +25963,7 @@
   {
     "_id": 71,
     "weightClass": "Flyweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Deiveson",
     "nickname": "Deus da Guerra",
     "lastName": "Figueiredo",
@@ -26370,7 +26370,7 @@
   {
     "_id": 72,
     "weightClass": "Flyweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Jussier",
     "nickname": "",
     "lastName": "Formiga",
@@ -26753,7 +26753,7 @@
   {
     "_id": 73,
     "weightClass": "Flyweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Demetrious",
     "nickname": "Mighty Mouse",
     "lastName": "Johnson",
@@ -27136,7 +27136,7 @@
   {
     "_id": 74,
     "weightClass": "Flyweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Brandon",
     "nickname": "The Assassin Baby",
     "lastName": "Moreno",
@@ -27507,7 +27507,7 @@
   {
     "_id": 75,
     "weightClass": "Flyweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Alexandre",
     "nickname": "The Cannibal",
     "lastName": "Pantoja",
@@ -27881,7 +27881,7 @@
   {
     "_id": 76,
     "weightClass": "Flyweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Alex",
     "nickname": "",
     "lastName": "Perez",
@@ -28252,7 +28252,7 @@
   {
     "_id": 77,
     "weightClass": "Flyweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Louis",
     "nickname": "Da Last Samurai",
     "lastName": "Smolka",
@@ -28661,7 +28661,7 @@
   {
     "_id": 78,
     "weightClass": "Flyweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Kai",
     "nickname": "Don\"t Blink",
     "lastName": "Kara-France",
@@ -29060,7 +29060,7 @@
   {
     "_id": 79,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Iuri",
     "nickname": "Marajo",
     "lastName": "Alcântara",
@@ -29433,7 +29433,7 @@
   {
     "_id": 80,
     "weightClass": "Bantamweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Jose",
     "nickname": "",
     "lastName": "Aldo",
@@ -29852,7 +29852,7 @@
   {
     "_id": 81,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Thomas",
     "nickname": "Thominhas",
     "lastName": "Almeida",
@@ -30237,7 +30237,7 @@
   {
     "_id": 82,
     "weightClass": "Bantamweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Raphael",
     "nickname": "",
     "lastName": "Assunção",
@@ -30635,7 +30635,7 @@
   {
     "_id": 83,
     "weightClass": "Bantamweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Renan",
     "nickname": "The Baron",
     "lastName": "Barão",
@@ -31020,7 +31020,7 @@
   {
     "_id": 84,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ray",
     "nickname": "The Tazmexican Devil",
     "lastName": "Borg",
@@ -31394,7 +31394,7 @@
   {
     "_id": 85,
     "weightClass": "Bantamweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Henry",
     "nickname": "The Messenger",
     "lastName": "Cejudo",
@@ -31765,7 +31765,7 @@
   {
     "_id": 86,
     "weightClass": "Bantamweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Dominick",
     "nickname": "The Dominator",
     "lastName": "Cruz",
@@ -32152,7 +32152,7 @@
   {
     "_id": 87,
     "weightClass": "Bantamweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "TJ",
     "nickname": "",
     "lastName": "Dillashaw",
@@ -32543,7 +32543,7 @@
   {
     "_id": 88,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "John",
     "nickname": "The Magician",
     "lastName": "Dodson",
@@ -32930,7 +32930,7 @@
   {
     "_id": 89,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Frankie",
     "nickname": "The Answer",
     "lastName": "Edgar",
@@ -33344,7 +33344,7 @@
   {
     "_id": 90,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Johnny",
     "nickname": "",
     "lastName": "Eduardo",
@@ -33721,7 +33721,7 @@
   {
     "_id": 91,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tim",
     "nickname": "",
     "lastName": "Elliot",
@@ -34142,7 +34142,7 @@
   {
     "_id": 92,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Urijah",
     "nickname": "The California Kid",
     "lastName": "Faber",
@@ -34527,7 +34527,7 @@
   {
     "_id": 93,
     "weightClass": "Bantamweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Rob",
     "nickname": "",
     "lastName": "Font",
@@ -34946,7 +34946,7 @@
   {
     "_id": 94,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Cody",
     "nickname": "No Love",
     "lastName": "Gabrandt",
@@ -35340,7 +35340,7 @@
   {
     "_id": 95,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bruce",
     "nickname": "The Dragon",
     "lastName": "Lee",
@@ -35787,7 +35787,7 @@
   {
     "_id": 96,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "John",
     "nickname": "Hands of Stone",
     "lastName": "Lineker",
@@ -36137,7 +36137,7 @@
   {
     "_id": 97,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Marlon",
     "nickname": "Magic",
     "lastName": "Moraes",
@@ -36571,7 +36571,7 @@
   {
     "_id": 98,
     "weightClass": "Bantamweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Pedro",
     "nickname": "The Young Punisher",
     "lastName": "Munhoz",
@@ -36978,7 +36978,7 @@
   {
     "_id": 99,
     "weightClass": "Bantamweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Sean",
     "nickname": "Sugar",
     "lastName": "O\"Malley",
@@ -37413,7 +37413,7 @@
   {
     "_id": 100,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jimmie",
     "nickname": "El Terror",
     "lastName": "Rivera",
@@ -37795,7 +37795,7 @@
   {
     "_id": 101,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Frankie",
     "nickname": "",
     "lastName": "Saenz",
@@ -38136,7 +38136,7 @@
   {
     "_id": 102,
     "weightClass": "Bantamweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Cory",
     "nickname": "",
     "lastName": "Sandhagen",
@@ -38566,7 +38566,7 @@
   {
     "_id": 103,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Louis",
     "nickname": "Da Last Samurai",
     "lastName": "Smolka",
@@ -38975,7 +38975,7 @@
   {
     "_id": 104,
     "weightClass": "Bantamweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Aljamain",
     "nickname": "Funk Master",
     "lastName": "Sterling",
@@ -39450,7 +39450,7 @@
   {
     "_id": 105,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Eddie",
     "nickname": "",
     "lastName": "Wineland",
@@ -39791,7 +39791,7 @@
   {
     "_id": 106,
     "weightClass": "Bantamweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Song",
     "nickname": "Kung Fu Monkey",
     "lastName": "Yadong",
@@ -40161,7 +40161,7 @@
   {
     "_id": 107,
     "weightClass": "Bantamweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Petr",
     "nickname": "No Mercy",
     "lastName": "Yan",
@@ -40567,7 +40567,7 @@
   {
     "_id": 108,
     "weightClass": "Bantamweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Merab",
     "nickname": "The Machine",
     "lastName": "Dvalishvili",
@@ -40970,7 +40970,7 @@
   {
     "_id": 109,
     "weightClass": "Bantamweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Marlon",
     "nickname": "Chito",
     "lastName": "Vera",
@@ -41396,7 +41396,7 @@
   {
     "_id": 110,
     "weightClass": "Bantamweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Raul",
     "nickname": "El Nino Problemo",
     "lastName": "Rosas Jr",
@@ -41773,7 +41773,7 @@
   {
     "_id": 111,
     "weightClass": "Featherweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Jose",
     "nickname": "",
     "lastName": "Aldo",
@@ -42192,7 +42192,7 @@
   {
     "_id": 112,
     "weightClass": "Featherweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Arnold",
     "nickname": "Almighty",
     "lastName": "Allen",
@@ -42583,7 +42583,7 @@
   {
     "_id": 113,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Makwan",
     "nickname": "Mr. Finland",
     "lastName": "Amirkhani",
@@ -42952,7 +42952,7 @@
   {
     "_id": 114,
     "weightClass": "Featherweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Raphael",
     "nickname": "",
     "lastName": "Assunção",
@@ -43350,7 +43350,7 @@
   {
     "_id": 115,
     "weightClass": "Featherweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Edson",
     "nickname": "Junior",
     "lastName": "Barboza",
@@ -43745,7 +43745,7 @@
   {
     "_id": 116,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Mirsad",
     "nickname": "",
     "lastName": "Bektić",
@@ -44074,7 +44074,7 @@
   {
     "_id": 117,
     "weightClass": "Featherweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Alex",
     "nickname": "Bruce Leeroy",
     "lastName": "Caceres",
@@ -44484,7 +44484,7 @@
   {
     "_id": 118,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dooho",
     "nickname": "The Korean Superboy",
     "lastName": "Choi",
@@ -44825,7 +44825,7 @@
   {
     "_id": 119,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Frankie",
     "nickname": "The Answer",
     "lastName": "Edgar",
@@ -45239,7 +45239,7 @@
   {
     "_id": 120,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Darren",
     "nickname": "The Damage",
     "lastName": "Elkins",
@@ -45584,7 +45584,7 @@
   {
     "_id": 121,
     "weightClass": "Featherweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Josh",
     "nickname": "",
     "lastName": "Emmett",
@@ -45949,7 +45949,7 @@
   {
     "_id": 122,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Urijah",
     "nickname": "The California Kid",
     "lastName": "Faber",
@@ -46334,7 +46334,7 @@
   {
     "_id": 123,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Clay",
     "nickname": "The Carpenter",
     "lastName": "Guida",
@@ -46688,7 +46688,7 @@
   {
     "_id": 124,
     "weightClass": "Featherweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Max",
     "nickname": "Blessed",
     "lastName": "Holloway",
@@ -47103,7 +47103,7 @@
   {
     "_id": 125,
     "weightClass": "Featherweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Daniel",
     "nickname": "The Hangman",
     "lastName": "Hooker",
@@ -47482,7 +47482,7 @@
   {
     "_id": 126,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dan",
     "nickname": "50K",
     "lastName": "Ige",
@@ -47881,7 +47881,7 @@
   {
     "_id": 127,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Michael",
     "nickname": "The Menace",
     "lastName": "Johnson",
@@ -48231,7 +48231,7 @@
   {
     "_id": 128,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Chan Sung",
     "nickname": "The Korean Zombie",
     "lastName": "Jung",
@@ -48622,7 +48622,7 @@
   {
     "_id": 129,
     "weightClass": "Featherweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Calvin",
     "nickname": "",
     "lastName": "Kattar",
@@ -49008,7 +49008,7 @@
   {
     "_id": 130,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ricardo",
     "nickname": "The Bully",
     "lastName": "Lamas",
@@ -49422,7 +49422,7 @@
   {
     "_id": 131,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bruce",
     "nickname": "The Dragon",
     "lastName": "Lee",
@@ -49859,7 +49859,7 @@
   {
     "_id": 132,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Zabit",
     "nickname": "",
     "lastName": "Magomedsharipov",
@@ -50338,7 +50338,7 @@
   {
     "_id": 133,
     "weightClass": "Featherweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Conor",
     "nickname": "The Notorious",
     "lastName": "McGregor (Legacy)",
@@ -50757,7 +50757,7 @@
   {
     "_id": 134,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Conor",
     "nickname": "The Notorious",
     "lastName": "McGregor",
@@ -51176,7 +51176,7 @@
   {
     "_id": 135,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Renato",
     "nickname": "Jucao",
     "lastName": "Moicano",
@@ -51562,7 +51562,7 @@
   {
     "_id": 136,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Charles",
     "nickname": "Do Bronx",
     "lastName": "Oliveira",
@@ -52033,7 +52033,7 @@
   {
     "_id": 137,
     "weightClass": "Featherweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Brian",
     "nickname": "T-City",
     "lastName": "Ortega",
@@ -52443,7 +52443,7 @@
   {
     "_id": 138,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anthony",
     "nickname": "Showtime",
     "lastName": "Pettis",
@@ -52882,7 +52882,7 @@
   {
     "_id": 139,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dustin",
     "nickname": "The Diamond",
     "lastName": "Poirier",
@@ -53277,7 +53277,7 @@
   {
     "_id": 140,
     "weightClass": "Featherweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Yair",
     "nickname": "El Pantera",
     "lastName": "Rodriguez",
@@ -53739,7 +53739,7 @@
   {
     "_id": 141,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Charles",
     "nickname": "Bostone Strong",
     "lastName": "Rosa",
@@ -54091,7 +54091,7 @@
   {
     "_id": 142,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jeremy",
     "nickname": "Lil\" Heathen",
     "lastName": "Stephens",
@@ -54464,7 +54464,7 @@
   {
     "_id": 143,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Cub",
     "nickname": "",
     "lastName": "Swanson",
@@ -54862,7 +54862,7 @@
   {
     "_id": 144,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Diego",
     "nickname": "Nightmare",
     "lastName": "Sanchez",
@@ -55220,7 +55220,7 @@
   {
     "_id": 145,
     "weightClass": "Featherweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Alexander",
     "nickname": "The Great",
     "lastName": "Volkanovski",
@@ -55611,7 +55611,7 @@
   {
     "_id": 146,
     "weightClass": "Featherweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Sodiq",
     "nickname": "Super",
     "lastName": "Yusuff",
@@ -55965,7 +55965,7 @@
   {
     "_id": 147,
     "weightClass": "Featherweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Giga",
     "nickname": "Ninja",
     "lastName": "Chikadze",
@@ -56376,7 +56376,7 @@
   {
     "_id": 148,
     "weightClass": "Featherweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Ilia",
     "nickname": "El Matador",
     "lastName": "Topuria",
@@ -56754,7 +56754,7 @@
   {
     "_id": 149,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Eddie",
     "nickname": "The Underground King",
     "lastName": "Alvarez",
@@ -57137,7 +57137,7 @@
   {
     "_id": 150,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Edson",
     "nickname": "Junior",
     "lastName": "Barboza",
@@ -57532,7 +57532,7 @@
   {
     "_id": 151,
     "weightClass": "Lightweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Gilbert",
     "nickname": "Durinho",
     "lastName": "Burns",
@@ -57915,7 +57915,7 @@
   {
     "_id": 152,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Donald",
     "nickname": "Cowboy",
     "lastName": "Cerrone",
@@ -58314,7 +58314,7 @@
   {
     "_id": 153,
     "weightClass": "Lightweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Michael",
     "nickname": "Iron",
     "lastName": "Chandler",
@@ -58677,7 +58677,7 @@
   {
     "_id": 154,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Michael",
     "nickname": "Maverick",
     "lastName": "Chiesa",
@@ -59055,7 +59055,7 @@
   {
     "_id": 155,
     "weightClass": "Lightweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Beneil",
     "nickname": "Benny",
     "lastName": "Dariush",
@@ -59449,7 +59449,7 @@
   {
     "_id": 156,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Marc",
     "nickname": "Bonecrusher",
     "lastName": "Diakiese",
@@ -59858,7 +59858,7 @@
   {
     "_id": 157,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Nate",
     "nickname": "",
     "lastName": "Diaz",
@@ -60221,7 +60221,7 @@
   {
     "_id": 158,
     "weightClass": "Lightweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Rafael",
     "nickname": "",
     "lastName": "Dos Anjos",
@@ -60627,7 +60627,7 @@
   {
     "_id": 159,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Joe",
     "nickname": "Irish Joe",
     "lastName": "Duffy",
@@ -60976,7 +60976,7 @@
   {
     "_id": 160,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Evan",
     "nickname": "",
     "lastName": "Dunham",
@@ -61342,7 +61342,7 @@
   {
     "_id": 161,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Frankie",
     "nickname": "The Answer",
     "lastName": "Edgar",
@@ -61756,7 +61756,7 @@
   {
     "_id": 162,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Josh",
     "nickname": "",
     "lastName": "Emmett",
@@ -62121,7 +62121,7 @@
   {
     "_id": 163,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Paul",
     "nickname": "The Irish Dragon",
     "lastName": "Felder",
@@ -62532,7 +62532,7 @@
   {
     "_id": 164,
     "weightClass": "Lightweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Tony",
     "nickname": "El Cucui",
     "lastName": "Ferguson",
@@ -62979,7 +62979,7 @@
   {
     "_id": 165,
     "weightClass": "Lightweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Justin",
     "nickname": "The Highlight",
     "lastName": "Gaethje",
@@ -63362,7 +63362,7 @@
   {
     "_id": 166,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bobby",
     "nickname": "King",
     "lastName": "Green",
@@ -63723,7 +63723,7 @@
   {
     "_id": 167,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Clay",
     "nickname": "The Carpenter",
     "lastName": "Guida",
@@ -64077,7 +64077,7 @@
   {
     "_id": 168,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alexander",
     "nickname": "The Great",
     "lastName": "Hernandez",
@@ -64426,7 +64426,7 @@
   {
     "_id": 169,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Max",
     "nickname": "Blessed",
     "lastName": "Holloway",
@@ -64837,7 +64837,7 @@
   {
     "_id": 170,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Daniel",
     "nickname": "The Hangman",
     "lastName": "Hooker",
@@ -65216,7 +65216,7 @@
   {
     "_id": 171,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Al",
     "nickname": "Raging",
     "lastName": "Iaquinta",
@@ -65595,7 +65595,7 @@
   {
     "_id": 172,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Michael",
     "nickname": "The Menace",
     "lastName": "Johnson",
@@ -65945,7 +65945,7 @@
   {
     "_id": 173,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Rustam",
     "nickname": "Tiger",
     "lastName": "Khabilov",
@@ -66290,7 +66290,7 @@
   {
     "_id": 174,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Joe",
     "nickname": "",
     "lastName": "Lauzon",
@@ -66636,7 +66636,7 @@
   {
     "_id": 175,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bruce",
     "nickname": "The Dragon",
     "lastName": "Lee",
@@ -67073,7 +67073,7 @@
   {
     "_id": 176,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Kevin",
     "nickname": "The Motown Phenom",
     "lastName": "Lee",
@@ -67436,7 +67436,7 @@
   {
     "_id": 177,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Nik",
     "nickname": "The Carny",
     "lastName": "Lentz",
@@ -67764,7 +67764,7 @@
   {
     "_id": 178,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jorge",
     "nickname": "Gamebred",
     "lastName": "Masvidal",
@@ -68167,7 +68167,7 @@
   {
     "_id": 179,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jake",
     "nickname": "The Celtic Kid",
     "lastName": "Matthews",
@@ -68517,7 +68517,7 @@
   {
     "_id": 180,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Conor",
     "nickname": "The Notorious",
     "lastName": "McGregor",
@@ -68936,7 +68936,7 @@
   {
     "_id": 181,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Yancy",
     "nickname": "",
     "lastName": "Medeiros",
@@ -69313,7 +69313,7 @@
   {
     "_id": 182,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jim",
     "nickname": "A10",
     "lastName": "Miller",
@@ -69670,7 +69670,7 @@
   {
     "_id": 183,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Renato",
     "nickname": "Jucao",
     "lastName": "Moicano",
@@ -70056,7 +70056,7 @@
   {
     "_id": 184,
     "weightClass": "Lightweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Khabib",
     "nickname": "The Eagle",
     "lastName": "Nurmagomedov",
@@ -70431,7 +70431,7 @@
   {
     "_id": 185,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alex",
     "nickname": "Cowboy",
     "lastName": "Oliveira",
@@ -70805,7 +70805,7 @@
   {
     "_id": 186,
     "weightClass": "Lightweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Charles",
     "nickname": "Do Bronx",
     "lastName": "Oliveira",
@@ -71276,7 +71276,7 @@
   {
     "_id": 187,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bj",
     "nickname": "The Prodigy",
     "lastName": "Penn",
@@ -71634,7 +71634,7 @@
   {
     "_id": 188,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anthony",
     "nickname": "Showtime",
     "lastName": "Pettis",
@@ -72073,7 +72073,7 @@
   {
     "_id": 189,
     "weightClass": "Lightweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Dustin",
     "nickname": "The Diamond",
     "lastName": "Poirier",
@@ -72468,7 +72468,7 @@
   {
     "_id": 190,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Leonardo",
     "nickname": "",
     "lastName": "Santos",
@@ -72821,7 +72821,7 @@
   {
     "_id": 191,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jeremy",
     "nickname": "Lil\" Heathen",
     "lastName": "Stephens",
@@ -73194,7 +73194,7 @@
   {
     "_id": 192,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Diego",
     "nickname": "Nightmare",
     "lastName": "Sanchez",
@@ -73552,7 +73552,7 @@
   {
     "_id": 193,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "James",
     "nickname": "The Texecutioner",
     "lastName": "Vick",
@@ -73949,7 +73949,7 @@
   {
     "_id": 194,
     "weightClass": "Lightweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Alexander",
     "nickname": "The Great",
     "lastName": "Volkanovski",
@@ -74340,7 +74340,7 @@
   {
     "_id": 195,
     "weightClass": "Lightweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Paddy",
     "nickname": "The Baddy",
     "lastName": "Pimblett",
@@ -74726,7 +74726,7 @@
   {
     "_id": 196,
     "weightClass": "Lightweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Khabib",
     "nickname": "The Eagle",
     "lastName": "Nurmagomedov (Legend)",
@@ -75101,7 +75101,7 @@
   {
     "_id": 197,
     "weightClass": "Lightweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Rafael",
     "nickname": "Ataman",
     "lastName": "Fiziev",
@@ -75508,7 +75508,7 @@
   {
     "_id": 198,
     "weightClass": "Lightweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Mateusz",
     "nickname": "Gamer",
     "lastName": "Gamrot",
@@ -75903,7 +75903,7 @@
   {
     "_id": 199,
     "weightClass": "Lightweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Islam",
     "nickname": "",
     "lastName": "Makhachev",
@@ -76269,7 +76269,7 @@
   {
     "_id": 200,
     "weightClass": "Lightweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Arman",
     "nickname": "Ahalkalakets",
     "lastName": "Tsarukyan",
@@ -76676,7 +76676,7 @@
   {
     "_id": 201,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Omari",
     "nickname": "Wolverine",
     "lastName": "Akhmedov",
@@ -77022,7 +77022,7 @@
   {
     "_id": 202,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ben",
     "nickname": "Funky",
     "lastName": "Askren",
@@ -77356,7 +77356,7 @@
   {
     "_id": 203,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tom",
     "nickname": "",
     "lastName": "Breese",
@@ -77701,7 +77701,7 @@
   {
     "_id": 204,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Matt",
     "nickname": "The Immortal",
     "lastName": "Brown",
@@ -78074,7 +78074,7 @@
   {
     "_id": 205,
     "weightClass": "Welterweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Gilbert",
     "nickname": "Durinho",
     "lastName": "Burns",
@@ -78461,7 +78461,7 @@
   {
     "_id": 206,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Donald",
     "nickname": "Cowboy",
     "lastName": "Cerrone",
@@ -78860,7 +78860,7 @@
   {
     "_id": 207,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Michael",
     "nickname": "Maverick",
     "lastName": "Chiesa",
@@ -79238,7 +79238,7 @@
   {
     "_id": 208,
     "weightClass": "Welterweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Khamzat",
     "nickname": "Borz",
     "lastName": "Chimaev",
@@ -79609,7 +79609,7 @@
   {
     "_id": 209,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Carlos",
     "nickname": "The Natural Born Killer",
     "lastName": "Condit",
@@ -80036,7 +80036,7 @@
   {
     "_id": 210,
     "weightClass": "Welterweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Colby",
     "nickname": "Chaos",
     "lastName": "Colvington",
@@ -80431,7 +80431,7 @@
   {
     "_id": 211,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Nate",
     "nickname": "",
     "lastName": "Diaz",
@@ -80794,7 +80794,7 @@
   {
     "_id": 212,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Nick",
     "nickname": "",
     "lastName": "Diaz",
@@ -81192,7 +81192,7 @@
   {
     "_id": 213,
     "weightClass": "Welterweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Rafael",
     "nickname": "",
     "lastName": "Dos Anjos",
@@ -81598,7 +81598,7 @@
   {
     "_id": 214,
     "weightClass": "Welterweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Leon",
     "nickname": "Rocky",
     "lastName": "Edwards",
@@ -81988,7 +81988,7 @@
   {
     "_id": 215,
     "weightClass": "Welterweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Paul",
     "nickname": "The Irish Dragon",
     "lastName": "Felder",
@@ -82399,7 +82399,7 @@
   {
     "_id": 216,
     "weightClass": "Welterweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Tony",
     "nickname": "El Cucui",
     "lastName": "Ferguson",
@@ -82838,7 +82838,7 @@
   {
     "_id": 217,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Mickey",
     "nickname": "",
     "lastName": "Gall",
@@ -83171,7 +83171,7 @@
   {
     "_id": 218,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Kelvin",
     "nickname": "",
     "lastName": "Gastelum",
@@ -83538,7 +83538,7 @@
   {
     "_id": 219,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Royce",
     "nickname": "",
     "lastName": "Gracie",
@@ -83892,7 +83892,7 @@
   {
     "_id": 220,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Johny",
     "nickname": "Bigg Rigg",
     "lastName": "Hendricks",
@@ -84234,7 +84234,7 @@
   {
     "_id": 221,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Matt",
     "nickname": "",
     "lastName": "Hughes",
@@ -84572,7 +84572,7 @@
   {
     "_id": 222,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Li",
     "nickname": "The Leech",
     "lastName": "Jingliang",
@@ -84926,7 +84926,7 @@
   {
     "_id": 223,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alan",
     "nickname": "Brahma",
     "lastName": "Jouban",
@@ -85290,7 +85290,7 @@
   {
     "_id": 224,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Robbie",
     "nickname": "Ruthless",
     "lastName": "Lawler",
@@ -85661,7 +85661,7 @@
   {
     "_id": 225,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bruce",
     "nickname": "The Dragon",
     "lastName": "Lee",
@@ -86098,7 +86098,7 @@
   {
     "_id": 226,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Kevin",
     "nickname": "The Motown Phenom",
     "lastName": "Lee",
@@ -86461,7 +86461,7 @@
   {
     "_id": 227,
     "weightClass": "Welterweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Vicente",
     "nickname": "The Silent Assassin",
     "lastName": "Luque",
@@ -86860,7 +86860,7 @@
   {
     "_id": 228,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Neil",
     "nickname": "",
     "lastName": "Magny",
@@ -87250,7 +87250,7 @@
   {
     "_id": 229,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Demian",
     "nickname": "",
     "lastName": "Maia",
@@ -87605,7 +87605,7 @@
   {
     "_id": 230,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jorge",
     "nickname": "Gamebred",
     "lastName": "Masvidal",
@@ -88008,7 +88008,7 @@
   {
     "_id": 231,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jake",
     "nickname": "The Celtic Kid",
     "lastName": "Matthews",
@@ -88358,7 +88358,7 @@
   {
     "_id": 232,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Conor",
     "nickname": "The Notorious",
     "lastName": "McGregor",
@@ -88777,7 +88777,7 @@
   {
     "_id": 233,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tim",
     "nickname": "The Dirty Bird",
     "lastName": "Means",
@@ -89178,7 +89178,7 @@
   {
     "_id": 234,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Yancy",
     "nickname": "",
     "lastName": "Medeiros",
@@ -89555,7 +89555,7 @@
   {
     "_id": 235,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Gunnar",
     "nickname": "Gunni",
     "lastName": "Nelson",
@@ -89921,7 +89921,7 @@
   {
     "_id": 236,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alex",
     "nickname": "Cowboy",
     "lastName": "Oliveira",
@@ -90295,7 +90295,7 @@
   {
     "_id": 237,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bj",
     "nickname": "The Prodigy",
     "lastName": "Penn",
@@ -90653,7 +90653,7 @@
   {
     "_id": 238,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Mike",
     "nickname": "Platinum",
     "lastName": "Perry",
@@ -91023,7 +91023,7 @@
   {
     "_id": 239,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anthony",
     "nickname": "Showtime",
     "lastName": "Pettis",
@@ -91462,7 +91462,7 @@
   {
     "_id": 240,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Santiago",
     "nickname": "Gente Boa",
     "lastName": "Ponzinibbio",
@@ -91808,7 +91808,7 @@
   {
     "_id": 241,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "CM",
     "nickname": "",
     "lastName": "Punk",
@@ -92132,7 +92132,7 @@
   {
     "_id": 242,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Erick",
     "nickname": "The Tiger",
     "lastName": "Silva",
@@ -92497,7 +92497,7 @@
   {
     "_id": 243,
     "weightClass": "Welterweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "George",
     "nickname": "Rush",
     "lastName": "St-Piere",
@@ -92908,7 +92908,7 @@
   {
     "_id": 244,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Diego",
     "nickname": "Nightmare",
     "lastName": "Sanchez",
@@ -93266,7 +93266,7 @@
   {
     "_id": 245,
     "weightClass": "Welterweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Stephen",
     "nickname": "Wonderboy",
     "lastName": "Thompson",
@@ -93669,7 +93669,7 @@
   {
     "_id": 246,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Darren",
     "nickname": "The Gorilla",
     "lastName": "Till",
@@ -94063,7 +94063,7 @@
   {
     "_id": 247,
     "weightClass": "Welterweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Kamaru",
     "nickname": "Nigerian Nightmare",
     "lastName": "Usman",
@@ -94426,7 +94426,7 @@
   {
     "_id": 248,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "James",
     "nickname": "The Texecutioner",
     "lastName": "Vick",
@@ -94818,7 +94818,7 @@
   {
     "_id": 249,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dana",
     "nickname": "",
     "lastName": "White",
@@ -95179,7 +95179,7 @@
   {
     "_id": 250,
     "weightClass": "Welterweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Tyron",
     "nickname": "The Chosen One",
     "lastName": "Woodley",
@@ -95550,7 +95550,7 @@
   {
     "_id": 251,
     "weightClass": "Welterweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Shavkat",
     "nickname": "Nomad",
     "lastName": "Rakhmonov",
@@ -96004,7 +96004,7 @@
   {
     "_id": 252,
     "weightClass": "Welterweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "George",
     "nickname": "Rush",
     "lastName": "St-Piere (Legend)",
@@ -96415,7 +96415,7 @@
   {
     "_id": 253,
     "weightClass": "Welterweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Belal",
     "nickname": "Remember the Name",
     "lastName": "Muhammad",
@@ -96790,7 +96790,7 @@
   {
     "_id": 254,
     "weightClass": "Welterweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Kevin",
     "nickname": "Trailblazer",
     "lastName": "Holland",
@@ -97232,7 +97232,7 @@
   {
     "_id": 255,
     "weightClass": "Middleweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Israel",
     "nickname": "The Last Stylebender",
     "lastName": "Adesanya",
@@ -97675,7 +97675,7 @@
   {
     "_id": 256,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Omari",
     "nickname": "Wolverine",
     "lastName": "Akhmedov",
@@ -98021,7 +98021,7 @@
   {
     "_id": 257,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Sam",
     "nickname": "Smile\"N",
     "lastName": "Alvey",
@@ -98366,7 +98366,7 @@
   {
     "_id": 258,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Vitor",
     "nickname": "The Phenom",
     "lastName": "Belfort",
@@ -98716,7 +98716,7 @@
   {
     "_id": 259,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Michael",
     "nickname": "The Count",
     "lastName": "Bisping",
@@ -99107,7 +99107,7 @@
   {
     "_id": 260,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tom",
     "nickname": "",
     "lastName": "Breese",
@@ -99452,7 +99452,7 @@
   {
     "_id": 261,
     "weightClass": "Middleweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Derek",
     "nickname": "",
     "lastName": "Brunson",
@@ -99818,7 +99818,7 @@
   {
     "_id": 262,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bruce",
     "nickname": "It\"s Time",
     "lastName": "Buffer",
@@ -100199,7 +100199,7 @@
   {
     "_id": 263,
     "weightClass": "Middleweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Jared",
     "nickname": "The Killa Gorilla",
     "lastName": "Connonier",
@@ -100552,7 +100552,7 @@
   {
     "_id": 264,
     "weightClass": "Middleweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Khamzat",
     "nickname": "Borz",
     "lastName": "Chimaev",
@@ -100923,7 +100923,7 @@
   {
     "_id": 265,
     "weightClass": "Middleweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Paulo",
     "nickname": "The Eraser",
     "lastName": "Costa",
@@ -101297,7 +101297,7 @@
   {
     "_id": 266,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Nick",
     "nickname": "",
     "lastName": "Diaz",
@@ -101695,7 +101695,7 @@
   {
     "_id": 267,
     "weightClass": "Middleweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Kelvin",
     "nickname": "",
     "lastName": "Gastelum",
@@ -102062,7 +102062,7 @@
   {
     "_id": 268,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Royce",
     "nickname": "",
     "lastName": "Gracie",
@@ -102416,7 +102416,7 @@
   {
     "_id": 269,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Uriah",
     "nickname": "Prime Time",
     "lastName": "Hall",
@@ -102851,7 +102851,7 @@
   {
     "_id": 270,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dan",
     "nickname": "Hendo",
     "lastName": "Henderson",
@@ -103209,7 +103209,7 @@
   {
     "_id": 271,
     "weightClass": "Middleweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Jack",
     "nickname": "The Joker",
     "lastName": "Hermansson",
@@ -103564,7 +103564,7 @@
   {
     "_id": 272,
     "weightClass": "Middleweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Kevin",
     "nickname": "Trailblazer",
     "lastName": "Holland",
@@ -104006,7 +104006,7 @@
   {
     "_id": 273,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Krzysztof",
     "nickname": "",
     "lastName": "Jotko",
@@ -104396,7 +104396,7 @@
   {
     "_id": 274,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Robbie",
     "nickname": "Ruthless",
     "lastName": "Lawler",
@@ -104767,7 +104767,7 @@
   {
     "_id": 275,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Lyoto",
     "nickname": "The Dragon",
     "lastName": "Machida",
@@ -105178,7 +105178,7 @@
   {
     "_id": 276,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Demian",
     "nickname": "",
     "lastName": "Maia",
@@ -105533,7 +105533,7 @@
   {
     "_id": 277,
     "weightClass": "Middleweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Luke",
     "nickname": "",
     "lastName": "Rockhold",
@@ -105936,7 +105936,7 @@
   {
     "_id": 278,
     "weightClass": "Middleweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Yoel",
     "nickname": "Soldier of God",
     "lastName": "Romero",
@@ -106355,7 +106355,7 @@
   {
     "_id": 279,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Thiago",
     "nickname": "Marreta",
     "lastName": "Santos",
@@ -106778,7 +106778,7 @@
   {
     "_id": 280,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Edmen",
     "nickname": "The Golden Boy",
     "lastName": "Shahbazyan",
@@ -107144,7 +107144,7 @@
   {
     "_id": 281,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anderson",
     "nickname": "The Spider",
     "lastName": "Silva",
@@ -107558,7 +107558,7 @@
   {
     "_id": 282,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Wanderlei",
     "nickname": "The Axe Murderer",
     "lastName": "Silva",
@@ -107907,7 +107907,7 @@
   {
     "_id": 283,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anthony",
     "nickname": "Lionheart",
     "lastName": "Smith",
@@ -108286,7 +108286,7 @@
   {
     "_id": 284,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Chael",
     "nickname": "The American Gangster",
     "lastName": "Sonnen",
@@ -108636,7 +108636,7 @@
   {
     "_id": 285,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ronaldo",
     "nickname": "Jacaré",
     "lastName": "Souza",
@@ -109007,7 +109007,7 @@
   {
     "_id": 286,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "George",
     "nickname": "Rush",
     "lastName": "St-Piere",
@@ -109418,7 +109418,7 @@
   {
     "_id": 287,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Brad",
     "nickname": "",
     "lastName": "Tavares",
@@ -109771,7 +109771,7 @@
   {
     "_id": 288,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Darren",
     "nickname": "The Gorilla",
     "lastName": "Till",
@@ -110165,7 +110165,7 @@
   {
     "_id": 289,
     "weightClass": "Middleweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Marvin",
     "nickname": "The Italian Dream",
     "lastName": "Vettori",
@@ -110552,7 +110552,7 @@
   {
     "_id": 290,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Chris",
     "nickname": "The All-American",
     "lastName": "Weidman",
@@ -110947,7 +110947,7 @@
   {
     "_id": 291,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dana",
     "nickname": "",
     "lastName": "White",
@@ -111308,7 +111308,7 @@
   {
     "_id": 292,
     "weightClass": "Middleweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Robert",
     "nickname": "The Reaper",
     "lastName": "Whittaker",
@@ -111703,7 +111703,7 @@
   {
     "_id": 293,
     "weightClass": "Middleweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Anderson",
     "nickname": "The Spider",
     "lastName": "Silva (Legend)",
@@ -112117,7 +112117,7 @@
   {
     "_id": 294,
     "weightClass": "Middleweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Michael",
     "nickname": "The Count",
     "lastName": "Bisping (Legend)",
@@ -112508,7 +112508,7 @@
   {
     "_id": 295,
     "weightClass": "Middleweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Alex",
     "nickname": "Poatan",
     "lastName": "Pereira",
@@ -112918,7 +112918,7 @@
   {
     "_id": 296,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Sean",
     "nickname": "",
     "lastName": "Strickland",
@@ -113293,7 +113293,7 @@
   {
     "_id": 297,
     "weightClass": "Middleweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Bo",
     "nickname": "",
     "lastName": "Nickal",
@@ -113638,7 +113638,7 @@
   {
     "_id": 298,
     "weightClass": "Light Heavyweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Israel",
     "nickname": "The Last Stylebender",
     "lastName": "Adesanya",
@@ -114081,7 +114081,7 @@
   {
     "_id": 299,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Sam",
     "nickname": "Smile\"N",
     "lastName": "Alvey",
@@ -114421,7 +114421,7 @@
   {
     "_id": 300,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Corey",
     "nickname": "Overtime",
     "lastName": "Anderson",
@@ -114767,7 +114767,7 @@
   {
     "_id": 301,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Vitor",
     "nickname": "The Phenom",
     "lastName": "Belfort",
@@ -115117,7 +115117,7 @@
   {
     "_id": 302,
     "weightClass": "Light Heavyweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Jan",
     "nickname": "",
     "lastName": "Blachowicz",
@@ -115496,7 +115496,7 @@
   {
     "_id": 303,
     "weightClass": "Light Heavyweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Jared",
     "nickname": "The Killa Gorilla",
     "lastName": "Connonier",
@@ -115849,7 +115849,7 @@
   {
     "_id": 304,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Misha",
     "nickname": "",
     "lastName": "Cirkunov",
@@ -116235,7 +116235,7 @@
   {
     "_id": 305,
     "weightClass": "Light Heavyweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Daniel",
     "nickname": "DC",
     "lastName": "Cormier",
@@ -116606,7 +116606,7 @@
   {
     "_id": 306,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Rashad",
     "nickname": "Suga",
     "lastName": "Evans",
@@ -116940,7 +116940,7 @@
   {
     "_id": 307,
     "weightClass": "Light Heavyweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Forest",
     "nickname": "",
     "lastName": "Griffin",
@@ -117294,7 +117294,7 @@
   {
     "_id": 308,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alexander",
     "nickname": "The Mauler",
     "lastName": "Gustafsson",
@@ -117693,7 +117693,7 @@
   {
     "_id": 309,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dan",
     "nickname": "Hendo",
     "lastName": "Henderson",
@@ -118051,7 +118051,7 @@
   {
     "_id": 310,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Rampage",
     "nickname": "",
     "lastName": "Jackson",
@@ -118401,7 +118401,7 @@
   {
     "_id": 311,
     "weightClass": "Light Heavyweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Anthony",
     "nickname": "Rumble",
     "lastName": "Johnson",
@@ -118746,7 +118746,7 @@
   {
     "_id": 312,
     "weightClass": "Light Heavyweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "John",
     "nickname": "Bones",
     "lastName": "Jones",
@@ -119205,7 +119205,7 @@
   {
     "_id": 313,
     "weightClass": "Light Heavyweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Nikita",
     "nickname": "The Miner",
     "lastName": "Krylov",
@@ -119594,7 +119594,7 @@
   {
     "_id": 314,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ilir",
     "nickname": "The Sledgehammer",
     "lastName": "Latifi",
@@ -119952,7 +119952,7 @@
   {
     "_id": 315,
     "weightClass": "Light Heavyweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Chuck",
     "nickname": "The Iceman",
     "lastName": "Liddel",
@@ -120302,7 +120302,7 @@
   {
     "_id": 316,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Lyoto",
     "nickname": "The Dragon",
     "lastName": "Machida",
@@ -120713,7 +120713,7 @@
   {
     "_id": 317,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jimi",
     "nickname": "Poster Boy",
     "lastName": "Manuwa",
@@ -121062,7 +121062,7 @@
   {
     "_id": 318,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Antônio",
     "nickname": "Minotauro",
     "lastName": "Nogueira",
@@ -121415,7 +121415,7 @@
   {
     "_id": 319,
     "weightClass": "Light Heavyweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Volkan",
     "nickname": "No Time",
     "lastName": "Oezdemir",
@@ -121786,7 +121786,7 @@
   {
     "_id": 320,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tito",
     "nickname": "The Huntington Beach Bad Boy",
     "lastName": "Ortiz",
@@ -122136,7 +122136,7 @@
   {
     "_id": 321,
     "weightClass": "Light Heavyweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Jiri",
     "nickname": "Denisa",
     "lastName": "Prochazka",
@@ -122531,7 +122531,7 @@
   {
     "_id": 322,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Aleksandar",
     "nickname": "",
     "lastName": "Rakic",
@@ -122933,7 +122933,7 @@
   {
     "_id": 323,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dominick",
     "nickname": "The Devastator",
     "lastName": "Reyes",
@@ -123292,7 +123292,7 @@
   {
     "_id": 324,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Luke",
     "nickname": "",
     "lastName": "Rockhold",
@@ -123695,7 +123695,7 @@
   {
     "_id": 325,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Shogun",
     "nickname": "",
     "lastName": "Rua",
@@ -124065,7 +124065,7 @@
   {
     "_id": 326,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ovince",
     "nickname": "Saint",
     "lastName": "Preux",
@@ -124439,7 +124439,7 @@
   {
     "_id": 327,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Gökhan",
     "nickname": "The Rebel",
     "lastName": "Saki",
@@ -124826,7 +124826,7 @@
   {
     "_id": 328,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Thiago",
     "nickname": "Marreta",
     "lastName": "Santos",
@@ -125249,7 +125249,7 @@
   {
     "_id": 329,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anderson",
     "nickname": "The Spider",
     "lastName": "Silva",
@@ -125663,7 +125663,7 @@
   {
     "_id": 330,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Wanderlei",
     "nickname": "The Axe Murderer",
     "lastName": "Silva",
@@ -126012,7 +126012,7 @@
   {
     "_id": 331,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anthony",
     "nickname": "Lionheart",
     "lastName": "Smith",
@@ -126386,7 +126386,7 @@
   {
     "_id": 332,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ronaldo",
     "nickname": "Jacaré",
     "lastName": "Souza",
@@ -126757,7 +126757,7 @@
   {
     "_id": 333,
     "weightClass": "Light Heavyweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Glover",
     "nickname": "",
     "lastName": "Teixeira",
@@ -127107,7 +127107,7 @@
   {
     "_id": 334,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Gian",
     "nickname": "",
     "lastName": "Villante",
@@ -127448,7 +127448,7 @@
   {
     "_id": 335,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Johnny",
     "nickname": "",
     "lastName": "Walker",
@@ -127837,7 +127837,7 @@
   {
     "_id": 336,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Chris",
     "nickname": "The All-American",
     "lastName": "Weidman",
@@ -128232,7 +128232,7 @@
   {
     "_id": 337,
     "weightClass": "Light Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dana",
     "nickname": "",
     "lastName": "White",
@@ -128593,7 +128593,7 @@
   {
     "_id": 338,
     "weightClass": "Light Heavyweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Paul",
     "nickname": "BearJew",
     "lastName": "Craig",
@@ -128950,7 +128950,7 @@
   {
     "_id": 339,
     "weightClass": "Light Heavyweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "Jamahal",
     "nickname": "Sweet Dreams",
     "lastName": "Hill",
@@ -129320,7 +129320,7 @@
   {
     "_id": 340,
     "weightClass": "Light Heavyweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Magomed",
     "nickname": "",
     "lastName": "Ankalaev",
@@ -129691,7 +129691,7 @@
   {
     "_id": 341,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Andrei",
     "nickname": "The Pit Bull",
     "lastName": "Arlovski",
@@ -130089,7 +130089,7 @@
   {
     "_id": 342,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Andre",
     "nickname": "The Natural",
     "lastName": "Bishop",
@@ -130411,7 +130411,7 @@
   {
     "_id": 343,
     "weightClass": "Heavyweight",
-    "rank": "7",
+    "rank": 7,
     "firstName": "Curtis",
     "nickname": "Razor",
     "lastName": "Blaydes",
@@ -130770,7 +130770,7 @@
   {
     "_id": 344,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Mark",
     "nickname": "The Hammer",
     "lastName": "Coleman",
@@ -131115,7 +131115,7 @@
   {
     "_id": 345,
     "weightClass": "Heavyweight",
-    "rank": "1",
+    "rank": 1,
     "firstName": "Daniel",
     "nickname": "DC",
     "lastName": "Cormier",
@@ -131486,7 +131486,7 @@
   {
     "_id": 346,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Junior",
     "nickname": "Cigano",
     "lastName": "Dos Santos",
@@ -131857,7 +131857,7 @@
   {
     "_id": 347,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Todd",
     "nickname": "",
     "lastName": "Duffee",
@@ -132198,7 +132198,7 @@
   {
     "_id": 348,
     "weightClass": "Heavyweight",
-    "rank": "10",
+    "rank": 10,
     "firstName": "Isaac",
     "nickname": "Ice Cold",
     "lastName": "Frost",
@@ -132520,7 +132520,7 @@
   {
     "_id": 349,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tyson",
     "nickname": "The Gypsy King",
     "lastName": "Fury",
@@ -132843,7 +132843,7 @@
   {
     "_id": 350,
     "weightClass": "Heavyweight",
-    "rank": "2",
+    "rank": 2,
     "firstName": "Ciryl",
     "nickname": "Bon Gamin",
     "lastName": "Gane",
@@ -133258,7 +133258,7 @@
   {
     "_id": 351,
     "weightClass": "Heavyweight",
-    "rank": "11",
+    "rank": 11,
     "firstName": "Alexander",
     "nickname": "The Mauler",
     "lastName": "Gustafsson",
@@ -133657,7 +133657,7 @@
   {
     "_id": 352,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Walt",
     "nickname": "The Big Ticket",
     "lastName": "Harris",
@@ -134018,7 +134018,7 @@
   {
     "_id": 353,
     "weightClass": "Heavyweight",
-    "rank": "12",
+    "rank": 12,
     "firstName": "Anthony",
     "nickname": "Rumble",
     "lastName": "Johnson",
@@ -134363,7 +134363,7 @@
   {
     "_id": 354,
     "weightClass": "Heavyweight",
-    "rank": "0",
+    "rank": 0,
     "firstName": "John",
     "nickname": "Bones",
     "lastName": "Jones",
@@ -134822,7 +134822,7 @@
   {
     "_id": 355,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Anthony",
     "nickname": "AJ",
     "lastName": "Joshua",
@@ -135153,7 +135153,7 @@
   {
     "_id": 356,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ilir",
     "nickname": "The Sledgehammer",
     "lastName": "Latifi",
@@ -135506,7 +135506,7 @@
   {
     "_id": 357,
     "weightClass": "Heavyweight",
-    "rank": "13",
+    "rank": 13,
     "firstName": "Brock",
     "nickname": "",
     "lastName": "Lesnar",
@@ -135844,7 +135844,7 @@
   {
     "_id": 358,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Derrick",
     "nickname": "The Black Beast",
     "lastName": "Lewis",
@@ -136227,7 +136227,7 @@
   {
     "_id": 359,
     "weightClass": "Heavyweight",
-    "rank": "3",
+    "rank": 3,
     "firstName": "Stipe",
     "nickname": "",
     "lastName": "Miocic",
@@ -136598,7 +136598,7 @@
   {
     "_id": 360,
     "weightClass": "Heavyweight",
-    "rank": "4",
+    "rank": 4,
     "firstName": "Francis",
     "nickname": "The Predator",
     "lastName": "Ngannou",
@@ -136957,7 +136957,7 @@
   {
     "_id": 361,
     "weightClass": "Heavyweight",
-    "rank": "14",
+    "rank": 14,
     "firstName": "Antônio",
     "nickname": "Minotauro",
     "lastName": "Nogueira",
@@ -137320,7 +137320,7 @@
   {
     "_id": 362,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Aleksei",
     "nickname": "The Boa Constrictor",
     "lastName": "Oleinik",
@@ -137674,7 +137674,7 @@
   {
     "_id": 363,
     "weightClass": "Heavyweight",
-    "rank": "8",
+    "rank": 8,
     "firstName": "Alistair",
     "nickname": "The Demolition Man",
     "lastName": "Overeem",
@@ -138073,7 +138073,7 @@
   {
     "_id": 364,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Ben",
     "nickname": "",
     "lastName": "Rothwell",
@@ -138426,7 +138426,7 @@
   {
     "_id": 365,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Jairzinho",
     "nickname": "Bigi Boy",
     "lastName": "Rozenstruik",
@@ -138784,7 +138784,7 @@
   {
     "_id": 366,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dan",
     "nickname": "The Beast",
     "lastName": "Severn",
@@ -139129,7 +139129,7 @@
   {
     "_id": 367,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Kimbo",
     "nickname": "",
     "lastName": "Slice",
@@ -139466,7 +139466,7 @@
   {
     "_id": 368,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Stefan",
     "nickname": "Skyscraper",
     "lastName": "Struve",
@@ -139832,7 +139832,7 @@
   {
     "_id": 369,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Tai",
     "nickname": "Bam Bam",
     "lastName": "Tuivasa",
@@ -140189,7 +140189,7 @@
   {
     "_id": 370,
     "weightClass": "Heavyweight",
-    "rank": "9",
+    "rank": 9,
     "firstName": "Cain",
     "nickname": "",
     "lastName": "Velasquez",
@@ -140544,7 +140544,7 @@
   {
     "_id": 371,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Alexander",
     "nickname": "Drago",
     "lastName": "Volkov",
@@ -140919,7 +140919,7 @@
   {
     "_id": 372,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Fabricio",
     "nickname": "Vai Cavalo",
     "lastName": "Werdum",
@@ -141318,7 +141318,7 @@
   {
     "_id": 373,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Dana",
     "nickname": "",
     "lastName": "White",
@@ -141679,7 +141679,7 @@
   {
     "_id": 374,
     "weightClass": "Heavyweight",
-    "rank": "5",
+    "rank": 5,
     "firstName": "Alistair",
     "nickname": "The Demolition Man",
     "lastName": "Overeem (Legend)",
@@ -142078,7 +142078,7 @@
   {
     "_id": 375,
     "weightClass": "Heavyweight",
-    "rank": "6",
+    "rank": 6,
     "firstName": "Tom",
     "nickname": "",
     "lastName": "Aspinall",
@@ -142448,7 +142448,7 @@
   {
     "_id": 376,
     "weightClass": "Heavyweight",
-    "rank": "null",
+    "rank": 15,
     "firstName": "Sergei",
     "nickname": "",
     "lastName": "Pavlovich",
@@ -142813,7 +142813,7 @@
   {
     "_id": 377,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Boxer",
     "nickname": "",
     "lastName": "Powerhouse",
@@ -143184,7 +143184,7 @@
   {
     "_id": 378,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Boxer",
     "nickname": "",
     "lastName": "Pressure",
@@ -143563,7 +143563,7 @@
   {
     "_id": 379,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Boxer",
     "nickname": "",
     "lastName": "Showboat",
@@ -144030,7 +144030,7 @@
   {
     "_id": 380,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Kickboxer",
     "nickname": "",
     "lastName": "Sniper",
@@ -144433,7 +144433,7 @@
   {
     "_id": 381,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Kickboxer",
     "nickname": "",
     "lastName": "Acrobat",
@@ -144880,7 +144880,7 @@
   {
     "_id": 382,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Kickboxer",
     "nickname": "",
     "lastName": "Razor",
@@ -145299,7 +145299,7 @@
   {
     "_id": 383,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Balanced",
     "nickname": "",
     "lastName": "Top Dog",
@@ -145686,7 +145686,7 @@
   {
     "_id": 384,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Balanced",
     "nickname": "",
     "lastName": "Engine",
@@ -146061,7 +146061,7 @@
   {
     "_id": 385,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Balanced",
     "nickname": "",
     "lastName": "Versatile",
@@ -146484,7 +146484,7 @@
   {
     "_id": 386,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Balanced",
     "nickname": "",
     "lastName": "Virtuoso",
@@ -146943,7 +146943,7 @@
   {
     "_id": 387,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Wrestler",
     "nickname": "",
     "lastName": "Dominator",
@@ -147302,7 +147302,7 @@
   {
     "_id": 388,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Wrestler",
     "nickname": "",
     "lastName": "Smasher",
@@ -147653,7 +147653,7 @@
   {
     "_id": 389,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Jiu-Jitsu",
     "nickname": "",
     "lastName": "Shark",
@@ -148024,7 +148024,7 @@
   {
     "_id": 390,
     "weightClass": "Generic",
-    "rank": "15",
+    "rank": 15,
     "firstName": "Jiu-Jitsu",
     "nickname": "",
     "lastName": "Vanguard",

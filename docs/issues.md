@@ -145,7 +145,7 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 ### C8. Small display issues
 
 - **Severity:** Low
-- **Problem:** The fighter page shows the rank as `#{rank}`, which renders "#Champ" for champions ([fighters/[id]/index.tsx:51](../client/src/pages/fighters/[id]/index.tsx#L51)). `WizardForm` renders its steps through seven near-identical `if` branches that could be one `FormStepRender` call ([WizardForm.tsx:157-215](../client/src/components/WizardForm.tsx#L157-L215)).
+- **Problem:** `WizardForm` renders its steps through seven near-identical `if` branches that could be one `FormStepRender` call ([WizardForm.tsx:157-215](../client/src/components/WizardForm.tsx#L157-L215)).
 
 ## Deployment and operations
 

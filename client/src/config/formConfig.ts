@@ -1,6 +1,8 @@
 import standard from "@/standard";
 import { FighterForm } from "@/types/component";
 import { WizardStep } from "@/types/form";
+import { formatRank } from "@/utils/formatRank";
+import { RANK_UNRANKED } from "@shared/limits";
 
 const step1: WizardStep<Pick<FighterForm, "generalInfo">> = {
   title: "General Info",
@@ -18,7 +20,10 @@ const step1: WizardStep<Pick<FighterForm, "generalInfo">> = {
       type: "select",
       id: "generalInfo.rank",
       label: "Rank",
-      options: [...standard.ranks],
+      options: Array.from({ length: RANK_UNRANKED + 1 }, (_, rank) => ({
+        value: String(rank),
+        option: formatRank(rank),
+      })),
     },
   ],
 };
