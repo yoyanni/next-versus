@@ -2,19 +2,57 @@ import standard from "@/standard";
 import { FighterForm } from "@/types/component";
 import { WizardStep } from "@/types/form";
 import { formatRank } from "@/utils/formatRank";
-import { RANK_UNRANKED } from "@shared/limits";
+import {
+  LEVEL_MAX,
+  LEVEL_MIN,
+  LEVEL_STEP,
+  MAX_PERKS,
+  RANK_UNRANKED,
+  STAT_MAX,
+  STAT_MIN,
+} from "@shared/limits";
+import { RegisterOptions } from "react-hook-form";
 
-const step1: WizardStep<Pick<FighterForm, "generalInfo">> = {
+const levels = Array.from(
+  { length: (LEVEL_MAX - LEVEL_MIN) / LEVEL_STEP + 1 },
+  (_, i) => String(LEVEL_MIN + i * LEVEL_STEP)
+);
+const stats = Array.from({ length: STAT_MAX - STAT_MIN + 1 }, (_, i) =>
+  String(STAT_MIN + i)
+);
+
+// Level and stat selects use 0 as their placeholder value, so `min` rejects an unselected one
+const levelRules: RegisterOptions<FighterForm> = {
+  valueAsNumber: true,
+  min: { value: LEVEL_MIN, message: "Select a level" },
+};
+const statRules: RegisterOptions<FighterForm> = {
+  valueAsNumber: true,
+  min: { value: STAT_MIN, message: "Select a value" },
+};
+
+const step1: WizardStep<FighterForm> = {
   title: "General Info",
   inputs: [
-    { type: "text", id: "generalInfo.firstName", label: "First name" },
-    { type: "text", id: "generalInfo.lastName", label: "Last name" },
+    {
+      type: "text",
+      id: "generalInfo.firstName",
+      label: "First name",
+      rules: { required: "Enter a first name" },
+    },
+    {
+      type: "text",
+      id: "generalInfo.lastName",
+      label: "Last name",
+      rules: { required: "Enter a last name" },
+    },
     { type: "text", id: "generalInfo.nickname", label: "Nickname" },
     {
       type: "select",
       id: "generalInfo.weightClass",
       label: "Weightclass",
       options: [...standard.weightClasses, "Generic"],
+      rules: { required: "Select a weight class" },
     },
     {
       type: "select",
@@ -24,42 +62,62 @@ const step1: WizardStep<Pick<FighterForm, "generalInfo">> = {
         value: String(rank),
         option: formatRank(rank),
       })),
+      rules: { valueAsNumber: true, required: "Select a rank" },
     },
   ],
 };
 
-const step2: WizardStep<Pick<FighterForm, "basicInfo">> = {
+const step2: WizardStep<FighterForm> = {
   title: "Basic Info",
   inputs: [
     {
       type: "select",
       id: "basicInfo.level",
       label: "Level",
-      options: [...standard.levels],
+      options: levels,
+      rules: levelRules,
     },
-    { type: "number", id: "basicInfo.skills.reach", label: "Reach" },
+    {
+      type: "number",
+      id: "basicInfo.skills.reach",
+      label: "Reach",
+      rules: {
+        valueAsNumber: true,
+        required: "Enter the reach",
+        min: { value: 0, message: "Enter 0 or more" },
+        validate: (reach) => Number.isInteger(reach) || "Enter a whole number",
+      },
+    },
     {
       type: "select",
       id: "basicInfo.skills.martialArt",
       label: "Martial Arts",
       options: [...standard.martialArts],
+      rules: { required: "Select a martial art" },
     },
     {
       type: "select",
       id: "basicInfo.skills.stance",
       label: "Stance",
       options: [...standard.stances],
+      rules: { required: "Select a stance" },
     },
   ],
 };
 
-const step3: WizardStep<Pick<FighterForm, "perks">> = {
+const step3: WizardStep<FighterForm> = {
   title: "Perks",
   inputs: [
     {
       type: "multi-select",
       id: "perks",
       label: "Perks",
+      rules: {
+        // Rules are typed for any field, so the value needs narrowing
+        validate: (perks) =>
+          (perks as string[]).length <= MAX_PERKS ||
+          `Pick at most ${MAX_PERKS} perks`,
+      },
       groups: [
         {
           name: "Stand-Up",
@@ -84,14 +142,15 @@ const step3: WizardStep<Pick<FighterForm, "perks">> = {
   ],
 };
 
-const step4: WizardStep<Pick<FighterForm, "standUp">> = {
+const step4: WizardStep<FighterForm> = {
   title: "Stand-Up",
   inputs: [
     {
       type: "select",
       id: `standUp.level`,
       label: "Level",
-      options: [...standard.levels],
+      options: levels,
+      rules: levelRules,
     },
     ...standard.standUp.map(
       (item) =>
@@ -99,20 +158,22 @@ const step4: WizardStep<Pick<FighterForm, "standUp">> = {
           type: "select",
           id: `standUp.skills.${item.propName}`,
           label: item.name,
-          options: [...standard.stats],
+          options: stats,
+          rules: statRules,
         } as const)
     ),
   ],
 };
 
-const step5: WizardStep<Pick<FighterForm, "grappling">> = {
+const step5: WizardStep<FighterForm> = {
   title: "Grappling",
   inputs: [
     {
       type: "select",
       id: `grappling.level`,
       label: "Level",
-      options: [...standard.levels],
+      options: levels,
+      rules: levelRules,
     },
     ...standard.grappling.map(
       (item) =>
@@ -120,20 +181,22 @@ const step5: WizardStep<Pick<FighterForm, "grappling">> = {
           type: "select",
           id: `grappling.skills.${item.propName}`,
           label: item.name,
-          options: [...standard.stats],
+          options: stats,
+          rules: statRules,
         } as const)
     ),
   ],
 };
 
-const step6: WizardStep<Pick<FighterForm, "health">> = {
+const step6: WizardStep<FighterForm> = {
   title: "Health",
   inputs: [
     {
       type: "select",
       id: `health.level`,
       label: "Level",
-      options: [...standard.levels],
+      options: levels,
+      rules: levelRules,
     },
     ...standard.health.map(
       (item) =>
@@ -141,13 +204,14 @@ const step6: WizardStep<Pick<FighterForm, "health">> = {
           type: "select",
           id: `health.skills.${item.propName}`,
           label: item.name,
-          options: [...standard.stats],
+          options: stats,
+          rules: statRules,
         } as const)
     ),
   ],
 };
 
-const step7: WizardStep<Pick<FighterForm, "move">> = {
+const step7: WizardStep<FighterForm> = {
   title: "Moves",
   inputs: [
     {
@@ -217,11 +281,12 @@ const step7: WizardStep<Pick<FighterForm, "move">> = {
       id: "move.level",
       label: "Level",
       options: [...standard.moveLevels],
+      rules: { valueAsNumber: true },
     },
   ],
 };
 
-export const wizardSteps = [
+export const wizardSteps: readonly WizardStep<FighterForm>[] = [
   step1,
   step2,
   step3,
@@ -229,4 +294,4 @@ export const wizardSteps = [
   step5,
   step6,
   step7,
-] as const;
+];

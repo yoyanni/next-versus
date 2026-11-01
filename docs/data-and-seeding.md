@@ -25,7 +25,7 @@ Then update `client/src/config/formConfig.ts` if the new field needs a form inpu
 
 ## Static game data
 
-[`client/src/standard.ts`](../client/src/standard.ts) holds the game's constants: weight classes, perks with their descriptions, stat and move names, and level options. The rank values are `RANK_CHAMP` and `RANK_UNRANKED` in [`shared/limits.ts`](../shared/limits.ts), and `client/src/utils/formatRank.ts` turns a rank into its label ("Champ", "#3", "Unranked"). It also maps display names to property names (`{ name: "Punch Speed", propName: "punchSpeed" }`). The UI and the form options are built from it.
+[`client/src/standard.ts`](../client/src/standard.ts) holds the game's constants: weight classes, perks with their descriptions, stat and move names, and move levels. The rank values are `RANK_CHAMP` and `RANK_UNRANKED` in [`shared/limits.ts`](../shared/limits.ts), and `client/src/utils/formatRank.ts` turns a rank into its label ("Champ", "#3", "Unranked"). The same file holds the bounds the wizard enforces: levels from `LEVEL_MIN` (1.5) to `LEVEL_MAX` (5) in steps of `LEVEL_STEP` (0.5), stats from `STAT_MIN` (79) to `STAT_MAX` (100), and at most `MAX_PERKS` (5) perks. It also maps display names to property names (`{ name: "Punch Speed", propName: "punchSpeed" }`). The UI and the form options are built from it.
 
 ## Seeding
 

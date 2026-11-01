@@ -6,22 +6,26 @@ function ChildAccordion({
   title,
   noShadow = false,
   indentation = "ps-7",
+  isOpen,
+  onToggle,
 }: ChildAccordionProps) {
   const [showContent, setShowContent] = useState(false);
+  // The parent controls it when it passes isOpen and onToggle
+  const isShown = isOpen ?? showContent;
   return (
     <div
       className={`text-primaryFontSize ${
-        showContent ? "bg-gray-100" : "bg-mainBgElevated"
+        isShown ? "bg-gray-100" : "bg-mainBgElevated"
       }`}
     >
       <div
         className={`flex justify-between ${indentation} pe-4 py-2 border-b first:border-t cursor-pointer`}
-        onClick={() => setShowContent((prev) => !prev)}
+        onClick={onToggle ?? (() => setShowContent((prev) => !prev))}
       >
         <span>{title}</span>
-        <span>{showContent ? "-" : "+"}</span>
+        <span>{isShown ? "-" : "+"}</span>
       </div>
-      {showContent &&
+      {isShown &&
         (noShadow ? (
           children
         ) : (

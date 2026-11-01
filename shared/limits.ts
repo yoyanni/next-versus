@@ -10,3 +10,13 @@ export const SANDBOX_ID_START = 100_000;
  */
 export const RANK_CHAMP = 0;
 export const RANK_UNRANKED = 15;
+
+/**
+ * Bounds the wizard enforces. Levels go up in half steps; stats are whole numbers.
+ */
+export const LEVEL_MIN = 1.5;
+export const LEVEL_MAX = 5;
+export const LEVEL_STEP = 0.5;
+export const STAT_MIN = 79;
+export const STAT_MAX = 100;
+export const MAX_PERKS = 5;

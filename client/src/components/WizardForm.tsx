@@ -8,7 +8,7 @@ import { FighterForm } from "@/types/component";
 import { Fighter } from "@shared/types";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { FieldPath, SubmitHandler, useForm } from "react-hook-form";
 
 interface WizardFormProps {
@@ -17,18 +17,22 @@ interface WizardFormProps {
 
 const WizardForm = ({ fighter }: WizardFormProps) => {
   const [step, setStep] = useState(0);
-  const [activeAccordion, setActiveAccordion] = useState<"moves" | null>(null);
+  const [openMoveGroups, setOpenMoveGroups] = useState<string[]>([]);
   const router = useRouter();
   const queryClient = useQueryClient();
-  const formRef = useRef<HTMLFormElement | null>(null);
   const {
     register,
     watch,
     handleSubmit,
     setValue,
     getValues,
+    trigger,
     formState: { errors },
-  } = useForm<FighterForm>({ defaultValues: createFighterForm(fighter) });
+  } = useForm<FighterForm>({
+    defaultValues: createFighterForm(fighter),
+    // Validate as fields change, so an error shown by "Forth" clears once it's fixed
+    mode: "onChange",
+  });
   const move = watch("move");
   const watchMoves = watch("moves");
   const watchPerks = watch("perks");
@@ -84,34 +88,87 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
     }
   };
 
-  function handleToggle(accordion: "moves") {
-    if (activeAccordion === accordion) setActiveAccordion(null);
-    else setActiveAccordion(accordion);
-  }
+  // Only the current step's fields are mounted, and handleSubmit skips unmounted ones,
+  // so each step is validated here before the next one opens
+  const goForth = async () => {
+    const fieldPaths = wizardSteps[step].inputs.map((input) => input.id);
+    if (await trigger(fieldPaths, { shouldFocus: true }))
+      setStep((prev) => prev + 1);
+  };
 
   // Move select values are "<path>:<name>" (e.g. "ground.sweeps:BJJ"); path picks the moves.* array
-  const handleMoveAddition = () => {
-    const [path, moveName] = move.name.split(":");
+  const getMoves = (path: string) => {
     const fieldPath = ("moves." + path) as FieldPath<
       Pick<FighterForm, "moves">
     >;
-
-    const newMove = {
-      name: moveName,
-      level: move.level,
-    };
-
     const currentMoves = getValues(fieldPath);
+    return {
+      fieldPath,
+      currentMoves: Array.isArray(currentMoves) ? currentMoves : [],
+    };
+  };
 
-    if (Array.isArray(currentMoves)) {
-      setValue(fieldPath, [...currentMoves, newMove]);
-    }
+  // The select values of the moves already added, which the move select leaves out
+  const addedMoveValues = Object.entries(watchMoves).flatMap(([key, value]) =>
+    Array.isArray(value)
+      ? value.map((added) => `${key}:${added.name}`)
+      : Object.entries(value).flatMap(([groundKey, groundMoves]) =>
+          groundMoves.map((added) => `${key}.${groundKey}:${added.name}`)
+        )
+  );
+
+  const [movePath, moveName] = move.name.split(":");
+  const canAddMove = !!move.name && !!move.level;
+
+  const handleMoveAddition = () => {
+    const { fieldPath, currentMoves } = getMoves(movePath);
+    setValue(fieldPath, [
+      ...currentMoves,
+      { name: moveName, level: move.level },
+    ]);
+    // The added move leaves the select, so both selects go back to their placeholders
+    setValue("move.name", "");
+    setValue("move.level", 0);
+    // Open the accordion the move went into ("ground.sweeps" sits inside "ground")
+    const groups = movePath.startsWith("ground.")
+      ? ["ground", movePath]
+      : [movePath];
+    setOpenMoveGroups((prev) =>
+      prev.concat(groups.filter((group) => !prev.includes(group)))
+    );
+  };
+
+  const handleMoveGroupToggle = (group: string) =>
+    setOpenMoveGroups((prev) =>
+      prev.includes(group)
+        ? prev.filter((open) => open !== group)
+        : [...prev, group]
+    );
+
+  const handleMoveLevelChange = (path: string, name: string, level: number) => {
+    const { fieldPath, currentMoves } = getMoves(path);
+    setValue(
+      fieldPath,
+      currentMoves.map((added) =>
+        added.name === name ? { ...added, level } : added
+      )
+    );
+  };
+
+  const handleMoveRemoval = (path: string, name: string) => {
+    const { fieldPath, currentMoves } = getMoves(path);
+    setValue(
+      fieldPath,
+      currentMoves.filter((added) => added.name !== name)
+    );
   };
 
   return (
     <main className="grow flex flex-col gap-y-4 w-full mx-auto mt-4 tablet:max-w-xl">
       <div className="flex flex-col gap-y-3 px-4">
-        <h1 className="text-primaryFontSize font-bold">Create a Fighter</h1>
+        <h1 className="text-primaryFontSize font-bold">
+          {fighter ? "Edit Fighter" : "Create a Fighter"}
+        </h1>
         {/* Stepper component */}
         <div>
           <div className="flex justify-between items-center">
@@ -127,9 +184,7 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
             <button
               className="block px-2 py-1 border bg-white rounded-md"
               onClick={() =>
-                isLastStep
-                  ? formRef.current?.requestSubmit()
-                  : setStep((prev) => prev + 1)
+                isLastStep ? handleSubmit(onSubmit)() : goForth()
               }
             >
               {isLastStep ? "Submit" : "Forth"}
@@ -150,69 +205,20 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
         </div>
         {/* Form inputs */}
         <form
-          ref={formRef}
           className="flex flex-col gap-y-1"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={(event) => {
+            // Enter in a field would submit the form; only the Forth/Submit button moves on
+            event.preventDefault();
+          }}
         >
-          {wizardSteps.map((wizardStep, i) => {
-            if (step === 0 && step === i)
-              return (
-                <FormStepRender
-                  key={wizardStep.title}
-                  step={wizardSteps[step]}
-                  register={register}
-                />
-              );
-            else if (step === 1 && step === i)
-              return (
-                <FormStepRender
-                  key={wizardStep.title}
-                  step={wizardSteps[step]}
-                  register={register}
-                />
-              );
-            else if (step === 2 && step === i)
-              return (
-                <FormStepRender
-                  key={wizardStep.title}
-                  step={wizardSteps[step]}
-                  register={register}
-                  perks={watchPerks}
-                />
-              );
-            else if (step === 3 && step === i)
-              return (
-                <FormStepRender
-                  key={wizardStep.title}
-                  step={wizardSteps[step]}
-                  register={register}
-                />
-              );
-            else if (step === 4 && step === i)
-              return (
-                <FormStepRender
-                  key={wizardStep.title}
-                  step={wizardSteps[step]}
-                  register={register}
-                />
-              );
-            else if (step === 5 && step === i)
-              return (
-                <FormStepRender
-                  key={wizardStep.title}
-                  step={wizardSteps[step]}
-                  register={register}
-                />
-              );
-            else if (step === 6 && step === i)
-              return (
-                <FormStepRender
-                  key={wizardStep.title}
-                  step={wizardSteps[step]}
-                  register={register}
-                />
-              );
-          })}
+          <FormStepRender
+            key={wizardSteps[step].title}
+            step={wizardSteps[step]}
+            register={register}
+            errors={errors}
+            perks={watchPerks}
+            hiddenOptions={addedMoveValues}
+          />
         </form>
       </div>
 
@@ -220,15 +226,20 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
         <>
           <button
             onClick={handleMoveAddition}
-            className="self-end mr-4 px-2 py-1 border bg-white rounded-md"
+            disabled={!canAddMove}
+            className="self-end mr-4 px-2 py-1 border bg-white rounded-md disabled:opacity-50"
           >
             Add move
           </button>
           <div className="border mx-4 rounded-lg overflow-hidden">
             <MoveAccordion
               moves={watchMoves}
-              isActive={activeAccordion}
-              handleToggle={() => handleToggle("moves")}
+              editing={{
+                openGroups: openMoveGroups,
+                onToggleGroup: handleMoveGroupToggle,
+                onLevelChange: handleMoveLevelChange,
+                onRemove: handleMoveRemoval,
+              }}
             />
           </div>
         </>

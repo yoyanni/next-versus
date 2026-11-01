@@ -1,9 +1,10 @@
-import { FieldPath, FieldValues } from "react-hook-form";
+import { FighterForm } from "@/types/component";
+import { FieldPath, FieldValues, RegisterOptions } from "react-hook-form";
 
 interface FieldBase<T> {
   id: T;
   label: string;
-  // validation
+  rules?: RegisterOptions<FighterForm>;
 }
 
 interface LabelledOption {

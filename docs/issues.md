@@ -6,13 +6,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 ## Bugs
 
-### B3. Unselected stats are saved as 0
-
-- **Severity:** Medium
-- **Where:** [FormStepRender.tsx:60-66](../client/src/components/FormStepRender.tsx#L60-L66)
-- **Problem:** The placeholder option for levels and stats has the value `0`, and nothing stops the form from being submitted with it. A new fighter with any skipped stat is saved with that stat at 0.
-- **Fix:** Add client-side validation (see [C3](#c3-the-wizard-has-no-validation-and-cant-remove-moves)) that rejects the placeholder value.
-
 ### B4. A non-numeric `:id` isn't rejected
 
 - **Severity:** Medium
@@ -80,13 +73,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Problem:** The fighter is only serialised, so building a Mongoose document is wasted work.
 - **Fix:** Add `.lean()`.
 
-### D4. Numbers travel as strings from the wizard
-
-- **Severity:** Low
-- **Where:** [FormStepRender.tsx](../client/src/components/FormStepRender.tsx), [formConfig.ts](../client/src/config/formConfig.ts)
-- **Problem:** Selects and number inputs are registered without `valueAsNumber`, so levels, stats and reach are sent as strings (`"1.5"`, `"85"`). This works only because Mongoose casts them. A new fighter's reach defaults to `NaN`.
-- **Fix:** Use `setValueAs: Number` for numeric fields, and default reach to an empty or valid value.
-
 ## Client and UI
 
 ### C1. Error states show "Loading..." forever
@@ -102,17 +88,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Where:** [apiClient.ts:23-26](../client/src/service/apiClient.ts#L23-L26)
 - **Problem:** On a non-2xx response, it calls `response.json()`. When the body is HTML or empty (a Caddy 502, or Express's default error pages from [S3](#s3-errors-outside-the-controllers-return-html-not-json)), that throws a `SyntaxError`, which replaces the real status. A missing `NEXT_PUBLIC_API_URI` isn't caught either: requests go to `undefined/fighters`.
 - **Fix:** Parse the error body in a `try`, and fall back to `` `${response.status} ${response.statusText}` ``. Throw early when `BASE_URL` is unset.
-
-### C3. The wizard has no validation and can't remove moves
-
-- **Severity:** Medium
-- **Where:** [WizardForm.tsx](../client/src/components/WizardForm.tsx), [FormStepRender.tsx](../client/src/components/FormStepRender.tsx)
-- **Problem:**
-  - No fields have validation rules, and `formState.errors` is read but never shown. An empty fighter can be submitted.
-  - The perks step shows 5 slots, but more than 5 perks can be selected.
-  - Moves can be added but not removed or changed. The same move can be added twice (which also duplicates the React keys in `MoveAccordion`). "Add move" with nothing selected does nothing and says nothing.
-  - The heading says "Create a Fighter" in edit mode.
-- **Fix:** Add react-hook-form rules (or a zod resolver shared with [S2](#s2-no-request-validation-and-edit-skips-schema-validators)), cap perks at 5, add a remove button per move, and set the heading from the mode.
 
 ### C4. Failed writes give the user no feedback
 
@@ -141,11 +116,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Where:** `Accordion`, `ChildAccordion`, `CardWrapper`, `Versebar`, `ConfirmDialog`
 - **Problem:** Accordions, the card toggles, the weight-class list and the fighter table rows are clickable `div`, `p` and `tr` elements. They can't be focused or used with a keyboard, and screen readers don't announce them as controls. `ConfirmDialog` has no `role="dialog"`, `aria-modal`, Escape to close, or focus handling. The perks multi-select has no label.
 - **Fix:** Use `button` elements (or `role="button"`, `tabIndex={0}` and key handlers), add `aria-expanded` to accordions, and give the dialog proper semantics and focus handling.
-
-### C8. Small display issues
-
-- **Severity:** Low
-- **Problem:** `WizardForm` renders its steps through seven near-identical `if` branches that could be one `FormStepRender` call ([WizardForm.tsx:157-215](../client/src/components/WizardForm.tsx#L157-L215)).
 
 ## Deployment and operations
 

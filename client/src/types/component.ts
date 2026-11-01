@@ -49,7 +49,9 @@ export interface ChildAccordionProps {
   children: ReactNode;
   title: string;
   noShadow?: boolean;
-  indentation?: "ps-7" | "ps-10" | "ps-13";
+  indentation?: "ps-4" | "ps-7" | "ps-10" | "ps-13";
+  isOpen?: boolean;
+  onToggle?: () => void;
 }
 
 export interface FighterForm {

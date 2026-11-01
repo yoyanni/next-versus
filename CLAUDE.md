@@ -43,7 +43,8 @@ There is no test framework or test suite.
 - **Shared values:** `shared/` can export runtime values only because of `experimental.externalDir` in `client/next.config.js` and `"type": "module"` in `shared/package.json`. Keep both.
 - **API:** create and edit return only the `_id`. `GET /api/fighters` returns every fighter, so keep `.lean()`. `/health` must not touch the database.
 - **Client writes** call `apiClient` directly, then invalidate `["fighters"]` and `["fighter", id]` by hand.
-- **Wizard move values** are `"<path>:<name>"` strings that `handleMoveAddition` splits.
+- **Wizard move values** are `"<path>:<name>"` strings that `WizardForm` splits.
+- **Wizard validation** runs per step: `goForth` triggers the current step's fields, and `handleSubmit` skips fields that aren't mounted. Every way of reaching the last step must go through `goForth`.
 - **Tailwind:** class names built at runtime must be added to `safelist` in `client/tailwind.config.ts`.
 - **CI:** `.github/workflows/deploy.yml` builds the API image and deploys it (see `docs/deployment.md`). If the image starts needing a new file, add it to the workflow's `paths` filter. Don't add other CI files unless asked.
 

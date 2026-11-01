@@ -46,7 +46,9 @@ export default function Fighter() {
     <main className="w-full mx-auto tablet:max-w-3xl desktop:max-w-6xl desktop:grid desktop:grid-cols-3 desktop:gap-8 desktop:items-start">
       <div className="p-4 desktop:sticky desktop:top-20">
         <h1 className="text-primaryFontSize font-bold">
-          {fighter.firstName} &apos;{fighter.nickname}&apos; {fighter.lastName}
+          {fighter.firstName}{" "}
+          {fighter.nickname && <>&apos;{fighter.nickname}&apos; </>}
+          {fighter.lastName}
         </h1>
         <div className="tablet:grid tablet:grid-cols-2 tablet:gap-x-8 desktop:grid-cols-1">
           <div>
@@ -105,11 +107,14 @@ export default function Fighter() {
               </ChildAccordion>
             ))}
           </Accordion>
-          <MoveAccordion
-            moves={fighter.moves}
-            isActive={activeAccordion}
+          <Accordion
+            noShadow
+            title="Moves"
+            activeAccordion={activeAccordion}
             handleToggle={() => handleToggle("moves")}
-          />
+          >
+            <MoveAccordion moves={fighter.moves} nested />
+          </Accordion>
         </div>
         {fighter._id >= SANDBOX_ID_START ? (
           <div className="flex justify-center gap-4 mt-4">
