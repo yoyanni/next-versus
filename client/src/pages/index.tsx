@@ -44,8 +44,19 @@ export default function Home() {
     setIds({ wc: id, red: null, blue: null });
   }
 
+  const picker = {
+    wc: ids.wc,
+    red,
+    blue,
+    wcFighters,
+    changeFighter,
+    changeWeightClass,
+  };
+
+  // The bottom bar must come after the cards to paint over them
   return (
     <main className="grow w-full mx-auto mt-4 tablet:px-4 desktop:max-w-7xl">
+      <Versebar placement="top" {...picker} />
       {red && blue ? (
         <Cards red={red} blue={blue} />
       ) : (
@@ -53,14 +64,7 @@ export default function Home() {
           There aren&apos;t enough fighters in this weight class to compare.
         </p>
       )}
-      <Versebar
-        wc={ids.wc}
-        red={red}
-        blue={blue}
-        wcFighters={wcFighters}
-        changeFighter={changeFighter}
-        changeWeightClass={changeWeightClass}
-      />
+      <Versebar placement="bottom" {...picker} />
     </main>
   );
 }

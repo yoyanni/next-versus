@@ -98,12 +98,12 @@ The design is mobile-first. Unprefixed classes are the phone layout, and `theme.
 
 | Page | Tablet | Desktop |
 | --- | --- | --- |
-| Compare (`/`) | Cards in 2 columns (CSS `columns`, so cards of different heights pack without gaps) | Same 2 columns, `max-w-7xl` |
+| Compare (`/`) | Picker above the cards. Cards in 2 columns (CSS `columns`, so cards of different heights pack without gaps) | Same 2 columns, `max-w-7xl` |
 | Fighter list | `max-w-3xl`; an open weight class lists its fighters in 2 columns, split by a 1px `column-rule` that fills a 1px `column-gap` (a rule in a zero gap would sit under the striped rows' backgrounds). The stripes follow each fighter's row in its column, worked out from `ceil(count / columns)` per breakpoint, so they line up across columns | `max-w-5xl`, 3 columns |
 | Fighter details | `max-w-3xl`; the info rows in 2 columns, the accordions in a bordered box | `max-w-6xl`; the info stays on the left (sticky at `top-20`, just under the header), the accordions take the right two thirds |
 | Wizard | `max-w-xl` | Same as tablet |
 
-The `Versebar` stays fixed at the bottom on every size. From tablet up it matches the content width, and a corner's fighter list opens across the whole bar, as on phones.
+The `Versebar` (the picker) is fixed to the bottom of the screen on phones. From tablet up it's a row above the cards that scrolls with the page: red corner, weight class, blue corner. Its lists drop down over the cards (`z-20`): the weight classes under their button, a corner's fighters across the whole row. In both placements only one list is open at a time. The home page renders it twice, `placement="top"` before the cards and `placement="bottom"` after them, and each hides itself at the other sizes. The bottom bar has to come after the cards because it has no `z-index` and paints over them only through DOM order.
 
 ## Server startup
 

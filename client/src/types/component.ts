@@ -21,6 +21,7 @@ export interface CardWrapperProps {
 }
 
 export interface VersebarProps {
+  placement: "top" | "bottom";
   wc: number;
   red: Fighter | undefined;
   blue: Fighter | undefined;
