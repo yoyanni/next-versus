@@ -43,82 +43,88 @@ export default function Fighter() {
   }
 
   return (
-    <main>
-      <div className="p-4">
+    <main className="w-full mx-auto tablet:max-w-3xl desktop:max-w-6xl desktop:grid desktop:grid-cols-3 desktop:gap-8 desktop:items-start">
+      <div className="p-4 desktop:sticky desktop:top-20">
         <h1 className="text-primaryFontSize font-bold">
           {fighter.firstName} &apos;{fighter.nickname}&apos; {fighter.lastName}
         </h1>
-        <div>
-          <span className="font-semibold">Rank:</span>{" "}
-          <span>{formatRank(fighter.rank)}</span>
-        </div>
-        <div>
-          <span className="font-bold">Weight Class: </span>
-          <span>{fighter.weightClass}</span>
-        </div>
-        <div>
-          <span className="font-bold">Martial Arts: </span>
-          <span>{fighter.basic.skills.martialArt}</span>
-        </div>
-        <div>
-          <span className="font-bold">Stance: </span>
-          <span>{fighter.basic.skills.stance}</span>
-        </div>
-        <div>
-          <span className="font-bold">Reach: </span>
-          <span>{fighter.basic.skills.reach}</span>
-        </div>
-        <div>
-          <span className="font-bold">Level: </span>
-          <span>{fighter.basic.level}</span>
+        <div className="tablet:grid tablet:grid-cols-2 tablet:gap-x-8 desktop:grid-cols-1">
+          <div>
+            <span className="font-semibold">Rank:</span>{" "}
+            <span>{formatRank(fighter.rank)}</span>
+          </div>
+          <div>
+            <span className="font-bold">Weight Class: </span>
+            <span>{fighter.weightClass}</span>
+          </div>
+          <div>
+            <span className="font-bold">Martial Arts: </span>
+            <span>{fighter.basic.skills.martialArt}</span>
+          </div>
+          <div>
+            <span className="font-bold">Stance: </span>
+            <span>{fighter.basic.skills.stance}</span>
+          </div>
+          <div>
+            <span className="font-bold">Reach: </span>
+            <span>{fighter.basic.skills.reach}</span>
+          </div>
+          <div>
+            <span className="font-bold">Level: </span>
+            <span>{fighter.basic.level}</span>
+          </div>
         </div>
       </div>
-      <Accordion
-        noShadow
-        title="Stats"
-        activeAccordion={activeAccordion}
-        handleToggle={() => handleToggle("stats")}
-      >
-        {standard.statKeys.map((statGroup) => (
-          <ChildAccordion key={statGroup.key} title={statGroup.title}>
-            {Object.entries(fighter[statGroup.key].skills).map(
-              ([skill, level]) => {
-                const skillName =
-                  standard[statGroup.key].find(
-                    (standard) => standard.propName === skill
-                  )?.name ?? "Not found";
-                return (
-                  <div
-                    key={skillName}
-                    className="flex justify-between ps-8 pe-4 odd:bg-mainBgElevated"
-                  >
-                    <span>{skillName}</span>
-                    <span>{level}</span>
-                  </div>
-                );
-              }
-            )}
-          </ChildAccordion>
-        ))}
-      </Accordion>
-      <MoveAccordion
-        moves={fighter.moves}
-        isActive={activeAccordion}
-        handleToggle={() => handleToggle("moves")}
-      />
-      {fighter._id >= SANDBOX_ID_START ? (
-        <div className="flex justify-center gap-4 mt-4">
-          <LinkButton
-            href={`/fighters/${fighter._id}/edit`}
-            title="Edit Fighter"
+      <div className="desktop:col-span-2 desktop:mt-4">
+        <div className="tablet:mx-4 tablet:border tablet:rounded-lg tablet:overflow-hidden">
+          <Accordion
+            noShadow
+            title="Stats"
+            activeAccordion={activeAccordion}
+            handleToggle={() => handleToggle("stats")}
+          >
+            {standard.statKeys.map((statGroup) => (
+              <ChildAccordion key={statGroup.key} title={statGroup.title}>
+                {Object.entries(fighter[statGroup.key].skills).map(
+                  ([skill, level]) => {
+                    const skillName =
+                      standard[statGroup.key].find(
+                        (standard) => standard.propName === skill
+                      )?.name ?? "Not found";
+                    return (
+                      <div
+                        key={skillName}
+                        className="flex justify-between ps-8 pe-4 odd:bg-mainBgElevated"
+                      >
+                        <span>{skillName}</span>
+                        <span>{level}</span>
+                      </div>
+                    );
+                  }
+                )}
+              </ChildAccordion>
+            ))}
+          </Accordion>
+          <MoveAccordion
+            moves={fighter.moves}
+            isActive={activeAccordion}
+            handleToggle={() => handleToggle("moves")}
           />
-          <Button title="Delete Fighter" onClick={() => setOpen(true)} />
         </div>
-      ) : (
-        <p className="text-center mt-4">
-          Seed fighters are read-only. Create your own to try editing.
-        </p>
-      )}
+        {fighter._id >= SANDBOX_ID_START ? (
+          <div className="flex justify-center gap-4 mt-4">
+            <LinkButton
+              href={`/fighters/${fighter._id}/edit`}
+              title="Edit Fighter"
+            />
+            <Button title="Delete Fighter" onClick={() => setOpen(true)} />
+          </div>
+        ) : (
+          <p className="text-center mt-4">
+            Seed fighters are read-only. Create your own to try editing.
+          </p>
+        )}
+      </div>
       <ConfirmDialog
         open={open}
         title="Delete Fighter"

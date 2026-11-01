@@ -44,7 +44,7 @@ flowchart LR
 
 `pages/api/hello.ts` is leftover Next.js boilerplate. The real API is the Express server.
 
-Every page is wrapped in `components/Layout.tsx`. The bar under its nav shows the weight-class group that is live this hour and a countdown to the next one. `hooks/useRotation.ts` derives both from the clock: the group is `standard.weightClassRotation[epochHour % 5]`, and it changes at the top of each hour. Nothing is stored, so the order of that array is what fixes which group is live. The hook returns `null` until the component mounts, to keep the server render and the first client render the same.
+Every page is wrapped in `components/Layout.tsx`. Its header (the nav and the bar under it) is sticky on every screen size, with `z-30`: above page content and the `Versebar`'s fighter list (`z-20`), below `ConfirmDialog` (`z-50`). The bar under the nav shows the weight-class group that is live this hour and a countdown to the next one. `hooks/useRotation.ts` derives both from the clock: the group is `standard.weightClassRotation[epochHour % 5]`, and it changes at the top of each hour. Nothing is stored, so the order of that array is what fixes which group is live. The hook returns `null` until the component mounts, to keep the server render and the first client render the same.
 
 ## Client data flow
 
@@ -81,6 +81,29 @@ Every page is wrapped in `components/Layout.tsx`. The bar under its nav shows th
 ## Styling
 
 Tailwind theme tokens (`redCorner`, `blueCorner`, `primaryFontSize`, …) map to CSS variables in `client/src/styles/globals.css`. Tailwind can't see class names that are built at runtime, such as the wizard stepper's `` bg-[${color}] ``, so those must be listed in `safelist` in `client/tailwind.config.ts`.
+
+### Breakpoints
+
+The design is mobile-first. Unprefixed classes are the phone layout, and `theme.screens` in `client/tailwind.config.ts` replaces Tailwind's defaults with two breakpoints (see [ADR 0004](decisions/0004-two-named-breakpoints.md)):
+
+| Prefix | From | Typical devices |
+| --- | --- | --- |
+| none | 0 | Phones |
+| `tablet:` | 768px | Tablets, including iPads in landscape |
+| `desktop:` | 1280px | Laptops and desktops |
+
+`sm:`, `md:`, `lg:`, `xl:` and the `max-w-screen-*` utilities don't exist. `future.hoverOnlyWhenSupported` limits `hover:` styles to devices with a pointer that can hover, so a tap on a phone doesn't leave a hover colour behind.
+
+`#__next` is a flex column and each page renders its own `<main>`, so each page sets its own width with `w-full mx-auto` and a `max-w-*`. The header lines up with the widest page (`max-w-7xl`) while its background stays full width.
+
+| Page | Tablet | Desktop |
+| --- | --- | --- |
+| Compare (`/`) | Cards in 2 columns (CSS `columns`, so cards of different heights pack without gaps) | Same 2 columns, `max-w-7xl` |
+| Fighter list | `max-w-3xl`; an open weight class lists its fighters in 2 columns, split by a 1px `column-rule` that fills a 1px `column-gap` (a rule in a zero gap would sit under the striped rows' backgrounds). The stripes follow each fighter's row in its column, worked out from `ceil(count / columns)` per breakpoint, so they line up across columns | `max-w-5xl`, 3 columns |
+| Fighter details | `max-w-3xl`; the info rows in 2 columns, the accordions in a bordered box | `max-w-6xl`; the info stays on the left (sticky at `top-20`, just under the header), the accordions take the right two thirds |
+| Wizard | `max-w-xl` | Same as tablet |
+
+The `Versebar` stays fixed at the bottom on every size. From tablet up it matches the content width, and a corner's fighter list opens across the whole bar, as on phones.
 
 ## Server startup
 

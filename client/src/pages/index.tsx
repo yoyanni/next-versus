@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    <main className="grow mt-4">
+    <main className="grow w-full mx-auto mt-4 tablet:px-4 desktop:max-w-7xl">
       {red && blue ? (
         <Cards red={red} blue={blue} />
       ) : (

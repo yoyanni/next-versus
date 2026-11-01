@@ -22,7 +22,14 @@ const config: Config = {
     "border-[#db697f]",
     "border-[#ff4d4f]",
   ],
+  // Skip hover styles on touch screens, where they stick after a tap
+  future: { hoverOnlyWhenSupported: true },
   theme: {
+    // Replaces Tailwind's defaults: unprefixed classes are the phone design
+    screens: {
+      tablet: "768px",
+      desktop: "1280px",
+    },
     extend: {
       colors: {
         // App colors

@@ -11,7 +11,7 @@ function Accordion({
   return (
     <div className="text-primaryFontSize">
       <div
-        className="flex justify-between px-4 py-2 border-b bg-mainBgElevated first:border-t"
+        className="flex justify-between px-4 py-2 border-b bg-mainBgElevated first:border-t cursor-pointer"
         onClick={handleToggle}
       >
         <span>{title}</span>

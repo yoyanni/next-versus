@@ -109,7 +109,7 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
   };
 
   return (
-    <main className="grow flex flex-col gap-y-4 mt-4">
+    <main className="grow flex flex-col gap-y-4 w-full mx-auto mt-4 tablet:max-w-xl">
       <div className="flex flex-col gap-y-3 px-4">
         <h1 className="text-primaryFontSize font-bold">Create a Fighter</h1>
         {/* Stepper component */}

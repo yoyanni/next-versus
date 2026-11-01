@@ -10,7 +10,7 @@ const CardWrapper = ({
 }: CardWrapperProps) => {
   const [show, setShow] = useState(true);
   return (
-    <article className="border-y bg-mainBgElevated shadow-xl">
+    <article className="break-inside-avoid border-y bg-mainBgElevated shadow-xl tablet:mb-6 tablet:border tablet:rounded-md tablet:overflow-hidden">
       <h2 className="flex justify-between items-center py-2 font-semibold">
         <span className="w-[100px] text-center">{redLevel}</span>
         <span className="grow flex justify-center items-center text-primaryFontSize text-center">
@@ -25,7 +25,7 @@ const CardWrapper = ({
         </div>
       )}
       <div
-        className="flex justify-center border-t"
+        className="flex justify-center border-t cursor-pointer"
         onClick={() => setShow((prevState) => !prevState)}
       >
         {show ? <TiArrowSortedUp size={20} /> : <TiArrowSortedDown size={20} />}

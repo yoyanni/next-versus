@@ -15,7 +15,7 @@ function ChildAccordion({
       }`}
     >
       <div
-        className={`flex justify-between ${indentation} pe-4 py-2 border-b first:border-t`}
+        className={`flex justify-between ${indentation} pe-4 py-2 border-b first:border-t cursor-pointer`}
         onClick={() => setShowContent((prev) => !prev)}
       >
         <span>{title}</span>

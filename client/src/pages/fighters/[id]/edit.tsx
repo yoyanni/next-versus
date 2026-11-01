@@ -10,7 +10,7 @@ const EditFighter = () => {
   if (!fighter) return <main>Loading...</main>;
   if (fighter._id < SANDBOX_ID_START)
     return (
-      <main className="p-4">
+      <main className="w-full mx-auto p-4 tablet:max-w-xl">
         Seed fighters are read-only. Create your own to try editing.
       </main>
     );
