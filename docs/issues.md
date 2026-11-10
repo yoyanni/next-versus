@@ -27,6 +27,13 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Problem:** The Perks card passes `standUp.level` as its red and blue levels, so it repeats the Stand-Up card's numbers.
 - **Fix:** Show the perk count, or no number at all.
 
+### B8. Seed and wizard fighters name ground strikes differently
+
+- **Severity:** Low
+- **Where:** [standard.ts](../client/src/standard.ts) (`moves.ground.strikes`), [server/seed/fighters.json](../server/seed/fighters.json)
+- **Problem:** Every seed fighter's ground strikes are named "Ground Straights", "Ground Hook" and so on. The wizard offers "Straights", "Hook" and so on, so fighters created in it use the short names. The fighter page shows whichever name is stored, so the two kinds of fighter list the same moves under different names.
+- **Fix:** Pick one naming. Renaming the seed file's moves is simpler, since `standard.ts` and `config/commonMoves.ts` already use the short names.
+
 ## Security
 
 ### S2. No request validation, and edit skips schema validators

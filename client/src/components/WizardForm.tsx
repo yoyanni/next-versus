@@ -1,6 +1,7 @@
 import BulkStatSelect from "@/components/BulkStatSelect";
 import FormStepRender from "@/components/FormStepRender";
 import MoveAccordion from "@/components/MoveAccordion";
+import { COMMON_MOVE_LEVEL, commonMoves } from "@/config/commonMoves";
 import { wizardSteps } from "@/config/formConfig";
 import { createFighterForm } from "@/mapper/createFighterForm";
 import { apiClient } from "@/service/apiClient";
@@ -149,6 +150,41 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
     );
   };
 
+  const commonMoveCount = commonMoves.reduce(
+    (count, { names }) => count + names.length,
+    0
+  );
+  const hasAllCommonMoves = commonMoves.every(({ path, names }) =>
+    names.every((name) => addedMoveValues.includes(`${path}:${name}`))
+  );
+
+  // Adds the common moves that are missing, at COMMON_MOVE_LEVEL, leaving the
+  // ones already added at their level. Once all are added, removes them all.
+  const handleCommonMovesToggle = () => {
+    commonMoves.forEach(({ path, names }) => {
+      const { fieldPath, currentMoves } = getMoves(path);
+      setValue(
+        fieldPath,
+        hasAllCommonMoves
+          ? currentMoves.filter((added) => !names.includes(added.name))
+          : [
+              ...currentMoves,
+              ...names
+                .filter((name) => !currentMoves.some((m) => m.name === name))
+                .map((name) => ({ name, level: COMMON_MOVE_LEVEL })),
+            ]
+      );
+    });
+    // A selected move that was just added leaves the select, like in handleMoveAddition
+    if (
+      !hasAllCommonMoves &&
+      commonMoves.some(
+        ({ path, names }) => path === movePath && names.includes(moveName)
+      )
+    )
+      setValue("move.name", "");
+  };
+
   const handleMoveGroupToggle = (group: string) =>
     setOpenMoveGroups((prev) =>
       prev.includes(group)
@@ -238,13 +274,27 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
 
       {step === wizardSteps.length - 1 && (
         <>
-          <button
-            onClick={handleMoveAddition}
-            disabled={!canAddMove}
-            className="self-end mr-4 px-2 py-1 border bg-white rounded-md disabled:opacity-50"
-          >
-            Add move
-          </button>
+          <div>
+            <div className="flex justify-between mx-4">
+              <button
+                onClick={handleCommonMovesToggle}
+                className="px-2 py-1 border bg-white rounded-md"
+              >
+                {hasAllCommonMoves ? "Remove common moves" : "Add common moves"}
+              </button>
+              <button
+                onClick={handleMoveAddition}
+                disabled={!canAddMove}
+                className="px-2 py-1 border bg-white rounded-md disabled:opacity-50"
+              >
+                Add move
+              </button>
+            </div>
+            <p className="mx-4 mt-1 text-tertiaryFontSize text-secondaryDarkFontColor">
+              Common moves are the {commonMoveCount} moves that at least 90% of
+              fighters have. They&apos;re added at level {COMMON_MOVE_LEVEL}.
+            </p>
+          </div>
           <div className="border mx-4 rounded-lg overflow-hidden">
             <MoveAccordion
               moves={watchMoves}
