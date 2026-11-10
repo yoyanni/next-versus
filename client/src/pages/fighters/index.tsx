@@ -4,6 +4,7 @@ import { useState } from "react";
 // Internal Import
 import standard from "@/standard";
 import Accordion from "@/components/Accordion";
+import Loading from "@/components/Loading";
 import { useFighters } from "@/hooks/useFighters";
 import LinkButton from "@/components/LinkButton";
 
@@ -27,8 +28,7 @@ export default function Fighters() {
   // standard.weightClasses could be enum
   const weightClasses = [...standard.weightClasses, "Generic"];
 
-  // When fighters still have not loaded
-  if (!fighters) return <main>Loading...</main>;
+  if (!fighters) return <Loading label="Loading fighters…" />;
 
   function handleToggle(accordion: string) {
     if (activeAccordion === accordion) setActiveAccordion(null);

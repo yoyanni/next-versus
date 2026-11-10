@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // Internal Import
 import Cards from "@/components/Cards";
+import Loading from "@/components/Loading";
 import Versebar from "@/components/Versebar";
 import standard from "@/standard";
 import { Sides } from "@/types/component";
@@ -19,8 +20,7 @@ export default function Home() {
   const { data: fighters, isLoading } = useFighters();
   const [ids, setIds] = useState(defaultIds);
 
-  // When fighters still has not loaded
-  if (isLoading) return <main>Loading...</main>;
+  if (isLoading) return <Loading label="Loading fighters…" />;
   if (!fighters) return <main>No fighters were available...</main>;
 
   const wcFighters = fighters.filter(

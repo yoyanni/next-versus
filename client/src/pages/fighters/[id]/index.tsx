@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import ChildAccordion from "@/components/ChildAccordion";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import LinkButton from "@/components/LinkButton";
+import Loading from "@/components/Loading";
 import MoveAccordion from "@/components/MoveAccordion";
 import { useFighter } from "@/hooks/useFighter";
 import { apiClient } from "@/service/apiClient";
@@ -34,8 +35,7 @@ export default function Fighter() {
     }
   }
 
-  // When fighters still have not loaded
-  if (!fighter) return <main>Loading...</main>;
+  if (!fighter) return <Loading label="Loading fighter…" />;
 
   function handleToggle(accordion: "moves" | "stats") {
     if (activeAccordion === accordion) setActiveAccordion(null);

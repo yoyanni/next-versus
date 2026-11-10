@@ -73,6 +73,13 @@ const config: Config = {
           "0 0 20px 1px rgba(0,0,0,0.5), inset 0px -20px 30px -10px rgba(0, 0, 0, 0.3)",
         verseBarInset: "inset 0px -20px 30px -10px rgba(0, 0, 0, 0.3)",
       },
+      keyframes: {
+        fadeIn: { from: { opacity: "0" }, to: { opacity: "1" } },
+      },
+      animation: {
+        // `both` keeps it hidden during the delay
+        delayedFadeIn: "fadeIn 200ms ease-in 300ms both",
+      },
     },
   },
   plugins: [],

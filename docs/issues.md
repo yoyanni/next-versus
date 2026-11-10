@@ -75,11 +75,11 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 
 ## Client and UI
 
-### C1. Error states show "Loading..." forever
+### C1. Error states show the loading spinner forever
 
 - **Severity:** Medium
-- **Where:** [fighters/[id]/index.tsx:36](../client/src/pages/fighters/[id]/index.tsx#L36), [fighters/[id]/edit.tsx:9](../client/src/pages/fighters/[id]/edit.tsx#L9), [fighters/index.tsx:17](../client/src/pages/fighters/index.tsx#L17)
-- **Problem:** These pages only check `!data`. A 404 or a network error leaves them on "Loading..." indefinitely. The home page shows "No fighters were available..." on error, with no retry.
+- **Where:** [fighters/[id]/index.tsx:38](../client/src/pages/fighters/[id]/index.tsx#L38), [fighters/[id]/edit.tsx:11](../client/src/pages/fighters/[id]/edit.tsx#L11), [fighters/index.tsx:31](../client/src/pages/fighters/index.tsx#L31)
+- **Problem:** These pages only check `!data`. A 404 or a network error leaves them on the loading spinner indefinitely. The home page shows "No fighters were available..." on error, with no retry.
 - **Fix:** Handle `isError` and show a not-found or error message with a retry or a link back.
 
 ### C2. `apiClient` hides errors that aren't JSON

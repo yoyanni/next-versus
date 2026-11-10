@@ -100,6 +100,8 @@ The design is mobile-first. Unprefixed classes are the phone layout, and `theme.
 
 `#__next` is a flex column and each page renders its own `<main>`, so each page sets its own width with `w-full mx-auto` and a `max-w-*`. The header lines up with the widest page (`max-w-7xl`) while its background stays full width.
 
+While a page's data loads, it returns `components/Loading.tsx` instead of its content. Loading renders its own `<main>` (with `grow`, so it fills the space under the header) and centres a red and blue spinner with a label such as "Loading fighters…". It fades in after 300 ms (the `delayedFadeIn` animation in `client/tailwind.config.ts`), so a fast or cached load doesn't flash it. The spinning and the fade are `motion-safe:`, so with reduced motion it shows straight away and doesn't spin.
+
 | Page | Tablet | Desktop |
 | --- | --- | --- |
 | Compare (`/`) | Picker above the cards. Cards in 2 columns (CSS `columns`, so cards of different heights pack without gaps) | Same 2 columns, `max-w-7xl` |

@@ -1,3 +1,4 @@
+import Loading from "@/components/Loading";
 import WizardForm from "@/components/WizardForm";
 import { useFighter } from "@/hooks/useFighter";
 import { SANDBOX_ID_START } from "@shared/limits";
@@ -7,7 +8,7 @@ const EditFighter = () => {
   const router = useRouter();
   const { data: fighter } = useFighter(router.query.id);
 
-  if (!fighter) return <main>Loading...</main>;
+  if (!fighter) return <Loading label="Loading fighter…" />;
   if (fighter._id < SANDBOX_ID_START)
     return (
       <main className="w-full mx-auto p-4 tablet:max-w-xl">
