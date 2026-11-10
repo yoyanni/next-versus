@@ -17,7 +17,7 @@ const levels = Array.from(
   { length: (LEVEL_MAX - LEVEL_MIN) / LEVEL_STEP + 1 },
   (_, i) => String(LEVEL_MIN + i * LEVEL_STEP)
 );
-const stats = Array.from({ length: STAT_MAX - STAT_MIN + 1 }, (_, i) =>
+export const stats = Array.from({ length: STAT_MAX - STAT_MIN + 1 }, (_, i) =>
   String(STAT_MIN + i)
 );
 
@@ -144,6 +144,7 @@ const step3: WizardStep<FighterForm> = {
 
 const step4: WizardStep<FighterForm> = {
   title: "Stand-Up",
+  bulkStats: true,
   inputs: [
     {
       type: "select",
@@ -167,6 +168,7 @@ const step4: WizardStep<FighterForm> = {
 
 const step5: WizardStep<FighterForm> = {
   title: "Grappling",
+  bulkStats: true,
   inputs: [
     {
       type: "select",
@@ -190,6 +192,7 @@ const step5: WizardStep<FighterForm> = {
 
 const step6: WizardStep<FighterForm> = {
   title: "Health",
+  bulkStats: true,
   inputs: [
     {
       type: "select",

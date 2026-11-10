@@ -42,4 +42,7 @@ type FormItem<T> = Field<T> | SelectField<T> | MultiSelectField<T>;
 export interface WizardStep<T extends FieldValues> {
   title: string;
   inputs: FormItem<FieldPath<T>>[];
+  // Shows a select that sets every input in the step: the `.level` one to the
+  // estimated level, the others to the chosen stat
+  bulkStats?: boolean;
 }

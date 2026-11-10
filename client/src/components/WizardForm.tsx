@@ -1,3 +1,4 @@
+import BulkStatSelect from "@/components/BulkStatSelect";
 import FormStepRender from "@/components/FormStepRender";
 import MoveAccordion from "@/components/MoveAccordion";
 import { wizardSteps } from "@/config/formConfig";
@@ -5,6 +6,7 @@ import { createFighterForm } from "@/mapper/createFighterForm";
 import { apiClient } from "@/service/apiClient";
 import standard from "@/standard";
 import { FighterForm } from "@/types/component";
+import { levelForStat } from "@/utils/levelForStat";
 import { Fighter } from "@shared/types";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
@@ -95,6 +97,15 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
     if (await trigger(fieldPaths, { shouldFocus: true }))
       setStep((prev) => prev + 1);
   };
+
+  // Sets every stat in the step to the chosen value, and its level to the estimate.
+  // shouldValidate clears errors that "Forth" showed for the empty selects.
+  const handleBulkStat = (stat: number) =>
+    wizardSteps[step].inputs.forEach(({ id }) =>
+      setValue(id, id.endsWith(".level") ? levelForStat(stat) : stat, {
+        shouldValidate: true,
+      })
+    );
 
   // Move select values are "<path>:<name>" (e.g. "ground.sweeps:BJJ"); path picks the moves.* array
   const getMoves = (path: string) => {
@@ -211,6 +222,9 @@ const WizardForm = ({ fighter }: WizardFormProps) => {
             event.preventDefault();
           }}
         >
+          {wizardSteps[step].bulkStats && (
+            <BulkStatSelect onSelect={handleBulkStat} />
+          )}
           <FormStepRender
             key={wizardSteps[step].title}
             step={wizardSteps[step]}
