@@ -90,6 +90,8 @@ Every page is wrapped in `components/Layout.tsx`. Its header (the nav and the ba
 
 Tailwind theme tokens (`redCorner`, `blueCorner`, `primaryFontSize`, …) map to CSS variables in `client/src/styles/globals.css`. Tailwind can't see class names that are built at runtime, such as the wizard stepper's `` bg-[${color}] ``, so those must be listed in `safelist` in `client/tailwind.config.ts`.
 
+The favicon is the red and blue corners split by a white lightning bolt, in the darker corner colours (`#e33636`, `#1f76e0`) so the bolt stands out. It has no letters, so nothing blurs at 16px. `client/public/favicon.svg` is the main icon. `favicon.ico` (16, 32 and 48px, for browsers without SVG favicons) is a render of it, and `apple-touch-icon.png` (180px) is the same design with square corners, since iOS rounds them itself. If you change the SVG, render the other two again. `_document.tsx` links all three.
+
 ### Breakpoints
 
 The design is mobile-first. Unprefixed classes are the phone layout, and `theme.screens` in `client/tailwind.config.ts` replaces Tailwind's defaults with two breakpoints (see [ADR 0004](decisions/0004-two-named-breakpoints.md)):
