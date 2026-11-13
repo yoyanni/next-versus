@@ -26,6 +26,7 @@ The write routes are public, but only for **sandbox fighters**. See [ADR 0003](d
 
 ## Notes
 
+- **Every response has `X-Robots-Tag: noindex, nofollow`**, `/health` and errors included, so search engines don't index the API (see [ADR 0005](decisions/0005-noindex-header-not-robots-txt.md)). A middleware at the top of `app.ts` sets it.
 - **`/health`** never touches the database, so it only shows that the process is up. It's meant for container and uptime checks.
 - **`GET /api/fighters`** returns every fighter (about 2.4 MB) with `.lean()`, which skips building Mongoose documents to keep memory down. There's no pagination.
 - **Create and edit return only the `_id`**, not the document. The client then goes to `/fighters/:id`, which fetches the fighter.

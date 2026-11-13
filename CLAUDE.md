@@ -46,6 +46,7 @@ There is no test framework or test suite.
 - **Wizard move values** are `"<path>:<name>"` strings that `WizardForm` splits.
 - **Wizard validation** runs per step: `goForth` triggers the current step's fields, and `handleSubmit` skips fields that aren't mounted. Every way of reaching the last step must go through `goForth`.
 - **Page titles:** every page renders `components/PageTitle.tsx` in every branch, its loading state included. Don't add a default `<title>` in `_app.tsx` or `Layout`: with two, the server and the client pick different ones.
+- **No indexing:** the site is a demo. The client (`headers()` in `client/next.config.js`) and the API (`server/src/app.ts`) send `X-Robots-Tag: noindex, nofollow` on every response. Never add a `robots.txt` that disallows crawling: crawlers it blocks never see the header.
 - **Keyboard access:** anything clickable is a `button` or a link, never a `div`, `p` or bare `tr`. Toggles get `aria-expanded`. Dialogs use the native `<dialog>` with `showModal()`, as `ConfirmDialog` does.
 - **Tailwind:** class names built at runtime must be added to `safelist` in `client/tailwind.config.ts`.
 - **CI:** `.github/workflows/deploy.yml` builds the API image and deploys it (see `docs/deployment.md`). If the image starts needing a new file, add it to the workflow's `paths` filter. Don't add other CI files unless asked.

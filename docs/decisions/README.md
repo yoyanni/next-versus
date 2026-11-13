@@ -8,6 +8,7 @@ These are short notes on choices that aren't obvious from the code. Each one rec
 | [0002](0002-seed-at-runtime-in-batches.md) | Seed at startup, from a file read at runtime, in batches | Accepted |
 | [0003](0003-public-sandbox-with-protected-seed.md) | Public writes limited to a sandbox, with read-only seed fighters | Accepted |
 | [0004](0004-two-named-breakpoints.md) | Two named breakpoints, `tablet` and `desktop`, in place of Tailwind's defaults | Accepted |
+| [0005](0005-noindex-header-not-robots-txt.md) | Keep the site out of search engines with `X-Robots-Tag`, not `robots.txt` | Accepted |
 
 ## Template
 

@@ -12,6 +12,12 @@ const app = express();
 // Caddy is the only hop in front of the app; without this every visitor has Caddy's IP
 app.set("trust proxy", 1);
 
+// The site is a demo: keep every response out of search results, as the client does
+app.use((_req, res, next) => {
+  res.set("X-Robots-Tag", "noindex, nofollow");
+  next();
+});
+
 // Health check
 app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok" });
