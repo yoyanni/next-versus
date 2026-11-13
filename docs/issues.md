@@ -103,13 +103,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Problem:** Delete invalidates `["fighters"]` but not `["fighter", id]`, which the rule in `CLAUDE.md` requires. Going back to the deleted fighter's page shows cached data for up to 5 minutes.
 - **Fix:** `queryClient.removeQueries({ queryKey: ["fighter", String(id)] })`. The key is a string because `useFighter` uses `router.query.id`.
 
-### C7. Accessibility
-
-- **Severity:** Medium
-- **Where:** `Accordion`, `ChildAccordion`, `CardWrapper`, `Versebar`, `ConfirmDialog`
-- **Problem:** Accordions, the card toggles, the weight-class list and the fighter table rows are clickable `div`, `p` and `tr` elements. They can't be focused or used with a keyboard, and screen readers don't announce them as controls. `ConfirmDialog` has no `role="dialog"`, `aria-modal`, Escape to close, or focus handling. The perks multi-select has no label.
-- **Fix:** Use `button` elements (or `role="button"`, `tabIndex={0}` and key handlers), add `aria-expanded` to accordions, and give the dialog proper semantics and focus handling.
-
 ## Deployment and operations
 
 ### O1. The health check can't see a lost database connection

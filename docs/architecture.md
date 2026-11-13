@@ -44,7 +44,7 @@ flowchart LR
 
 `pages/api/hello.ts` is leftover Next.js boilerplate. The real API is the Express server.
 
-Every page is wrapped in `components/Layout.tsx`. Its header (the nav and the bar under it) is sticky on every screen size, with `z-30`: above page content and the `Versebar`'s fighter list (`z-20`), below `ConfirmDialog` (`z-50`). The bar under the nav shows the weight-class group that is live this hour and a countdown to the next one. `hooks/useRotation.ts` derives both from the clock: the group is `standard.weightClassRotation[epochHour % 5]`, and it changes at the top of each hour. Nothing is stored, so the order of that array is what fixes which group is live. The hook returns `null` until the component mounts, to keep the server render and the first client render the same.
+Every page is wrapped in `components/Layout.tsx`. Its header (the nav and the bar under it) is sticky on every screen size, with `z-30`: above page content and the `Versebar`'s fighter list (`z-20`). `ConfirmDialog` needs no `z-index`: it's a native modal `<dialog>`, which the browser draws in the top layer, above everything. The bar under the nav shows the weight-class group that is live this hour and a countdown to the next one. `hooks/useRotation.ts` derives both from the clock: the group is `standard.weightClassRotation[epochHour % 5]`, and it changes at the top of each hour. Nothing is stored, so the order of that array is what fixes which group is live. The hook returns `null` until the component mounts, to keep the server render and the first client render the same.
 
 ## Client data flow
 
@@ -112,6 +112,13 @@ While a page's data loads, it returns `components/Loading.tsx` instead of its co
 | Wizard | `max-w-xl` | Same as tablet |
 
 The `Versebar` (the picker) is fixed to the bottom of the screen on phones. From tablet up it's a row above the cards that scrolls with the page: red corner, weight class, blue corner. Its lists drop down over the cards (`z-20`): the weight classes under their button, a corner's fighters across the whole row. In both placements only one list is open at a time. The home page renders it twice, `placement="top"` before the cards and `placement="bottom"` after them, and each hides itself at the other sizes. The bottom bar has to come after the cards because it has no `z-index` and paints over them only through DOM order.
+
+## Accessibility
+
+- **Anything clickable is a `button` or a link.** Accordion headers, the card toggles and the picker's toggles are buttons with `aria-expanded`, and `aria-controls` pointing at the content while it's open (the IDs come from `useId`). The `+`/`-` signs are `aria-hidden`, and the card toggle, which shows only an arrow, is labelled with the card's title.
+- **Picker.** The corner toggles start with a visually hidden "Red corner:" or "Blue corner:", and the weight-class toggle with "Weight class:". The current weight class in the list has `aria-current`. In the fighter table, the name cell holds a button with no handler of its own: its click, from a mouse or the keyboard, bubbles to the row's `onClick`, so a click anywhere on the row still picks the fighter. On phones the weight-class list is drawn above its button but comes after it in the DOM (`flex-col-reverse`), so Tab goes from the button into the list.
+- **`ConfirmDialog`** is a native `<dialog>` opened with `showModal()`. The browser makes the rest of the page inert, focuses the first button (Cancel) and handles Escape. The `open` prop stays in charge: Escape's `cancel` event is prevented and calls `onCancel`, and a close the browser does on its own (such as Android's back gesture) calls `onCancel` too, so the dialog can open again. On close, focus goes back to the element that opened it.
+- **The perks multi-select** has a visually hidden label, since the step's heading already shows "Perks".
 
 ## Server startup
 

@@ -41,7 +41,16 @@ function FormStepRender({
       input.id.includes("health");
     return input.type === "multi-select" ? (
       <Fragment key={fieldPath}>
-        <select {...register(fieldPath, input.rules)} multiple size={10}>
+        {/* The step's heading already shows the name, so the label is for screen readers */}
+        <label htmlFor={fieldPath} className="sr-only">
+          {input.label}, up to {MAX_PERKS}
+        </label>
+        <select
+          {...register(fieldPath, input.rules)}
+          id={fieldPath}
+          multiple
+          size={10}
+        >
           {input.groups.map((group) => (
             <optgroup key={group.name} label={group.name}>
               {group.options.map((option) => (
