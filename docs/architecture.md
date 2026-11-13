@@ -44,6 +44,8 @@ flowchart LR
 
 `pages/api/hello.ts` is leftover Next.js boilerplate. The real API is the Express server.
 
+Every page sets the tab title with `components/PageTitle.tsx`: "<title> | Versus 4", or "Versus 4" alone on the home page. A page renders it in every branch, its loading state included, because the server renders these pages before their data loads, so the loading branch is what the static HTML contains. There's no default title in `_app.tsx` or `Layout`: `next/head` keeps only one `<title>`, and when two are rendered, which one wins differs between the server and the client.
+
 Every page is wrapped in `components/Layout.tsx`. Its header (the nav and the bar under it) is sticky on every screen size, with `z-30`: above page content and the `Versebar`'s fighter list (`z-20`). `ConfirmDialog` needs no `z-index`: it's a native modal `<dialog>`, which the browser draws in the top layer, above everything. The bar under the nav shows the weight-class group that is live this hour and a countdown to the next one. `hooks/useRotation.ts` derives both from the clock: the group is `standard.weightClassRotation[epochHour % 5]`, and it changes at the top of each hour. Nothing is stored, so the order of that array is what fixes which group is live. The hook returns `null` until the component mounts, to keep the server render and the first client render the same.
 
 ## Client data flow

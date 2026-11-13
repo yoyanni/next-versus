@@ -78,7 +78,7 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 ### C1. Error states show the loading spinner forever
 
 - **Severity:** Medium
-- **Where:** [fighters/[id]/index.tsx:38](../client/src/pages/fighters/[id]/index.tsx#L38), [fighters/[id]/edit.tsx:11](../client/src/pages/fighters/[id]/edit.tsx#L11), [fighters/index.tsx:31](../client/src/pages/fighters/index.tsx#L31)
+- **Where:** [fighters/[id]/index.tsx:39](../client/src/pages/fighters/[id]/index.tsx#L39), [fighters/[id]/edit.tsx:20](../client/src/pages/fighters/[id]/edit.tsx#L20), [fighters/index.tsx:34](../client/src/pages/fighters/index.tsx#L34)
 - **Problem:** These pages only check `!data`. A 404 or a network error leaves them on the loading spinner indefinitely. The home page shows "No fighters were available..." on error, with no retry.
 - **Fix:** Handle `isError` and show a not-found or error message with a retry or a link back.
 
@@ -92,14 +92,14 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 ### C4. Failed writes give the user no feedback
 
 - **Severity:** Medium
-- **Where:** [WizardForm.tsx:79-84](../client/src/components/WizardForm.tsx#L79-L84), [fighters/[id]/index.tsx:28-31](../client/src/pages/fighters/[id]/index.tsx#L28-L31)
+- **Where:** [WizardForm.tsx:79-84](../client/src/components/WizardForm.tsx#L79-L84), [fighters/[id]/index.tsx:29-32](../client/src/pages/fighters/[id]/index.tsx#L29-L32)
 - **Problem:** Create, edit and delete failures only go to `console.error`. The dialog closes or the form stays put as if nothing happened.
 - **Fix:** Show an inline error or a toast. Moving writes to `useMutation` would provide `isPending` and `error` state as well.
 
 ### C5. Delete leaves the fighter in the cache
 
 - **Severity:** Low
-- **Where:** [fighters/[id]/index.tsx:26](../client/src/pages/fighters/[id]/index.tsx#L26)
+- **Where:** [fighters/[id]/index.tsx:27](../client/src/pages/fighters/[id]/index.tsx#L27)
 - **Problem:** Delete invalidates `["fighters"]` but not `["fighter", id]`, which the rule in `CLAUDE.md` requires. Going back to the deleted fighter's page shows cached data for up to 5 minutes.
 - **Fix:** `queryClient.removeQueries({ queryKey: ["fighter", String(id)] })`. The key is a string because `useFighter` uses `router.query.id`.
 

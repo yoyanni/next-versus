@@ -3,6 +3,7 @@ import { useState } from "react";
 // Internal Import
 import Cards from "@/components/Cards";
 import Loading from "@/components/Loading";
+import PageTitle from "@/components/PageTitle";
 import Versebar from "@/components/Versebar";
 import standard from "@/standard";
 import { Sides } from "@/types/component";
@@ -20,8 +21,22 @@ export default function Home() {
   const { data: fighters, isLoading } = useFighters();
   const [ids, setIds] = useState(defaultIds);
 
-  if (isLoading) return <Loading label="Loading fighters…" />;
-  if (!fighters) return <main>No fighters were available...</main>;
+  const pageTitle = <PageTitle />;
+
+  if (isLoading)
+    return (
+      <>
+        {pageTitle}
+        <Loading label="Loading fighters…" />
+      </>
+    );
+  if (!fighters)
+    return (
+      <>
+        {pageTitle}
+        <main>No fighters were available...</main>
+      </>
+    );
 
   const wcFighters = fighters.filter(
     (f) =>
@@ -56,6 +71,7 @@ export default function Home() {
   // The bottom bar must come after the cards to paint over them
   return (
     <main className="grow w-full mx-auto mt-4 tablet:px-4 desktop:max-w-7xl">
+      {pageTitle}
       <Versebar placement="top" {...picker} />
       {red && blue ? (
         <Cards red={red} blue={blue} />

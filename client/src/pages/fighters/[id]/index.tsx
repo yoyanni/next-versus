@@ -5,6 +5,7 @@ import ConfirmDialog from "@/components/ConfirmDialog";
 import LinkButton from "@/components/LinkButton";
 import Loading from "@/components/Loading";
 import MoveAccordion from "@/components/MoveAccordion";
+import PageTitle from "@/components/PageTitle";
 import { useFighter } from "@/hooks/useFighter";
 import { apiClient } from "@/service/apiClient";
 import standard from "@/standard";
@@ -35,7 +36,13 @@ export default function Fighter() {
     }
   }
 
-  if (!fighter) return <Loading label="Loading fighter…" />;
+  if (!fighter)
+    return (
+      <>
+        <PageTitle title="Fighter" />
+        <Loading label="Loading fighter…" />
+      </>
+    );
 
   function handleToggle(accordion: "moves" | "stats") {
     if (activeAccordion === accordion) setActiveAccordion(null);
@@ -44,6 +51,7 @@ export default function Fighter() {
 
   return (
     <main className="w-full mx-auto tablet:max-w-3xl desktop:max-w-6xl desktop:grid desktop:grid-cols-3 desktop:gap-8 desktop:items-start">
+      <PageTitle title={`${fighter.firstName} ${fighter.lastName}`} />
       <div className="p-4 desktop:sticky desktop:top-20">
         <h1 className="text-primaryFontSize font-bold">
           {fighter.firstName}{" "}

@@ -7,6 +7,7 @@ import Accordion from "@/components/Accordion";
 import Loading from "@/components/Loading";
 import { useFighters } from "@/hooks/useFighters";
 import LinkButton from "@/components/LinkButton";
+import PageTitle from "@/components/PageTitle";
 
 // CSS columns fill top to bottom, so a fighter's stripe depends on its row in
 // its column, not its place in the list. With rows of equal height the browser
@@ -28,7 +29,15 @@ export default function Fighters() {
   // standard.weightClasses could be enum
   const weightClasses = [...standard.weightClasses, "Generic"];
 
-  if (!fighters) return <Loading label="Loading fighters…" />;
+  const pageTitle = <PageTitle title="Fighters" />;
+
+  if (!fighters)
+    return (
+      <>
+        {pageTitle}
+        <Loading label="Loading fighters…" />
+      </>
+    );
 
   function handleToggle(accordion: string) {
     if (activeAccordion === accordion) setActiveAccordion(null);
@@ -66,6 +75,7 @@ export default function Fighters() {
 
   return (
     <main className="grow w-full mx-auto tablet:max-w-3xl desktop:max-w-5xl">
+      {pageTitle}
       <div className="mt-4 px-4">
         <h1 className="text-primaryFontSize font-bold">All Fighters</h1>
         <p>
