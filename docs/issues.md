@@ -20,13 +20,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Problem:** The next ID is read as "highest `_id` + 1" before the insert. Two concurrent creates both read the same value, and the second fails with a duplicate-key error that the user sees as `400 Failed to create fighter.`
 - **Fix:** Either a `counters` collection updated with `findOneAndUpdate({ $inc })`, or a retry when the insert fails with error code `11000`. [ADR 0001](decisions/0001-numeric-fighter-ids.md) mentions the counter option.
 
-### B7. The Perks card header shows stand-up levels
-
-- **Severity:** Low
-- **Where:** [Cards/index.tsx:27-28](../client/src/components/Cards/index.tsx#L27-L28)
-- **Problem:** The Perks card passes `standUp.level` as its red and blue levels, so it repeats the Stand-Up card's numbers.
-- **Fix:** Show the perk count, or no number at all.
-
 ### B8. Seed and wizard fighters name ground strikes differently
 
 - **Severity:** Low
@@ -109,13 +102,6 @@ Known problems and missing pieces, found by reading the code on 2026-09-26. Each
 - **Where:** [fighters/[id]/index.tsx:26](../client/src/pages/fighters/[id]/index.tsx#L26)
 - **Problem:** Delete invalidates `["fighters"]` but not `["fighter", id]`, which the rule in `CLAUDE.md` requires. Going back to the deleted fighter's page shows cached data for up to 5 minutes.
 - **Fix:** `queryClient.removeQueries({ queryKey: ["fighter", String(id)] })`. The key is a string because `useFighter` uses `router.query.id`.
-
-### C6. Placeholder UI in the layout
-
-- **Severity:** Low
-- **Where:** [Layout.tsx:23](../client/src/components/Layout.tsx#L23)
-- **Problem:** "Combos" in the nav isn't a link and has no page.
-- **Fix:** Build the combos page or remove the item.
 
 ### C7. Accessibility
 

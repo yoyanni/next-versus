@@ -15,8 +15,9 @@ export interface PerksProps {
 
 export interface CardWrapperProps {
   title: string;
-  redLevel: number;
-  blueLevel: number;
+  // Left out by cards that have no level, such as Perks
+  redLevel?: number;
+  blueLevel?: number;
   children: ReactNode;
 }
 

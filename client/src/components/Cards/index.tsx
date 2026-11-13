@@ -22,11 +22,7 @@ const Cards = ({ red, blue }: CardsProps) => {
           />
         ))}
       </CardWrapper>
-      <CardWrapper
-        title="Perks"
-        redLevel={red.standUp.level}
-        blueLevel={blue.standUp.level}
-      >
+      <CardWrapper title="Perks">
         <Perks red={red.perks} blue={blue.perks} />
       </CardWrapper>
       <CardWrapper

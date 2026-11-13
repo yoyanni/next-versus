@@ -20,7 +20,6 @@ const Layout = ({ children }: LayoutType) => {
             <li>
               <Link href="/fighters">Fighters</Link>
             </li>
-            <li>Combos</li>
           </ul>
         </nav>
         <aside className="grow py-1 text-end bg-navBgElevated text-titleLightFontColor text-quaternaryFontSize font-semibold">
